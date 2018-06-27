@@ -91,3 +91,5 @@ gem "haml", "~> 5.0"
 # Added at 2018-06-27 02:20:18 -0700 by doug:
 gem "meta-tags", "~> 2.10"
 ruby '2.4.0'
+
+gem 'mini_racer', platforms: :ruby

@@ -1,0 +1,45 @@
+// Breakpoints
+$mobile_small_width: 320px;
+$galaxy_width: 360px;
+$mobile_common_width: 375px;
+$mobile_iphone_width: 375px;
+$mobile_big_width: 414px;
+$mobile_large_width: 480px;
+$mobile_big_landscape_width: 736px;
+$tablet_vertical_width: 768px;
+$mobile_large_landscape_width: 812px;
+$tablet_horizontal_small_width: 1024px;
+$tablet_horizontal_width: 1280px;
+$desktop_small_width: 1440px;
+$desktop_common_width: 1920px;
+$desktop_large_width: 2560px;
+$desktop_xl_width: 3840px;
+
+// Media queries
+$mobile_small_width: "only screen and (max-width: #{$mobile_small_width}";
+$galaxy_width: "only screen and (max-width: #{$galaxy_width}";
+$mobile_common_width: "only screen and (max-width: #{$mobile_common_width}";
+$mobile_iphone_width: "only screen and (max-width: #{$mobile_iphone_width}";
+$mobile_big_width: "only screen and (max-width: #{$mobile_big_width}";
+$mobile_large_width: "only screen and (max-width: #{$mobile_large_width}";
+$mobile_big_landscape_width: "only screen and (max-width: #{$mobile_big_landscape_width}";
+$tablet_vertical_width: "only screen and (max-width: #{$tablet_vertical_width}";
+$mobile_large_landscape_width: "only screen and (max-width: #{$mobile_large_landscape_width}";
+$tablet_horizontal_small_width: "only screen and (max-width: #{$tablet_horizontal_small_width}";
+$tablet_horizontal_width: "only screen and (max-width: #{$tablet_horizontal_width}";
+$desktop_small_width: "only screen and (max-width: #{$desktop_small_width}";
+$desktop_common_width: "only screen and (max-width: #{$desktop_common_width}";
+$desktop_large_width: "only screen and (max-width: #{$desktop_large_width}";
+$desktop_xl_width: "only screen and (max-width: #{$desktop_xl_width}";
+
+// Colors
+$lightBody: rgb(248, 248, 248);
+$lightBrand: rgb(211, 91, 81);
+$lightBrandAlpha1: rgba(211, 91, 81, 0.95);
+$lightBrandAlpha2: rgba(211, 91, 81, 0.85);
+$lightBrandAlpha3: rgba(211, 91, 81, 0.4);
+$lightBrandAlpha4: rgba(211, 91, 81, 0.2);
+$grey: rgb(104, 104, 104);
+$black: rgb(42, 44, 46);
+$lightGrey: rgb(232, 232, 232);
+$navPadding: 3.25em;

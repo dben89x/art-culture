@@ -1,0 +1,88 @@
+@import 'variables';
+
+a.nav-menu {
+  float: right;
+  position: relative;
+  right: 0;
+  z-index: 4;
+  width: 5em;
+  height: 5em;
+  background: white;
+  border-radius: 2.5em;
+
+  @media #{$mobile_large} {
+    width: 4em;
+    height: 4em;
+  }
+
+  span.lines,
+  span.lines::after,
+  span.lines::before {
+    width: 2em;
+    height: 0.08em;
+    background-color: $lightBrand;
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 1em);
+
+  }
+
+  span.lines {
+    right: 0;
+    -webkit-transition: background-color 0.2s;
+    -moz-transition: background-color 0.2s;
+    transition: background-color 0.2s;
+  }
+  /* top and bottom lines of the hamburger icon */
+  span.lines::after,
+  span.lines::before {
+    content: '';
+    top: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: -webkit-transform 0.2s;
+    -moz-transition: -moz-transform 0.2s;
+    transition: transform 0.2s;
+  }
+
+  span.lines::before {
+    -webkit-transform: translateY(-0.75em);
+    -moz-transform: translateY(-0.75em);
+    -ms-transform: translateY(-0.75em);
+    -o-transform: translateY(-0.75em);
+    transform: translateY(-0.75em);
+
+  }
+
+  span.lines::after {
+    -webkit-transform: translateY(0.75em);
+    -moz-transform: translateY(0.75em);
+    -ms-transform: translateY(0.75em);
+    -o-transform: translateY(0.75em);
+    transform: translateY(0.75em);
+  }
+
+  &.opened {
+    span.lines {
+      background-color: transparent;
+    }
+
+    span.lines::before {
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+    span.lines::after {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+
+    }
+  }
+}

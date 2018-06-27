@@ -1,0 +1,13 @@
+language: ruby
+  rvm:
+  - 2.4.0
+  script:
+  - yarn install
+  app:
+      master: art-culture
+      prod: art-culture
+    on:
+      repo: dben89x/art-culture
+    skip_cleanup: true
+  notifications:
+    email: false
