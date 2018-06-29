@@ -12,19 +12,21 @@ a.nav-menu {
 
   @media #{$mobile_large} {
     width: 4em;
-    height: 4em;
+    height: 2.5em;
   }
 
   span.lines,
   span.lines::after,
   span.lines::before {
-    width: 2em;
-    height: 0.08em;
-    background-color: $lightBrand;
+    width: 1.5em;
+    height: 0.15em;
+    background-color: $black;
     position: absolute;
     top: 50%;
     left: calc(50% - 1em);
-
+  }
+  span.lines::after {
+    width: 0.75em;
   }
 
   span.lines {
@@ -47,20 +49,20 @@ a.nav-menu {
   }
 
   span.lines::before {
-    -webkit-transform: translateY(-0.75em);
-    -moz-transform: translateY(-0.75em);
-    -ms-transform: translateY(-0.75em);
-    -o-transform: translateY(-0.75em);
-    transform: translateY(-0.75em);
+    -webkit-transform: translateY(-0.5em);
+    -moz-transform: translateY(-0.5em);
+    -ms-transform: translateY(-0.5em);
+    -o-transform: translateY(-0.5em);
+    transform: translateY(-0.5em);
 
   }
 
   span.lines::after {
-    -webkit-transform: translateY(0.75em);
-    -moz-transform: translateY(0.75em);
-    -ms-transform: translateY(0.75em);
-    -o-transform: translateY(0.75em);
-    transform: translateY(0.75em);
+    -webkit-transform: translateY(0.5em);
+    -moz-transform: translateY(0.5em);
+    -ms-transform: translateY(0.5em);
+    -o-transform: translateY(0.5em);
+    transform: translateY(0.5em);
   }
 
   &.opened {

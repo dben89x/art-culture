@@ -32,6 +32,13 @@ $desktop_common: "only screen and (max-width: #{$desktop_common_width})";
 $desktop_large: "only screen and (max-width: #{$desktop_large_width})";
 $desktop_xl: "only screen and (max-width: #{$desktop_xl_width})";
 
+$mobile_landscape: "screen and (min-width: 319px) and (max-width: 812px) and (orientation: landscape)";
+$tablet_landscape: "screen and (min-width: 813px) and (max-width: 1366px) and (orientation: landscape)";
+
+
+$navHeight: 12vh;
+$navHeightLandscape: 12vw;
+
 // Colors
 $lightBody: rgb(248, 248, 248);
 $lightBrand: rgb(211, 91, 81);

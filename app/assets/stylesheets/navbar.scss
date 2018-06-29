@@ -1,19 +1,27 @@
 @import 'variables';
 
-.nav-padding {
-  height: $navPadding;
+#nav-container {
+  height: $navHeight;
+
+  @media #{$mobile_landscape} {
+    height: $navHeightLandscape;
+  }
 }
 nav {
   width: 100%;
-  position: fixed;
+  height: $navHeight;
   overflow: hidden;
   background: none;
-  z-index: 4;
-  // background: linear-gradient($lightBrandAlpha1, $lightBrandAlpha2);
+  z-index: 6;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: white;
 
   .navbar-header {
-    display: none;
+    display: flex;
+    // display: none;
   }
   @media #{$tablet_vertical} {
     height: auto;
@@ -50,32 +58,38 @@ nav {
     padding: 0;
     text-decoration: none;
     list-style: none;
-    padding: 0 10em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2em;
     width: 100%;
-    display: inline-block;
 
     @media #{$tablet_vertical} {
       display: none;
     }
-    .left, .right, .middle {
-      display: inline-flex;
+    .left, .middle, .right {
+      display: flex;
       flex-direction: row;
-      vertical-align: middle;
-      justify-content: space-around;
       align-items: center;
     }
     .left, .right {
-      width: 45%;
-      padding: 0 1em;
+      width: 40%;
     }
     .left {
-      justify-content: flex-end;
-    }
-    .right {
       justify-content: flex-start;
     }
     .middle {
-      width: 10%;
+      justify-content: center;
+      width: 20%;
+      a { margin: 0 2.5em; }
+    }
+    .right {
+      justify-content: flex-end;
+      a { margin: 0 1em; }
+    }
+    .middle, .right {
+      font-weight: 900;
     }
     a {
       color: $black;
@@ -86,18 +100,28 @@ nav {
       text-decoration: none;
       font-size: 0.8em;
 
-      &.logo img {
-        width: 3em;
-      }
       &.logo {
         font-size: 2em;
-        margin: 0.5em;
+        margin: 10pt;
+      }
+      &.logo img {
+        width: 8em;
+      }
+    }
+  }
+  @media #{$mobile_landscape} {
+    height: $navHeightLandscape;
+    .nav-links {
+      font-size: 0.8em;
+
+      .middle a {
+        margin: 0 1.5em;
       }
     }
   }
 }
 
-.nav-overlay {
+#nav-overlay {
   display: none;
   color: white;
   position: fixed;
@@ -117,6 +141,24 @@ nav {
     &:hover {
       opacity: 1;
     }
+  }
+  .overlay-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    font-size: 1em;
+    letter-spacing: 3pt;
+    color: white;
+  }
+
+  .overlay-head {
+    font-size: 2em;
+    color: white;
+    justify-content: flex-end;
+    display: flex;
+    margin: 0.5em;
+    font-weight: 100;
   }
 
   .page-links {
