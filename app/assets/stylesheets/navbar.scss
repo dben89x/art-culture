@@ -121,6 +121,68 @@ nav {
   }
 }
 
+#nav-sidebar {
+  width: 200pt;
+  right: left;
+  position: absolute;
+  z-index: 7;
+  float: right;
+  height: 100vh;
+  background: white;
+  overflow: scroll;
+  box-shadow: 0 0 25pt -10pt black;
+  background: $black;
+
+  &.closed {
+    display: none;
+  }
+  &.open {
+    display: block;
+  }
+  .header {
+    display: flex;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 2em;
+    white-space: nowrap;
+    color: white;
+
+    .close-btn {
+      width: 2em;
+      height: 2em;
+      border-radius: 1em;;
+      color: white;
+      transition: 0.2s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        color: darken(white, 5%);
+      }
+    }
+
+  }
+  .sidebar-links-container {
+    display: inline-block;
+    padding: 2em;
+    width: 100%;
+
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
+
+      a {
+        margin: 1em 0;
+        color: white;
+      }
+    }
+  }
+}
+
 #nav-overlay {
   display: none;
   color: white;

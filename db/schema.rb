@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180629125345) do
+ActiveRecord::Schema.define(version: 20180702204839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,99 @@ ActiveRecord::Schema.define(version: 20180629125345) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "artists", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.string "location"
+    t.string "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_artists_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_artists_on_reset_password_token", unique: true
+  end
+
+  create_table "artwork_categories", force: :cascade do |t|
+    t.string "title"
+  end
+
+  create_table "artwork_images", force: :cascade do |t|
+    t.bigint "artwork_id"
+    t.string "url"
+    t.boolean "published"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artwork_id"], name: "index_artwork_images_on_artwork_id"
+  end
+
+  create_table "artwork_logs", force: :cascade do |t|
+    t.string "type"
+    t.bigint "artist_id"
+    t.bigint "artwork_id"
+    t.bigint "buyer_id"
+    t.bigint "bid_id"
+    t.integer "price"
+    t.text "notes"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_artwork_logs_on_artist_id"
+    t.index ["artwork_id"], name: "index_artwork_logs_on_artwork_id"
+    t.index ["bid_id"], name: "index_artwork_logs_on_bid_id"
+    t.index ["buyer_id"], name: "index_artwork_logs_on_buyer_id"
+  end
+
+  create_table "artworks", force: :cascade do |t|
+    t.bigint "artist_id"
+    t.bigint "artwork_category_id"
+    t.bigint "buyer_id"
+    t.string "title"
+    t.boolean "published"
+    t.string "description"
+    t.string "overview"
+    t.text "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_artworks_on_artist_id"
+    t.index ["artwork_category_id"], name: "index_artworks_on_artwork_category_id"
+    t.index ["buyer_id"], name: "index_artworks_on_buyer_id"
+  end
+
+  create_table "bids", force: :cascade do |t|
+    t.bigint "artwork_id"
+    t.bigint "buyer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artwork_id"], name: "index_bids_on_artwork_id"
+    t.index ["buyer_id"], name: "index_bids_on_buyer_id"
+  end
+
+  create_table "buyers", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.string "location"
+    t.string "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_buyers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_buyers_on_reset_password_token", unique: true
   end
 
   create_table "users", force: :cascade do |t|

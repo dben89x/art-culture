@@ -6,7 +6,7 @@
 body {
   margin: 0;
   background: $lightBody;
-  font-family: Roboto, sans-serif, Verdana, Geneva, sans-serif;
+  font-family: Montserrat, sans-serif, Verdana, Geneva, sans-serif;
   @media screen and (min-width: #{$desktop_large_width}) and (max-width: #{$desktop_xl_width}) {
     font-size: 37px;
   }
@@ -48,6 +48,10 @@ body {
   }
 }
 
+a {
+  text-decoration: none;
+}
+
 .banner {
   width: 100%;
   box-sizing: border-box;
@@ -67,20 +71,20 @@ body {
   align-items: center;
   background-position-y: 50%;
 
-  .overlay {
-    background: rgba(0,0,0,0.5);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-  }
   h1 {
     color: white;
     z-index: 3;
     margin: 0;
   }
+}
+.overlay {
+  background: rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
 }
 .cta-banner {
   display: flex;
@@ -125,7 +129,7 @@ h1 {
 
 h2 {
   font-weight: 300;
-  font-size: 2em;
+  font-size: 3em;
   text-transform: uppercase;
 }
 

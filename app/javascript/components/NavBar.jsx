@@ -9,7 +9,8 @@ export default class NavBar extends React.Component {
     this.state = {
       year: new Date().getFullYear(),
       opened: false,
-      currentUser: this.props.currentUser
+      currentUser: this.props.currentUser,
+      sidebarOpen: false,
     }
   }
 
@@ -64,6 +65,12 @@ export default class NavBar extends React.Component {
     })
   }
 
+  toggleSidebar=e=>{
+    e.preventDefault()
+    $('#nav-sidebar').animate({width: 'toggle'})
+    this.setState({sidebarOpen: !this.state.sidebarOpen})
+  }
+
   render() {
     const {currentUser} = this.state
 
@@ -95,31 +102,24 @@ export default class NavBar extends React.Component {
     }
 
     return (<div id='nav-container'>
-      <div id='nav-overlay'>
-        <div className="overlay-container">
-          <div className="overlay-head">
-            <span className='close-btn' onClick={this.closeMenu}>&times;</span>
-          </div>
-          <div className='page-links'>
+      <div id="nav-sidebar" className={this.state.sidebarOpen ? 'open' : 'closed'}>
+        <div className="header">
+          <a onClick={this.toggleSidebar} className='close-btn'>&times;</a>
+        </div>
+        <div className="sidebar-links-container">
+          <div className="sidebar-links">
             <a href="/">Home</a>
             <a href="/artists">Artists</a>
             <a href="/categories">Categories</a>
-          </div>
-          <div className='overlay-footer'>
-            <SigninSignupMobile/>
+            <a href="/contact">Contact</a>
           </div>
         </div>
       </div>
       <nav>
-        {/* <div className={`navbar-header ${this.state.opened ? 'opened' : ''}`}>
-          <a href="" className={`nav-menu ${this.state.opened ? 'opened' : ''} ${this.state.navClass}`} onClick={this.menuClick}>
-            <span className='lines'></span>
-          </a>
-        </div> */}
         <div id="navbar">
           <div className="nav-links">
-            <div className={`navbar-header left ${this.state.opened ? 'opened' : ''}`}>
-              <a href="" className={`nav-menu ${this.state.opened ? 'opened' : ''} ${this.state.navClass}`} onClick={this.menuClick}>
+            <div className={`navbar-header left`}>
+              <a href="" className={`nav-menu`} onClick={this.toggleSidebar}>
                 <span className='lines'></span>
               </a>
             </div>

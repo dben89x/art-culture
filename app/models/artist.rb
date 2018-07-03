@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: admin_users
+# Table name: artists
 #
 #  id                     :bigint(8)        not null, primary key
 #  email                  :string           default(""), not null
@@ -13,14 +13,17 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
+#  location               :string
+#  bio                    :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
 
-require 'test_helper'
+class Artist < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-class AdminUserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  has_many :artworks         
 end
