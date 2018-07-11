@@ -19,8 +19,15 @@ class Artwork < ApplicationRecord
   belongs_to :artist
   has_many :artwork_images
 
+  extend FriendlyId
+  friendly_id :custom_slug, use: [:slugged, :finders]
+
   def owner
 
+  end
+
+  def custom_slug
+    "#{title}-#{artist.full_name.parameterize}"
   end
 
   def as_json(options = {})
@@ -32,7 +39,9 @@ class Artwork < ApplicationRecord
         title: title,
         images: images,
         description: description,
-        # slug: slug,
+        artist_name: artist.full_name,
+        artist: artist,
+        slug: slug,
         created_at: created_at.strftime('%B %d, %Y'),
       }
     else

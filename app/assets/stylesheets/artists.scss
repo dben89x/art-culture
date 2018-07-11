@@ -1,0 +1,141 @@
+@import 'variables';
+
+
+.artist-wrapper {
+  display: flex;
+  margin: 0 10em;
+
+  .artist-img, .artist-details {
+    display: inline-flex;
+    flex-direction: column;
+    margin: 0 2em;
+  }
+  .artist-name, .artist-location, .artist-bio {
+    display: flex;
+    align-items: center;
+  }
+  .artist-img {
+    width: 20%;
+    img {
+      border-radius: 50%;
+      width: 100%;
+    }
+  }
+  .artist-name {
+    h3 {
+      font-size: 1.5em;
+    }
+    a {
+      color: white;
+      background: $actionBlue;
+      padding: 0.5em 3em;
+      border-radius: 2pt;
+      transition: 0.3s;
+      margin: 0 2em;
+
+      &:hover {
+        background: lighten($actionBlue,5%);
+      }
+    }
+  }
+  .artist-details {
+    width: 80%;
+
+    .artist-location {
+      color: $grey;
+      .fas {
+        margin-right: 1em;
+      }
+    }
+    .artist-bio {
+      p {
+        line-height: 1.2;
+        max-height: 3.6em;
+        overflow: hidden;
+      }
+    }
+  }
+}
+#art-show {
+
+}
+#artist-show {
+  padding: 4em 0;
+
+  .current-listed-art {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .current-listings {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1em;
+
+      .listing {
+        width: 33%;
+        padding: 1em;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+.art-in-circulation {
+  h2 {
+    text-align: center;
+  }
+  #art-circulation-carousel {
+
+    height: calc(90vh - #{$navHeight});
+
+    .artwork-image {
+      height: calc(90vh - #{$navHeight});
+    }
+  }
+}
+.related-artists {
+  display: flex;
+  flex-direction: column;
+  padding: 4em 8em;
+
+  h2 {
+    text-align: center;
+  }
+
+  .related-artists-wrapper {
+    display: flex;
+
+    .related-artist-wrapper {
+      width: 25%;
+      display: inline-flex;
+      flex-direction: column;
+      padding: 2em;
+      align-items: center;
+      justify-content: flex-start;
+
+      .artist-img{
+        width: 75%;
+
+        img {
+          border-radius: 50%;
+          width: 100%;
+        }
+      }
+      .artist-details {
+        text-align: center;
+
+        .artist-bio {
+          p {
+            line-height: 1.2;
+            max-height: 12em;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+}

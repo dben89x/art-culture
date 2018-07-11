@@ -1,0 +1,16 @@
+#art-show
+  =react_component 'ArtworkGallery', props: {artwork: @artwork}, prerender: false
+  .artist-wrapper
+    .artist-img
+      -# %img{src: @artist.image}
+      %img{src: 'https://s3-us-west-1.amazonaws.com/art-culture/brooke-cagle-241290-unsplash.jpg'}
+    .artist-details
+      .artist-name
+        %h3=@artist.full_name
+        =link_to 'VIEW PAGE', @artist
+      .artist-location
+        %i.fas.fa-map-marker-alt
+        %p="Los Angeles, California"
+      .artist-bio
+        %p=@artist.bio
+  =react_component 'TradingHistory'

@@ -25,30 +25,49 @@
         }
       }
       .artwork-details {
-        background: rgba(255, 255, 255, 0.6);
-        display: none;
+        background: rgba(255, 255, 255, 0.9);
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transition: 0.4s;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         .details-container {
           padding: 5vh;
-          color: white;
+          color: $black;
           z-index: 4;
-          display: flex;
+          display: inline-flex;
           flex-direction: column;
+          height: 100%;
+          width: 60%;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
 
           .description {
             margin: 1em 0;
-            font-size: 2em;
+
             p {
               line-height: 1;
               margin: 0;
-              text-transform: uppercase;
-              font-family: 'GothamThin';
               font-weight: 100;
+            }
+          }
+          a.view-piece {
+            letter-spacing: 0.2em;
+            padding: 0.5em 3em;
+            border-radius: 2pt;
+            background: $actionBlue;
+            color: white;
+            transition: 0.3s;
+            margin: 1em;
 
-              &.emphasized {
-                font-family: 'GothamBold', sans-serif;
-                margin: 0.2em 0;
-              }
+            &:hover {
+              background: lighten($actionBlue, 5%);
             }
           }
 
@@ -72,21 +91,67 @@
       }
     }
   }
+  .details-btn {
+    position: absolute;
+    bottom: 2em;
+    right: 2em;
+    background: $bannerYellow;
+    border-radius: 4em;
+    width: 4em;
+    height: 4em;
+    z-index: 9;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+
+    .times {
+      transition: 0.4s;
+      transform: rotate(45deg);
+      color: white;
+      font-size: 3em;
+    }
+    &:hover {
+      background: lighten($bannerYellow, 5%);
+    }
+    &.selected {
+      background: $black;
+
+      .times {
+        transform: rotate(180deg);
+      }
+      &:hover {
+        background: lighten($black, 5%);
+      }
+    }
+  }
   .btn-container {
     height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 0.8em;
 
     .options {
       border: 2pt solid darken($lightGrey, 5%);
       border-radius: 6pt;
-      padding: 0.5em 1em;
+      display: flex;
+
       a {
-        margin: 0.5em 1em;
+        padding: 0.5em 1em;
         text-decoration: none;
         color: darken($lightGrey, 5%);
         text-transform: uppercase;
+        transition: 0.3s;
+
+        &.selected {
+          background: $actionBlue;
+          color: white;
+          border: 2pt solid $actionBlue;
+          border-radius: 6pt;
+          box-shadow: 0 0 0pt 2.5pt $actionBlue;
+        }
       }
     }
   }
@@ -120,4 +185,71 @@
     }
   }
 
+}
+
+#art-show {
+  .artwork-gallery {
+    padding: 4em 2em;
+
+    h1 {
+      text-align: center;
+      font-size: 3em;
+    }
+    .gallery {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      padding: 4em;
+
+      .gallery-main {
+        display: inline-flex;
+        width: 85%;
+        margin: 0 1em;
+      }
+      .main-container {
+        display: inline-flex;
+        box-shadow: 0 2pt 12pt 0pt grey;
+        width: 100%;
+
+        .main-img {
+          width: 65%;
+          height: 30em;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+        }
+        .info-container {
+          width: 35%;
+          display: flex;
+          flex-direction: column;
+          padding: 1em 2em;
+        }
+      }
+      .gallery-img-list {
+        width: 15%;
+        display: inline-flex;
+        flex-direction: column;
+        margin: 0 1em;
+        height: 30em;
+        justify-content: space-between;
+
+        .gallery-img {
+          height: 30%;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            box-shadow: 0 0 12pt 0pt grey;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
 }

@@ -124,7 +124,7 @@ nav {
 #nav-sidebar {
   width: 200pt;
   right: left;
-  position: absolute;
+  position: fixed;
   z-index: 7;
   float: right;
   height: 100vh;
@@ -149,16 +149,14 @@ nav {
     white-space: nowrap;
     color: white;
 
-    .close-btn {
-      width: 2em;
-      height: 2em;
-      border-radius: 1em;;
-      color: white;
+    a.close-btn {
       transition: 0.2s;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: white;
+      font-size: 2em;
 
       &:hover {
         color: darken(white, 5%);
@@ -178,6 +176,8 @@ nav {
       a {
         margin: 1em 0;
         color: white;
+        font-family: 'Lato';
+        text-transform: uppercase;
       }
     }
   }
