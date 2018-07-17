@@ -5,7 +5,7 @@
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
 
-    = display_meta_tags site: 'Art & Culture'
+    = display_meta_tags
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
@@ -13,7 +13,7 @@
     %link{rel: "stylesheet", href: "https://pro.fontawesome.com/releases/v5.0.13/css/all.css", integrity: ENV['FA_KEY'], crossorigin: "anonymous"}
     %link{:charset => "UTF-8", :href => "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css", :rel => "stylesheet", :type => "text/css"}/
-    
+
     = javascript_pack_tag 'application'
   %body
     =react_component 'NavBar', props: {currentUser: current_user}, prerender: false

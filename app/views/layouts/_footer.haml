@@ -1,0 +1,26 @@
+#footer
+  .footer-container
+    .upper
+      .left
+        .subscribe-container
+          %p SUBSCRIBE TO OUR NEWSLETTER
+          =react_component 'SubscribeForm', props: {elementId: 'footer_subscribe_form'}, prerender: false
+
+      .right
+        .link-container
+          =link_to "FOOBAR", "/"
+          =link_to "SUPPORT@ARTCULTURE.COM", "mailto:support@artculture.com"
+        .link-container
+          =link_to "HOME", "/"
+          =link_to "CONTACT", "/contact"
+
+    .lower
+      .copyright.left
+        ="© Art & Culture #{Date.today.year}"
+      .link-container.right.social
+        =link_to 'https://www.facebook.com/', target: '_blank' do
+          %i.fab.fa-facebook
+        =link_to 'https://www.instagram.com/', target: '_blank' do
+          %i.fab.fa-instagram
+        =link_to 'https://www.linkedin.com/', target: '_blank' do
+          %i.fab.fa-linkedin
