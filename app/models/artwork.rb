@@ -18,6 +18,7 @@
 class Artwork < ApplicationRecord
   belongs_to :artist
   has_many :artwork_images
+  has_many :user_artwork_favorites
 
   extend FriendlyId
   friendly_id :custom_slug, use: [:slugged, :finders]

@@ -61,7 +61,7 @@ export default class Signup extends React.Component {
       <div className="overlay"></div>
       <div id='signup-container' className={`signup-option ${currentUser ? 'hidden' : 'visible'}`}>
         <div className="content-wrapper">
-          <h2>Sign-Up &amp; Receive Immediate Access to Exclusive Information</h2>
+          <h2>Join the community</h2>
           <div className={`errors ${this.state.errors.length > 0 ? 'with-border' : ''}`}>
             {this.state.errors.map(error => (<div className='error'>{error}</div>))}
           </div>

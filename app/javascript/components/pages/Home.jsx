@@ -22,7 +22,7 @@ export default class Home extends React.Component {
             <img src="https://s3-us-west-1.amazonaws.com/art-culture/Group+122.png" alt=""/>
           </div>
         </section>
-        <RecentListings recentListings={this.props.recentListings}></RecentListings>
+        <RecentListings recentListings={this.props.recentListings} favorites={this.props.favorites}/>
         <section className="how-it-works flex center">
           <h2>How it works</h2>
         </section>

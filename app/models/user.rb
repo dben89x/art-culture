@@ -23,7 +23,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :user_artwork_favorites
+
   def admin?
    false
+  end
+
+  def artwork_favorites
+    Artwork.where(id: self.user_artwork_favorites.pluck(:artwork_id).uniq)
   end
 end
