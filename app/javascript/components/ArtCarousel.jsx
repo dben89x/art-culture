@@ -57,9 +57,9 @@ export default class ArtCarousel extends React.Component {
             <a href={`artworks/${artwork.slug}`} className='view-piece'>VIEW THIS PIECE</a>
             <div className="details">
               <h3>Piece Details</h3>
-              <div className="title">{`PIECE NAME: ${artwork.title}`}</div>
-              <div className="author">{`AUTHOR: ${artwork.artist_name}`}</div>
-              <div className="published">{`DATE PUBLISHED: ${artwork.created_at}`}</div>
+              <p className="title">{`PIECE NAME: ${artwork.title}`}</p>
+              <p className="author">{`AUTHOR: ${artwork.artist_name}`}</p>
+              <p className="published">{`DATE PUBLISHED: ${artwork.created_at}`}</p>
             </div>
           </div>
         </div>
@@ -92,8 +92,8 @@ export default class ArtCarousel extends React.Component {
         </Slider>
         <div className="btn-container">
           <div className="options">
-            <a href="#" className={this.state.artSelected ? 'selected' : ''} onClick={this.selectArt}>View art</a>
-            <a href="#" className={this.state.artistSelected ? 'selected' : ''} onClick={this.selectArtist}>View artists</a>
+            <a href="#" className={this.state.artSelected ? 'selected' : ''} onClick={this.selectArt}>Art</a>
+            <a href="#" className={this.state.artistSelected ? 'selected' : ''} onClick={this.selectArtist}>Artists</a>
           </div>
           {/* <a  href={`/artworks/${artwork.slug}`} className='view-text action-btn'>View artwork</a> */}
           {/* <a href='' className='action-btn cta-btn dark'>Call to action</a> */}

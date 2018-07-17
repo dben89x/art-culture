@@ -219,7 +219,7 @@
   border-radius: 0.5em;
   padding: 4em;
   text-align: center;
-  color: darken($socialBlue, 40%);
+  color: darken($actionBlue, 40%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -246,14 +246,14 @@
       transition: 0.3s;
 
       .fab, .far {
-        color: $socialBlue;
+        color: $actionBlue;
         font-size: 4em;
         transition: 0.3s;
       }
       &:hover {
         background: darken($darkBodyColor, 5%);
         .fab, .far {
-          color: lighten($socialBlue, 5%);
+          color: lighten($actionBlue, 5%);
         }
       }
     }

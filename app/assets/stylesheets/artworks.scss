@@ -2,6 +2,7 @@
 
 #art-hero {
   height: calc(100vh - #{$navHeight});
+  font-family: 'Lato';
 
   #art-carousel, .art-carousel {
     height: calc(90vh - #{$navHeight});
@@ -38,7 +39,7 @@
 
         .details-container {
           padding: 5vh;
-          color: $black;
+          color: black;
           z-index: 4;
           display: inline-flex;
           flex-direction: column;
@@ -48,13 +49,25 @@
           align-items: center;
           text-align: center;
 
+          p {
+            color: $grey;
+          }
+          h2.title {
+            font-family: 'Bauer Bodoni BT';
+            text-transform: none;
+            font-size: 5em;
+            margin: 0;
+            // color: black;
+          }
+          h3 {
+            font-size: 1.5em;
+          }
           .description {
             margin: 1em 0;
-
             p {
               line-height: 1;
               margin: 0;
-              font-weight: 100;
+              font-weight: 300;
             }
           }
           a.view-piece {
@@ -65,6 +78,7 @@
             color: white;
             transition: 0.3s;
             margin: 1em;
+            font-weight: 100;
 
             &:hover {
               background: lighten($actionBlue, 5%);
@@ -75,8 +89,13 @@
             display: flex;
 
             .cta-btn {
-
             }
+          }
+          .details {
+            p {
+              font-size: 0.8em;
+            }
+
           }
         }
         @media #{$mobile_large} {
@@ -96,9 +115,9 @@
     bottom: 2em;
     right: 2em;
     background: $bannerYellow;
-    border-radius: 4em;
-    width: 4em;
-    height: 4em;
+    border-radius: 3em;
+    width: 3em;
+    height: 3em;
     z-index: 9;
     cursor: pointer;
     display: flex;
@@ -110,7 +129,8 @@
       transition: 0.4s;
       transform: rotate(45deg);
       color: white;
-      font-size: 3em;
+      font-size: 2em;
+      line-height: 1;
     }
     &:hover {
       background: lighten($bannerYellow, 5%);
@@ -139,17 +159,19 @@
       display: flex;
 
       a {
-        padding: 0.5em 1em;
+        padding: 0.3em 1em;
         text-decoration: none;
         color: darken($lightGrey, 5%);
         text-transform: uppercase;
         transition: 0.3s;
+        letter-spacing: 1pt;
+        font-weight: 100;
 
         &.selected {
           background: $actionBlue;
           color: white;
           border: 2pt solid $actionBlue;
-          border-radius: 6pt;
+          border-radius: 3pt;
           box-shadow: 0 0 0pt 2.5pt $actionBlue;
         }
       }
