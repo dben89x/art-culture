@@ -1,0 +1,49 @@
+#footer
+  .footer-container
+    .upper
+      .left
+        .subscribe-container
+<<<<<<< HEAD
+          %p SUBSCRIBE TO OUR NEWSLETTER
+=======
+          %p Don't Miss My Free Investing Tips
+>>>>>>> d8bbf9d8e87e5dced75470b4cc2ca0b47e4aa395
+          =react_component 'SubscribeForm', props: {elementId: 'footer_subscribe_form'}, prerender: false
+
+      .right
+        .link-container
+<<<<<<< HEAD
+          =link_to "FOOBAR", "/"
+          =link_to "SUPPORT@ARTCULTURE.COM", "mailto:support@artculture.com"
+        .link-container
+          =link_to "HOME", "/"
+          =link_to "CONTACT", "/contact"
+
+    .lower
+      .copyright.left
+        ="© Art & Culture #{Date.today.year}"
+      .link-container.right.social
+        =link_to 'https://www.facebook.com/', target: '_blank' do
+          %i.fab.fa-facebook
+        =link_to 'https://www.instagram.com/', target: '_blank' do
+          %i.fab.fa-instagram
+        =link_to 'https://www.linkedin.com/', target: '_blank' do
+=======
+          =link_to "BUY THE BOOK", "https://www.amazon.com/Flip-Your-Future-Figures-Flipping/dp/1543932460"
+          =link_to "SUPPORT@RYANPINEDA.COM", "mailto:support@ryanpineda.com"
+        .link-container
+          =link_to "HOME", "/"
+          =link_to "BLOG", "/blog"
+          =link_to "COURSE LIBRARY", "/course-library"
+
+    .lower
+      .copyright.left
+        ="© Ryan Pineda #{Date.today.year}"
+      .link-container.right.social
+        =link_to 'https://www.facebook.com/allstarinvestor', target: '_blank' do
+          %i.fab.fa-facebook
+        =link_to 'https://www.instagram.com/allstarinvestor/', target: '_blank' do
+          %i.fab.fa-instagram
+        =link_to 'https://www.linkedin.com/in/ryan-pineda/', target: '_blank' do
+>>>>>>> d8bbf9d8e87e5dced75470b4cc2ca0b47e4aa395
+          %i.fab.fa-linkedin
