@@ -10,6 +10,7 @@
     "react-dom": "^16.4.1",
     "react-on-rails": "11.0.9",
     "react-slick": "^0.23.1",
+    "rodal": "^1.6.3",
     "showdown": "^1.8.6"
   },
   "devDependencies": {

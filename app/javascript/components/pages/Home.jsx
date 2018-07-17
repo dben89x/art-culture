@@ -1,7 +1,7 @@
 import React from 'react'
 import $ from 'jquery'
-import ArtCarousel from './ArtCarousel'
-import RecentListings from './RecentListings'
+import ArtCarousel from '../ArtCarousel'
+import RecentListings from '../RecentListings'
 
 export default class Home extends React.Component {
   constructor(props) {
