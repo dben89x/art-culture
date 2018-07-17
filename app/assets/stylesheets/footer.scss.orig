@@ -20,7 +20,7 @@
     .upper {
       padding: 2em;
 <<<<<<< HEAD
-      background-color: $lightGrey;
+      background-color: $lightestGrey;
 =======
       background-color: $black;
 >>>>>>> d8bbf9d8e87e5dced75470b4cc2ca0b47e4aa395
@@ -61,7 +61,7 @@
 
               &[type=text], &[type=email] {
                 width: 15em;
-                background: $lightGrey;
+                background: $lightestGrey;
                 color: $black;
                 border: 1px solid $black;
 

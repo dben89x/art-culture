@@ -15,7 +15,7 @@
 
     .upper {
       padding: 2em;
-      background-color: $lightGrey;
+      background-color: $lightestGrey;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -52,7 +52,7 @@
 
               &[type=text], &[type=email] {
                 width: 15em;
-                background: $lightGrey;
+                background: $lightestGrey;
                 color: $black;
                 border: 1px solid $black;
 

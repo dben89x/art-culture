@@ -18,20 +18,29 @@
       color: white;
       display: flex;
       flex-direction: column;
-      width: 80%;
+      width: 90%;
       z-index: 3;
       justify-content: center;
       align-items: center;
 
-      h2, p {
-        color: white;
-        font-family: Lato;
-      }
-      p {
-        width: 80%;
+      .details {
+        margin: 4em 0;
+        h2, p {
+          color: white;
+          display: inline-flex;
+        }
+        h2 {
+          font-family: 'Bauer Bodoni BT';
+          letter-spacing: 6pt;
+          margin: 0;
+        }
+        p {
+          width: 75%;
+          font-weight: 200;
+        }
       }
       img {
-        width: 30em;
+        width: 20em;
       }
     }
   }

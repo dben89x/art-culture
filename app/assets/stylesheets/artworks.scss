@@ -154,14 +154,14 @@
     font-size: 0.8em;
 
     .options {
-      border: 2pt solid darken($lightGrey, 5%);
+      border: 2pt solid darken($lightestGrey, 5%);
       border-radius: 6pt;
       display: flex;
 
       a {
         padding: 0.3em 1em;
         text-decoration: none;
-        color: darken($lightGrey, 5%);
+        color: darken($lightestGrey, 5%);
         text-transform: uppercase;
         transition: 0.3s;
         letter-spacing: 1pt;
@@ -179,14 +179,29 @@
   }
 }
 
-
-
 #recent-listings {
   display: inline-flex;
   width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 2em 0;
+
+  h2 {
+    font-size: 1.5em;
+    font-weight: 400;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    .custom-hr {
+      background: $lighterGrey;
+      height: 1.5pt;
+      width: 10em;
+      margin: 0 3em;
+    }
+  }
 
   .listings-container {
     display: flex;
@@ -200,9 +215,18 @@
     .listing {
       width: 25%;
       padding: 2em;
+      display: flex;
+      flex-direction: column;
 
       img {
         width: 100%;
+      }
+      .details {
+        .star {
+          cursor: pointer;
+          transition: 0.3s;
+          color: #777700;
+        }
       }
     }
   }

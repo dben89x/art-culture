@@ -6,7 +6,7 @@
 body {
   margin: 0;
   background: $lightBody;
-  font-family: Montserrat, sans-serif, Verdana, Geneva, sans-serif;
+  font-family: Lato, sans-serif, Verdana, Geneva, sans-serif;
   @media screen and (min-width: #{$desktop_large_width}) and (max-width: #{$desktop_xl_width}) {
     font-size: 37px;
   }
