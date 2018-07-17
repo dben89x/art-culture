@@ -3,47 +3,23 @@
 * {
   box-sizing: border-box;
 }
-body {
-  margin: 0;
-  background: $lightBody;
-  font-family: Lato, sans-serif, Verdana, Geneva, sans-serif;
-  @media screen and (min-width: #{$desktop_large_width}) and (max-width: #{$desktop_xl_width}) {
-    font-size: 37px;
-  }
-  @media screen and (min-width: #{$desktop_common_width}) and (max-width: #{$desktop_large_width}) {
-    font-size: 30px;
-  }
-  @media screen and (min-width: #{$desktop_small_width}) and (max-width: #{$desktop_common_width}) {
-    font-size: 23px;
-  }
-  @media screen and (min-width: #{$tablet_horizontal_width}) and (max-width: #{$desktop_small_width}) {
-    font-size: 16px;
-  }
-  @media screen and (min-width: #{$tablet_vertical_width}) and (max-width: #{$tablet_horizontal_width}) {
-    font-size: 12px;
-  }
-  @media screen and (min-width: #{$mobile_large_width}) and (max-width: #{$tablet_vertical_width}) {
-    font-size: 14px;
-  }
-  @media screen and (min-width: #{$mobile_common_width}) and (max-width: #{$mobile_large_width}) {
-    font-size: 14px;
-  }
-  @media screen and (min-width: #{$mobile_small_width}) and (max-width: #{$mobile_large_width}) {
-    font-size: 14px;
-  }
-}
-
 html {
   min-height: 100%;
   position: relative;
 }
-
 body {
-  margin: 0 0 6em !important;
-  @media #{$mobile_large_landscape} {
-    margin: 0 0 15em !important;
+  background: $lightBody;
+  font-family: Lato, sans-serif, Verdana, Geneva, sans-serif;
+  width: 100%;
+  max-width: 100vw;
+  font-size: 12pt;
+  margin: 0 0 14em !important;
+
+  @media #{$mobile_landscape} {
+    margin: 0 0 10em !important;
+    font-size: 0.7em;
   }
-  @media #{$mobile_common} {
+  @media #{$tablet_vertical} {
     margin: 0 0 20em !important;
   }
 }
