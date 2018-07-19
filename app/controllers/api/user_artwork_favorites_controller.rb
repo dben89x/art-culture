@@ -7,11 +7,7 @@ class API::UserArtworkFavoritesController < ApiController
   end
 
   def destroy
-    puts 'got here...'
-    @favorites = UserArtworkFavorite.where({user_id: params[:favorite][:user_id], artwork_id: params[:favorite][:artwork_id]})
-    puts 'foobar'
-    puts @favorites.count
-    puts 'barfoo'
+    @favorites = UserArtworkFavorite.where(favorite_params)
     if @favorites.delete_all
       json_response(@favorites)
     end
