@@ -3,6 +3,7 @@ import $ from 'jquery'
 import ArtCarousel from '../ArtCarousel'
 import RecentListings from '../RecentListings'
 import AuthForms from '../auth/AuthForms'
+import ContactForm from '../ContactForm'
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -14,6 +15,10 @@ export default class Home extends React.Component {
 
   openLogin=()=>{
     this.setState({selectedAuth: 'signin'})
+  }
+
+  ctaClick=(e)=>{
+    e.preventDefault()
   }
 
   render() {
@@ -33,8 +38,19 @@ export default class Home extends React.Component {
         <RecentListings recentListings={this.props.recentListings} favorites={this.props.favorites} currentUser={this.props.currentUser} onLoginRequired={this.openLogin}/>
         <section className="how-it-works flex center">
           <h2>How it works</h2>
+          <div className="cta-btn-container">
+            <a href="" className='cta-btn' onClick={this.ctaClick}>
+              I'm a Buyer
+              <span></span>
+            </a>
+            <a href="" className='cta-btn' onClick={this.ctaClick}>
+              I'm an Artist
+              <span></span>
+            </a>
+          </div>
         </section>
         <AuthForms selectedAuth={this.state.selectedAuth}/>
+        <ContactForm />
       </div>
     )
   }

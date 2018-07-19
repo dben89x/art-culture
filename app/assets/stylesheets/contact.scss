@@ -1,0 +1,122 @@
+@import 'variables';
+
+#contact-form-container {
+  text-align: center;
+  padding: 4em 2em;
+  height: 40em;
+
+  .contact-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  h2 {
+    font-weight: 600;
+    text-transform: none;
+    color: $black;
+  }
+  p {
+    color: $lighterGrey;
+  }
+
+  .form-container {
+    display: inline-block;
+    width: 60%;
+
+    .input-wrapper {
+      display: inline-flex;
+      padding: 0.5em;
+
+      &.message,
+      &.name,
+      &.submit {
+        width: 100%;
+      }
+
+      &.email {
+        width: 50%;
+        @media #{$mobile_large} {
+          width: 100%;
+        }
+      }
+
+      &.number {
+        width: 50%;
+        @media #{$mobile_large} {
+          width: 100%;
+        }
+      }
+
+      &.message {
+        height: 100pt;
+      }
+
+      input,
+      textarea {
+        padding: 1.5em 1em;
+        display: inline-block;
+        border-radius: 4pt;
+        border: 1pt solid $lighterGrey;
+        width: 100%;
+        color: $black;
+        resize: none;
+        font-size: 0.8em;
+
+
+        &[type='submit'] {
+          background: $actionBlue;
+          border-color: $actionBlue;
+          color: white;
+          font-weight: 500;
+          letter-spacing: 3pt;
+          cursor: pointer;
+        }
+
+        &::placeholder {
+          font-style: italic;
+          color: lighten(grey, 10%);
+        }
+      }
+    }
+  }
+  #contact-success {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    .success-message {
+      font-weight: 500;
+      font-size: 1.3em;
+      color: $success_green;
+      display: none;
+      line-height: 100px;
+    }
+  }
+  @media #{$mobile_landscape} {
+    .form-container {
+      width: 100%;
+    }
+  }
+  @media #{$tablet_vertical} {
+    .form-container {
+      width: 75%;
+    }
+  }
+  @media #{$mobile_large} {
+    height: auto;
+
+    .form-container {
+      width: 100%;
+    }
+
+    #contact-success .success-message {
+      font-size: 1em;
+    }
+  }
+}

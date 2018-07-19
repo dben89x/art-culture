@@ -1,4 +1,5 @@
 import ReactOnRails from 'react-on-rails';
+import ContactForm from '../components/ContactForm';
 import SubscribeForm from '../components/SubscribeForm';
 import ArtworkCirculationCarousel from '../components/ArtworkCirculationCarousel';
 import TradingHistory from '../components/TradingHistory';
@@ -15,6 +16,7 @@ import Signin from '../components/auth/Signin';
 import ForgotPassword from '../components/auth/ForgotPassword';
 
 ReactOnRails.register({
+  ContactForm,
   SubscribeForm,
   ArtworkCirculationCarousel,
   TradingHistory,
