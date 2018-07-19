@@ -7,4 +7,5 @@
 #
 
 class ArtworkCategory < ApplicationRecord
+  has_many :artworks, inverse_of: :artwork_category
 end

@@ -22,36 +22,6 @@ nav {
   .navbar-header {
     display: flex;
   }
-  @media #{$tablet_vertical} {
-    // height: auto;
-
-    .navbar-header {
-      display: block;
-
-      a {
-        margin: 2em;
-        display: inline-block;
-
-        img {
-          width: 5em;
-        }
-      }
-    }
-  }
-  @media #{$mobile_large} {
-    .navbar-header a {
-      margin: 1em 2em;
-      img {
-        width: 4em;
-      }
-    }
-  }
-  @media #{$mobile_common} {
-    .navbar-header a {
-      margin: 1em;
-    }
-  }
-
   .nav-links {
     margin: 0;
     padding: 0;
@@ -64,9 +34,6 @@ nav {
     padding: 0 2em;
     width: 100%;
 
-    @media #{$tablet_vertical} {
-      // display: none;
-    }
     .left, .middle, .right {
       display: flex;
       flex-direction: row;
@@ -97,7 +64,7 @@ nav {
       font-weight: 200;
       text-transform: uppercase;
       text-decoration: none;
-      font-size: 0.8em;
+      // font-size: 0.8em;
 
       &.logo {
         font-size: 2em;
@@ -105,6 +72,27 @@ nav {
       }
       &.logo img {
         width: 8em;
+      }
+    }
+  }
+  @media #{$tablet_vertical} {
+    .navbar-header {
+      display: block;
+
+      a {
+        margin: 2em;
+        display: inline-block;
+
+        img {
+          width: 5em;
+        }
+      }
+    }
+  }
+  @media #{$tablet_vertical}, #{$mobile_landscape} {
+    .nav-links .right {
+      .signin-signup, .signout {
+        display: none;
       }
     }
   }
@@ -116,6 +104,37 @@ nav {
       .middle a {
         margin: 0 1.5em;
       }
+    }
+  }
+  @media #{$mobile_landscape}, #{$mobile_large} {
+    .nav-links {
+      .left, .right {
+        width: 10%;
+      }
+      .middle {
+        width: 80%;
+      }
+      a {
+        margin: 0 !important;
+        font-size: 1em;
+
+        &.logo img {
+          width: 5em;
+        }
+      }
+    }
+  }
+  @media #{$mobile_large} {
+    .navbar-header a {
+      margin: 1em 2em;
+      img {
+        width: 4em;
+      }
+    }
+  }
+  @media #{$mobile_common} {
+    .navbar-header a {
+      margin: 1em;
     }
   }
 }
@@ -202,6 +221,13 @@ nav {
           white-space: nowrap;
         }
       }
+    }
+  }
+  @media #{$mobile_large} {
+    width: 100%;
+
+    .sidebar-links-container .sidebar-links {
+      align-items: center;
     }
   }
 }

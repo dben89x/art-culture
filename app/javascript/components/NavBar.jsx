@@ -2,6 +2,7 @@ import React from 'react'
 import $ from 'jquery'
 import Rodal from 'rodal'
 import AuthForms from './auth/AuthForms'
+import ShoppingCart from './ShoppingCart'
 
 const csrfToken = $('meta[name="csrf-token"]').attr('content')
 
@@ -12,24 +13,22 @@ export default class NavBar extends React.Component {
       year: new Date().getFullYear(),
       opened: false,
       currentUser: this.props.currentUser,
+      shoppingCartOpen: false,
       sidebarOpen: false,
       signinVisible: false,
       selectedAuth: null,
     }
   }
 
+  componentDidMount() {
+    $(document).on('keydown', (e)=> {e.keyCode === 27 && this.state.sidebarOpen ? this.toggleSidebar(e) : null})
+  }
+
   componentWillUnmount() {
     this.setState({opened: false})
     $('html').css('overflow', 'auto')
     $('#nav-overlay').css('display', 'none')
-    console.log('unmounting...')
   }
-
-  componentWillReceiveProps(nextProps) {
-    console.log("in navbar")
-    console.log('foobar', nextProps)
-  }
-
 
   ////////// Nav menu //////////
 
@@ -38,7 +37,7 @@ export default class NavBar extends React.Component {
     this.toggleMenu()
   }
 
-  toggleMenu = e => {
+  toggleMenu = () => {
     this.setState({
       opened: !this.state.opened
     }, () => {
@@ -64,6 +63,16 @@ export default class NavBar extends React.Component {
 
   ////////// Nav menu //////////
 
+  ////////// Shopping cart //////////
+
+  toggleShoppingCart = e => {
+    e.preventDefault()
+    $('#shopping-cart').animate({width: 'toggle'})
+    this.setState({
+      shoppingCartOpen: !this.state.shoppingCartOpen
+    })
+  }
+  ////////// Nav menu //////////
 
   ////////// Auth actions //////////
 
@@ -118,6 +127,7 @@ export default class NavBar extends React.Component {
     </div>)
 
     return (<div id='nav-container'>
+      <ShoppingCart open={this.state.shoppingCartOpen} onClose={this.toggleShoppingCart}></ShoppingCart>
       <div id="nav-sidebar" className={this.state.sidebarOpen ? 'open' : 'closed'}>
         <div className="header">
           {/* <img src="https://s3-us-west-1.amazonaws.com/art-culture/Group+122.png" style={{width: '90%', margin: '0 0 2em'}} alt=""/> */}
@@ -164,6 +174,7 @@ export default class NavBar extends React.Component {
             </div>
             <div className="right">
               <AuthOptions/>
+              <a href='#' onClick={this.toggleShoppingCart} className="fas fa-shopping-cart mobile-cart"></a>
             </div>
           </div>
         </div>

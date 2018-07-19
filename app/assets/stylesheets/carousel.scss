@@ -64,6 +64,18 @@ $chevron_size: 50pt;
       &.slick-prev { left: 0.5em; }
       &.slick-next { right: calc(2em + 1.5em); }
     }
+    @media #{$mobile_large} {
+      &.slick-prev, &.slick-next {
+        .fal {
+          border-width: 1.5pt;
+          font-size: 1em;
+          font-weight: 900;
+        }
+      }
+
+      &.slick-prev { left: 0.5em; }
+      &.slick-next { right: calc(1em + 1.5em); }
+    }
   }
   .slick-list {
     z-index: 4;

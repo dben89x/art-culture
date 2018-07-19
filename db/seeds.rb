@@ -7,6 +7,42 @@ end
 
 destroy_all_humans
 
+ArtworkCategory.create(
+  title: 'abstract',
+  image: 'https://s3-us-west-1.amazonaws.com/art-culture/images/style1.jpg'
+)
+ArtworkCategory.create(
+  title: 'modern',
+  image: 'https://s3-us-west-1.amazonaws.com/art-culture/images/style2.jpg'
+)
+ArtworkCategory.create(
+  title: 'pop',
+  image: 'https://s3-us-west-1.amazonaws.com/art-culture/images/style3.jpg'
+)
+ArtworkCategory.create(
+  title: 'renaissance',
+  image: 'https://s3-us-west-1.amazonaws.com/art-culture/images/style4.jpg'
+)
+ArtworkCategory.create(
+  title: 'surreal',
+  image: 'https://s3-us-west-1.amazonaws.com/art-culture/images/style5.jpg'
+)
+ArtworkCategory.create(
+  title: 'contemporary',
+  image: 'https://s3-us-west-1.amazonaws.com/art-culture/images/style6.jpg'
+)
+ArtworkCategory.create(
+  title: 'nouveau',
+  image: 'https://s3-us-west-1.amazonaws.com/art-culture/images/style7.jpg'
+)
+ArtworkCategory.create(
+  title: 'symbolism',
+  image: 'https://s3-us-west-1.amazonaws.com/art-culture/images/style8.jpg'
+)
+ArtworkCategory.create(
+  title: 'realism',
+  image: 'https://s3-us-west-1.amazonaws.com/art-culture/images/style9.jpg'
+)
 5.times do
   name = Faker::GameOfThrones.character
   first_name = name.split.first

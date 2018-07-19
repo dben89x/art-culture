@@ -43,6 +43,27 @@
         width: 20em;
       }
     }
+    @media #{$mobile_large} {
+      height: 100%;
+      padding: 6em 2em;
+
+      .content {
+        img {
+          width: 15em;
+        }
+        .details {
+          margin: 0 0 2em;
+
+          h2 {
+            font-size: 2em;
+            letter-spacing: 3pt;
+          }
+          p {
+            width: 100%;
+          }
+        }
+      }
+    }
   }
   section.how-it-works {
     background: $bannerYellow;
@@ -54,6 +75,14 @@
 
     h2 {
       color: white;
+    }
+    @media #{$mobile_large} {
+      height: 100%;
+      padding: 2em 0;
+      
+      h2 {
+        font-size: 2em;
+      }
     }
   }
 }
@@ -69,7 +98,7 @@
     justify-content: center;
     align-items: center;
     transition: 0.5s;
-    margin: 0 1em;
+    margin: 1em;
 
     span {
       cursor: pointer;
@@ -89,5 +118,8 @@
       opacity: 1;
       margin-left: 1em;
     }
+  }
+  @media #{$mobile_large} {
+    flex-direction: column;
   }
 }
