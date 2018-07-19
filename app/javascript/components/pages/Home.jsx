@@ -2,10 +2,18 @@ import React from 'react'
 import $ from 'jquery'
 import ArtCarousel from '../ArtCarousel'
 import RecentListings from '../RecentListings'
+import AuthForms from '../auth/AuthForms'
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      selectedAuth: null
+    }
+  }
+
+  openLogin=()=>{
+    this.setState({selectedAuth: 'signin'})
   }
 
   render() {
@@ -22,10 +30,11 @@ export default class Home extends React.Component {
             <img src="https://s3-us-west-1.amazonaws.com/art-culture/Group+122.png" alt=""/>
           </div>
         </section>
-        <RecentListings recentListings={this.props.recentListings} favorites={this.props.favorites}/>
+        <RecentListings recentListings={this.props.recentListings} favorites={this.props.favorites} currentUser={this.props.currentUser} onLoginRequired={this.openLogin}/>
         <section className="how-it-works flex center">
           <h2>How it works</h2>
         </section>
+        <AuthForms selectedAuth={this.state.selectedAuth}/>
       </div>
     )
   }

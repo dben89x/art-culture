@@ -18,6 +18,21 @@ export default class NavBar extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.setState({opened: false})
+    $('html').css('overflow', 'auto')
+    $('#nav-overlay').css('display', 'none')
+    console.log('unmounting...')
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log("in navbar")
+    console.log('foobar', nextProps)
+  }
+
+
+  ////////// Nav menu //////////
+
   menuClick = e => {
     e.preventDefault()
     this.toggleMenu()
@@ -41,43 +56,16 @@ export default class NavBar extends React.Component {
     $('#nav-overlay').fadeToggle(200)
   }
 
-  componentWillUnmount() {
-    this.setState({opened: false})
-    $('html').css('overflow', 'auto')
-    $('#nav-overlay').css('display', 'none')
-    console.log('unmounting...')
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log("in navbar")
-    console.log('foobar', nextProps)
-  }
-
-  signOut=(e)=>{
-    e.preventDefault()
-    $.ajax({
-      type: 'DELETE',
-      headers: {
-        'X-CSRF-Token': csrfToken
-      },
-      url: `/users/sign_out.${this.state.currentUser.id}`,
-      dataType: 'json',
-    }).done((response) => {
-      console.log('done')
-      this.setState({currentUser: null})
-      // this.forceUpdate()
-    })
-  }
-
-  closeModal=(callback)=>{
-    this.setState({modalIsOpen: false}, ()=> callback())
-  }
-
   toggleSidebar=e=>{
     e.preventDefault()
     $('#nav-sidebar').animate({width: 'toggle'})
     this.setState({sidebarOpen: !this.state.sidebarOpen})
   }
+
+  ////////// Nav menu //////////
+
+
+  ////////// Auth actions //////////
 
   signinClick=(e)=>{
     e.preventDefault()
@@ -87,6 +75,30 @@ export default class NavBar extends React.Component {
     e.preventDefault()
     this.setState({selectedAuth: 'signup'})
   }
+
+  onSignoutComplete=(response)=>{
+    window.location.reload()
+    // console.log('done')
+    // this.setState({currentUser: null})
+    // this.forceUpdate()
+  }
+
+  closeModal=(callback)=>{
+    this.setState({modalIsOpen: false}, ()=> callback())
+  }
+
+  signOut=(e)=>{
+    e.preventDefault()
+    $.ajax({
+      type: 'GET',
+      headers: { 'X-CSRF-Token': csrfToken },
+      url: `/users/sign_out.${this.state.currentUser.id}`,
+      dataType: 'json',
+    }).done((response) => {
+      this.onSignoutComplete(response)
+    })
+  }
+  ////////// Auth actions //////////
 
   render() {
     const {currentUser} = this.state
@@ -108,10 +120,12 @@ export default class NavBar extends React.Component {
     return (<div id='nav-container'>
       <div id="nav-sidebar" className={this.state.sidebarOpen ? 'open' : 'closed'}>
         <div className="header">
+          {/* <img src="https://s3-us-west-1.amazonaws.com/art-culture/Group+122.png" style={{width: '90%', margin: '0 0 2em'}} alt=""/> */}
           <a onClick={this.toggleSidebar} className='close-btn'>&times;</a>
         </div>
         <div className="sidebar-links-container">
           <div className="sidebar-links">
+            {/* <img src="https://s3-us-west-1.amazonaws.com/art-culture/Group+122.png" style={{width: '90%', margin: '0 0 2em'}} alt=""/> */}
             <a href="/">Home</a>
             <a href="/artists">Artists</a>
             <a href="/categories">Categories</a>
@@ -119,12 +133,26 @@ export default class NavBar extends React.Component {
 
             <div className="sidebar-footer">
               <AuthOptions/>
+              <div className="social-links">
+                <a href='https://www.instagram.com/' target='_blank'>
+                  <i className='fab fa-instagram'/>
+                </a>
+                <a href='https://www.facebook.com/' target='_blank'>
+                  <i className='fab fa-facebook-f'/>
+                </a>
+                <a href='https://www.twitter.com/' target='_blank'>
+                  <i className='fab fa-twitter'/>
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <nav>
         <div id="navbar">
+          {/* <a href="" className={`nav-menu nav-menu-mobile`} onClick={this.toggleSidebar}>
+            <span className='lines'></span>
+          </a> */}
           <div className="nav-links">
             <div className={`navbar-header left`}>
               <a href="" className={`nav-menu`} onClick={this.toggleSidebar}>

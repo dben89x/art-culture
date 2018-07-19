@@ -213,7 +213,7 @@
     padding: 0 4em;
 
     .listing {
-      width: 25%;
+      width: 33%;
       padding: 2em;
       display: flex;
       flex-direction: column;
@@ -230,7 +230,21 @@
       }
     }
   }
-
+  @media #{$tablet_vertical}, #{$tablet_landscape} {
+    .listings-container .listing {
+      width: 50%;
+    }
+  }
+  @media #{$tablet_vertical} {
+    h2 .custom-hr {
+      display: none;
+    }
+  }
+  @media #{$mobile_large} {
+    .listings-container .listing {
+      width: 100%;
+    }
+  }
 }
 
 #art-show {

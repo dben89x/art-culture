@@ -21,10 +21,9 @@ nav {
 
   .navbar-header {
     display: flex;
-    // display: none;
   }
   @media #{$tablet_vertical} {
-    height: auto;
+    // height: auto;
 
     .navbar-header {
       display: block;
@@ -66,7 +65,7 @@ nav {
     width: 100%;
 
     @media #{$tablet_vertical} {
-      display: none;
+      // display: none;
     }
     .left, .middle, .right {
       display: flex;
@@ -95,7 +94,7 @@ nav {
       color: $black;
       display: inline-block;
       margin: 1.5em;
-      font-weight: 100;
+      font-weight: 200;
       text-transform: uppercase;
       text-decoration: none;
       font-size: 0.8em;
@@ -157,6 +156,7 @@ nav {
       justify-content: center;
       color: white;
       font-size: 2em;
+      font-weight: 100;
 
       &:hover {
         color: darken(white, 5%);
@@ -178,6 +178,29 @@ nav {
         color: white;
         font-family: 'Lato';
         text-transform: uppercase;
+        font-weight: 100;
+      }
+      .sidebar-footer {
+        position: absolute;
+        bottom: 0;
+        padding: 2em 0;
+
+        .signin-signup {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .social-links {
+          display: flex;
+          justify-content: space-between;
+          width: 6em;
+          margin: 2em 0 0;
+        }
+
+        a {
+          display: inline-block;
+          white-space: nowrap;
+        }
       }
     }
   }
