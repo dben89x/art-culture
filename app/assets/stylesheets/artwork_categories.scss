@@ -1,3 +1,5 @@
+@import 'variables';
+
 #artwork-categories {
   h2 {
     font-family: 'Bauer Bodoni Bold BT';
@@ -6,6 +8,7 @@
   .artwork-category-cards {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     padding: 2em;
 
     .artwork-category-card {
@@ -56,6 +59,27 @@
           }
         }
       }
+    }
+  }
+  @media #{$tablet_vertical}, #{$mobile_landscape} {
+
+    .artwork-category-cards .artwork-category-card {
+      width: 50%;
+    }
+  }
+  @media #{$tablet_vertical}, #{$tablet_landscape} {
+    .artwork-category-cards .artwork-category-card .img-wrapper .info-wrapper {
+      visibility: visible;
+      opacity: 1;
+
+      .info {
+        background: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+  @media #{$mobile_large} {
+    .artwork-category-cards .artwork-category-card {
+      width: 100%;
     }
   }
 }
