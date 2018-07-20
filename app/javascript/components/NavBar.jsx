@@ -21,7 +21,7 @@ export default class NavBar extends React.Component {
   }
 
   componentDidMount() {
-    $(document).on('keydown', (e)=> {e.keyCode === 27 && this.state.sidebarOpen ? this.toggleSidebar(e) : null})
+    $(document).on('keydown', (e)=> {(e.keyCode === 27 && this.state.sidebarOpen) ? this.toggleSidebar(e) : null})
   }
 
   componentWillUnmount() {
