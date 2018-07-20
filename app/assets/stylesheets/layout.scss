@@ -27,7 +27,27 @@ body {
 a {
   text-decoration: none;
 }
+a.view-piece, a.view {
+  letter-spacing: 0.2em;
+  padding: 0.5em 3em;
+  border-radius: 2pt;
+  background: $actionBlue;
+  color: white;
+  transition: 0.3s;
+  margin: 1em;
+  font-weight: 100;
 
+  &:hover {
+    background: lighten($actionBlue, 5%);
+  }
+}
+@media #{$mobile_large} {
+  a.view-piece, a.view {
+    letter-spacing: 0.1em;
+    padding: 1em 3em;
+    margin: 1em 0;
+  }
+}
 .banner {
   width: 100%;
   box-sizing: border-box;

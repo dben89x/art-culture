@@ -20,11 +20,33 @@
 #  first_name             :string
 #  last_name              :string
 #  slug                   :string
+#  featured_artwork_id    :integer
+#  image                  :string
 #
 
 class Artist < ApplicationRecord
+  has_many :artworks, inverse_of: :artist
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def featured_artwork
+    featured_artwork_id ? Artwork.find(featured_artwork_id) : self.artworks.last
+  end
+
+  def as_json(options = {})
+    if options[:index]
+      {
+        id: id,
+        name: full_name,
+        image: image,
+        featured_artwork: featured_artwork.image,
+        bio: bio,
+        slug: slug,
+      }
+    else
+      super
+    end
   end
 end

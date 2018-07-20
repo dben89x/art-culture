@@ -86,19 +86,9 @@ export default class ArtCarousel extends React.Component {
     }
 
     return (
-      <div id="art-hero">
-        <Slider {...settings} className='art-carousel' id='art-carousel'>
-          {artworks}
-        </Slider>
-        <div className="btn-container">
-          <div className="options">
-            <a href="#" className={this.state.artSelected ? 'selected' : ''} onClick={this.selectArt}>Art</a>
-            <a href="#" className={this.state.artistSelected ? 'selected' : ''} onClick={this.selectArtist}>Artists</a>
-          </div>
-          {/* <a  href={`/artworks/${artwork.slug}`} className='view-text action-btn'>View artwork</a> */}
-          {/* <a href='' className='action-btn cta-btn dark'>Call to action</a> */}
-        </div>
-      </div>
+      <Slider {...settings} className='art-carousel' id='art-carousel'>
+        {artworks}
+      </Slider>
     )
   }
 }

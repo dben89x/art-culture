@@ -1,6 +1,7 @@
 import React from 'react'
 import $ from 'jquery'
 import ArtCarousel from '../ArtCarousel'
+import ArtistCarousel from '../ArtistCarousel'
 import RecentListings from '../RecentListings'
 import AuthForms from '../auth/AuthForms'
 import ContactForm from '../ContactForm'
@@ -9,7 +10,9 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedAuth: null
+      selectedAuth: null,
+      artSelected: true,
+      artistSelected: false,
     }
   }
 
@@ -21,10 +24,40 @@ export default class Home extends React.Component {
     e.preventDefault()
   }
 
+  selectArt=(e)=>{
+    e.preventDefault()
+    this.setState({artistSelected: false})
+    this.setState({artSelected: true})
+    $('#artist-carousel-wrapper').fadeOut(200, ()=>{
+      $('#art-carousel-wrapper').fadeIn(200)
+    })
+  }
+  selectArtist=(e)=>{
+    e.preventDefault()
+    this.setState({artSelected: false})
+    this.setState({artistSelected: true})
+    $('#art-carousel-wrapper').fadeOut(200, ()=>{
+      $('#artist-carousel-wrapper').fadeIn(200)
+    })
+  }
+
   render() {
     return (
       <div>
-        <ArtCarousel artworks={this.props.artworks}></ArtCarousel>
+        <div id="art-hero">
+          <div id='art-carousel-wrapper'>
+            <ArtCarousel artworks={this.props.artworks}></ArtCarousel>
+          </div>
+          <div id='artist-carousel-wrapper'>
+            <ArtistCarousel artists={this.props.artists}></ArtistCarousel>
+          </div>
+          <div className="btn-container">
+            <div className="options">
+              <a href="#" className={this.state.artSelected ? 'selected' : ''} onClick={this.selectArt}>Art</a>
+              <a href="#" className={this.state.artistSelected ? 'selected' : ''} onClick={this.selectArtist}>Artists</a>
+            </div>
+          </div>
+        </div>
         <section className="banner info">
           <div className="overlay"></div>
           <div className="content">

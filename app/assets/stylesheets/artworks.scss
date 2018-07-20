@@ -4,7 +4,10 @@
   height: calc(100vh - #{$navHeight});
   font-family: 'Lato';
 
-  #art-carousel, .art-carousel {
+  #artist-carousel-wrapper {
+    display: none;
+  }
+  .art-carousel {
     height: calc(90vh - #{$navHeight});
 
     .artwork-container {
@@ -57,7 +60,6 @@
             text-transform: none;
             font-size: 5em;
             margin: 0;
-            // color: black;
           }
           h3 {
             font-size: 1.5em;
@@ -70,21 +72,6 @@
               font-weight: 300;
             }
           }
-          a.view-piece {
-            letter-spacing: 0.2em;
-            padding: 0.5em 3em;
-            border-radius: 2pt;
-            background: $actionBlue;
-            color: white;
-            transition: 0.3s;
-            margin: 1em;
-            font-weight: 100;
-
-            &:hover {
-              background: lighten($actionBlue, 5%);
-            }
-          }
-
           .btn-container {
             display: flex;
 
@@ -98,7 +85,15 @@
 
           }
         }
-        @media #{$mobile_large} {
+        @media #{$tablet_landscape}, #{$mobile_landscape} {
+          .details-container {
+            width: 90%;
+            h2.title {
+              font-size: 3em;
+            }
+          }
+        }
+        @media #{$tablet_vertical} {
           .details-container {
             width: 100%;
             padding: 1em 2em;
@@ -114,11 +109,6 @@
               p {
                 max-height: 6em;
               }
-            }
-            a.view-piece {
-              letter-spacing: 0.1em;
-              padding: 1em 3em;
-              margin: 1em 0;
             }
           }
         }
@@ -258,7 +248,7 @@
   @media #{$mobile_large} {
     .listings-container {
       padding: 0;
-      
+
       .listing {
         width: 100%;
       }

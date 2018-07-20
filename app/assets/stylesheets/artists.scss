@@ -1,6 +1,117 @@
 @import 'variables';
 
 
+#art-hero {
+  .artist-carousel {
+    height: calc(90vh - #{$navHeight});
+
+    .artist-container {
+      height: 100%;
+      display: inline-flex !important;
+
+      .artist-image, .artist-details {
+        display: inline-flex;
+      }
+    }
+    .artist-image {
+      width: 60%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+
+      .overlay {
+        background-color: rgba(0,0,0,0.2);
+      }
+    }
+    .artist-details {
+      width: 40%;
+      height: 100%;
+      padding: 0 4em;
+
+      .details-container {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        img {
+          width: 6em;
+          height: 6em;
+          border-radius: 3em;
+        }
+        h2.name {
+          font-family: 'Bauer Bodoni BT';
+          text-transform: none;
+          font-size: 2em;
+          margin: 0.5em 0 1em;
+        }
+        h3 {
+          font-size: 1.5em;
+          margin: 0;
+        }
+        p.bio {
+          color: $lighterGrey;
+          text-align: center;
+          overflow: hidden;
+        }
+        .btn-container {
+          display: flex;
+
+          a.view {
+            letter-spacing: 1pt;
+            padding: 1em 3em;
+          }
+        }
+      }
+    }
+    @media #{$tablet_vertical} {
+      .artist-container {
+        flex-direction: column;
+
+        .artist-image, .artist-details {
+          width: 100%;
+          height: 50%;
+        }
+        .artist-details {
+          padding: 0 2em;
+
+          img, h2.name {
+            display: none;
+          }
+          p.bio {
+            line-height: 1.2;
+            max-height: 9.6em;
+          }
+        }
+      }
+    }
+    @media #{$mobile_large} {
+      .artist-details .details-container {
+        h3 {
+          font-size: 1.5em;
+        }
+        h2.name {
+          font-size: 2em;
+        }
+        a.view {
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
+  @media #{$mobile_landscape} {
+    font-size: 0.7em;
+    .artist-carousel .artist-details {
+      padding: 0 6em;
+
+      .details-container h2.name {
+        display: none;
+      }
+    }
+  }
+}
 .artist-wrapper {
   display: flex;
   margin: 0 10em;

@@ -20,6 +20,8 @@
 #  first_name             :string
 #  last_name              :string
 #  slug                   :string
+#  featured_artwork_id    :integer
+#  image                  :string
 #
 
 require 'test_helper'

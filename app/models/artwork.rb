@@ -33,6 +33,10 @@ class Artwork < ApplicationRecord
     "#{title}-#{artist.full_name.parameterize}"
   end
 
+  def image
+    self.artwork_images.last.url
+  end
+
   def as_json(options = {})
     if options[:index]
       # images = artwork_images.to_a.unshift(image)

@@ -2,6 +2,8 @@ def destroy_all_humans
   if Rails.env.development?
     Artist.delete_all
     Artwork.delete_all
+    ArtworkImage.delete_all
+    ArtworkCategory.delete_all
   end
 end
 
@@ -51,7 +53,7 @@ ArtworkCategory.create(
     email: Faker::Internet.email(name),
     first_name: first_name,
     last_name: name.strip,
-    # image: 'https://s3-us-west-1.amazonaws.com/art-culture/brooke-cagle-241290-unsplash.jpg',
+    image: 'https://s3-us-west-1.amazonaws.com/art-culture/brooke-cagle-241290-unsplash.jpg',
     # description: Faker::Lorem.sentence(rand(3)),
     bio: Faker::Lorem.sentence(rand(100)),
   )
@@ -59,8 +61,9 @@ ArtworkCategory.create(
     artwork = Artwork.create(
       title: Faker::Lorem.words.join(' ').titleize,
       description: Faker::Lorem.paragraph,
+      artwork_category: ArtworkCategory.all.sample,
       artist: artist,
-    )
+    )fgwdfdf
     ArtworkImage.create(
       url: 'https://s3-us-west-1.amazonaws.com/art-culture/images/a2.jpg',
       artwork: artwork,

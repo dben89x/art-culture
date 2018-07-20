@@ -4,6 +4,7 @@
 #
 #  id    :bigint(8)        not null, primary key
 #  title :string
+#  image :string
 #
 
 class ArtworkCategory < ApplicationRecord
