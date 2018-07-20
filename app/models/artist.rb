@@ -46,6 +46,7 @@ class Artist < ApplicationRecord
         name: full_name,
         image: image,
         featured_artwork: featured_artwork.image,
+        artworks: artworks,
         categories: categories,
         bio: bio,
         slug: slug,

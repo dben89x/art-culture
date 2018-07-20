@@ -24,9 +24,16 @@ export default class Artists extends React.Component {
   }
 
   changeSearchInput=(e)=>{
+    const {artists} = this.props
     var target = e.target
-    console.log(target.value)
-    this.setState({searchInput: target.value})
+    var value = target.value.toLowerCase()
+    var filteredArtists = artists.filter(artist => {
+      var categoryMatch = artist.categories.filter( cat => cat.toLowerCase().includes(value)).length > 0
+      var artistMatch = artist.name.toLowerCase().includes(value)
+      var artworkMatch = artist.artworks.filter( artwork => artwork.title.toLowerCase().includes(value)).length > 0
+      return categoryMatch || artistMatch || artworkMatch
+    })
+    this.setState({searchInput: value, artists: filteredArtists})
   }
 
   render() {
