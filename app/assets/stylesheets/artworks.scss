@@ -40,6 +40,10 @@
         justify-content: center;
         align-items: center;
 
+        &.no-events {
+          pointer-events: none;
+        }
+
         .details-container {
           padding: 5vh;
           color: black;
@@ -58,7 +62,7 @@
           h2.title {
             font-family: 'Bauer Bodoni BT';
             text-transform: none;
-            font-size: 5em;
+            font-size: 4em;
             margin: 0;
           }
           h3 {
@@ -134,7 +138,7 @@
       transition: 0.4s;
       transform: rotate(45deg);
       color: white;
-      font-size: 2em;
+      font-size: 1.5em;
       line-height: 1;
     }
     &:hover {
@@ -162,6 +166,7 @@
       border: 2pt solid darken($lightestGrey, 5%);
       border-radius: 6pt;
       display: flex;
+      align-items: center;
 
       a {
         padding: 0.3em 1em;

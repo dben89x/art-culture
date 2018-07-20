@@ -56,7 +56,7 @@
           text-align: center;
           overflow: hidden;
         }
-        .btn-container {
+        .cta-btn-container {
           display: flex;
 
           a.view {
@@ -87,17 +87,19 @@
         }
       }
     }
-    @media #{$mobile_large} {
-      .artist-details .details-container {
-        h3 {
-          font-size: 1.5em;
-        }
-        h2.name {
-          font-size: 2em;
-        }
-        a.view {
-          font-size: 0.8em;
-        }
+  }
+  @media #{$mobile_large} {
+    font-size: 0.85em;
+
+    .artist-carousel .artist-details .details-container {
+      h3 {
+        font-size: 1.5em;
+      }
+      h2.name {
+        font-size: 2em;
+      }
+      a.view {
+        font-size: 0.8em;
       }
     }
   }
@@ -110,6 +112,9 @@
         display: none;
       }
     }
+  }
+  @media #{$mobile_small} {
+    font-size: 0.7em;
   }
 }
 .artist-wrapper {

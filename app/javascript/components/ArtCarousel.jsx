@@ -47,7 +47,7 @@ export default class ArtCarousel extends React.Component {
         <div className="artwork-image" style={{backgroundImage: `url(${artwork.images[0]})`}}>
           <div className="overlay"></div>
         </div>
-        <div className={`artwork-details details-${artwork.id}`}>
+        <div className={`artwork-details details-${artwork.id} ${this.state.detailsSelected ? 'all-events' : 'no-events'}`}>
           <div className="details-container">
             <h2 className="title">{artwork.title}</h2>
             <div className="description">
@@ -64,7 +64,7 @@ export default class ArtCarousel extends React.Component {
           </div>
         </div>
         <div className={`details-btn ${this.state.detailsSelected ? 'selected' : ''}`} onClick={()=>this.btnClick(artwork)}>
-          <div className="times">&times;</div>
+          <div className="fal fa-times times"></div>
         </div>
       </div>)
     })
@@ -86,9 +86,11 @@ export default class ArtCarousel extends React.Component {
     }
 
     return (
-      <Slider {...settings} className='art-carousel' id='art-carousel'>
-        {artworks}
-      </Slider>
+      <div className={`carousel-wrapper ${this.state.detailsSelected ? 'block-slick-btns' : ''}`}>
+        <Slider {...settings} className='art-carousel' id='art-carousel'>
+          {artworks}
+        </Slider>
+      </div>
     )
   }
 }

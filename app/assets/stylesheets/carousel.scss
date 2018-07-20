@@ -93,6 +93,17 @@ $chevron_size: 50pt;
     }
   }
 }
+
+// ac specific
+#art-carousel-wrapper {
+  .block-slick-btns {
+    .slick-slider button.slick-arrow {
+      &.slick-prev, &.slick-next {
+        pointer-events: none;
+      }
+    }
+  }
+}
 @media #{$tablet_vertical}{
   #artist-carousel-wrapper {
     .slick-slider button.slick-arrow {
