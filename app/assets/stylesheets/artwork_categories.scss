@@ -78,8 +78,14 @@
     }
   }
   @media #{$mobile_large} {
+    h2 {
+      font-size: 2em;
+    }
     .artwork-category-cards .artwork-category-card {
       width: 100%;
+    }
+    .artwork-category-cards .artwork-category-card .img-wrapper .info-wrapper .info h2 {
+      font-size: 1.5em;
     }
   }
 }

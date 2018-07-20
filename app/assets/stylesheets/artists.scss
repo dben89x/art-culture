@@ -124,6 +124,7 @@
   .artist-img, .artist-details {
     display: inline-flex;
     flex-direction: column;
+    justify-content: center;
     margin: 0 2em;
   }
   .artist-name, .artist-location, .artist-bio {
@@ -171,6 +172,32 @@
       }
     }
   }
+  @media #{$tablet_landscape}, #{$tablet_vertical} {
+    .artist-img {
+      width: 25%;
+    }
+    .artist-details {
+      width: 75%;
+      margin-left: 0;
+
+      .artist-name {
+        h3 {
+          margin: 0.5em 0;
+        }
+      }
+      .artist-location {
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+  @media #{$mobile_landscape} {
+    margin: 0 2em;
+  }
+  @media #{$tablet_vertical} {
+    margin: 0;
+  }
 }
 #art-show {
 
@@ -199,6 +226,11 @@
       }
     }
   }
+  @media #{$mobile_landscape}, #{$tablet_vertical} {
+    .current-listed-art .current-listings .listing {
+      width: 50%;
+    }
+  }
 }
 .art-in-circulation {
   h2 {
@@ -224,6 +256,7 @@
 
   .related-artists-wrapper {
     display: flex;
+    flex-wrap: wrap;
 
     .related-artist-wrapper {
       width: 25%;
@@ -252,6 +285,18 @@
           }
         }
       }
+    }
+  }
+  @media #{$mobile_landscape}, #{$tablet_vertical} {
+    padding: 4em 2em;
+
+    .related-artists-wrapper .related-artist-wrapper {
+      width: 50%;
+    }
+  }
+  @media #{$mobile_large} {
+    .related-artists-wrapper .related-artist-wrapper {
+      width: 100%;
     }
   }
 }
