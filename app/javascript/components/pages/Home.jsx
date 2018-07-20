@@ -13,11 +13,12 @@ export default class Home extends React.Component {
       selectedAuth: null,
       artSelected: true,
       artistSelected: false,
+      authModalOpen: false,
     }
   }
 
   openLogin=()=>{
-    this.setState({selectedAuth: 'signin'})
+    this.setState({selectedAuth: 'signin', authModalOpen: true})
   }
 
   ctaClick=(e)=>{
@@ -82,7 +83,7 @@ export default class Home extends React.Component {
             </a>
           </div>
         </section>
-        <AuthForms selectedAuth={this.state.selectedAuth}/>
+        <AuthForms selectedAuth={this.state.selectedAuth} modalIsOpen={this.state.authModalOpen} onClose={()=> this.setState({authModalOpen: false})}/>
         <ContactForm>
           <h2>Have a Question?</h2>
           <p>Fill out the form below and a representative from Art & Culture Exchange will reach out to you within 24 hours.</p>

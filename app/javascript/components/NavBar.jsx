@@ -13,6 +13,7 @@ export default class NavBar extends React.Component {
       year: new Date().getFullYear(),
       opened: false,
       currentUser: this.props.currentUser,
+      authModalOpen: false,
       shoppingCartOpen: false,
       sidebarOpen: false,
       signinVisible: false,
@@ -58,7 +59,9 @@ export default class NavBar extends React.Component {
   toggleSidebar=e=>{
     e.preventDefault()
     $('#nav-sidebar').animate({width: 'toggle'})
-    this.setState({sidebarOpen: !this.state.sidebarOpen})
+    this.setState({sidebarOpen: !this.state.sidebarOpen}, ()=>{
+      console.log()
+    })
   }
 
   ////////// Nav menu //////////
@@ -78,11 +81,11 @@ export default class NavBar extends React.Component {
 
   signinClick=(e)=>{
     e.preventDefault()
-    this.setState({selectedAuth: 'signin'})
+    this.setState({selectedAuth: 'signin', authModalOpen: true})
   }
   signupClick=(e)=>{
     e.preventDefault()
-    this.setState({selectedAuth: 'signup'})
+    this.setState({selectedAuth: 'signup', authModalOpen: true})
   }
 
   onSignoutComplete=(response)=>{
@@ -107,6 +110,7 @@ export default class NavBar extends React.Component {
       this.onSignoutComplete(response)
     })
   }
+
   ////////// Auth actions //////////
 
   render() {
@@ -179,7 +183,7 @@ export default class NavBar extends React.Component {
           </div>
         </div>
       </nav>
-      <AuthForms selectedAuth={this.state.selectedAuth}/>
+      <AuthForms selectedAuth={this.state.selectedAuth} modalIsOpen={this.state.authModalOpen} onClose={()=> this.setState({authModalOpen: false})}/>
     </div>)
   }
 }

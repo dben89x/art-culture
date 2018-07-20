@@ -24,7 +24,7 @@ export default class AuthForms extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.selectedAuth) {
+    if (nextProps.selectedAuth && nextProps.modalIsOpen) {
       this.renderNewForm(nextProps.selectedAuth)
     }
   }
@@ -72,10 +72,16 @@ export default class AuthForms extends React.Component {
     window.location.reload()
   }
 
+  closeModal=()=>{
+    this.setState({modalIsOpen: false}, ()=>{
+      this.props.onClose()
+    })
+  }
+
   render() {
 
     return (<div className="auth-forms">
-      <Rodal visible={this.state.modalIsOpen} onClose={() => this.setState({modalIsOpen: false})} closeOnEsc={true} className={`users ${this.state.formClass}`}>
+      <Rodal visible={this.state.modalIsOpen} onClose={this.closeModal} closeOnEsc={true} className={`users ${this.state.formClass}`}>
         {this.state.authContent}
       </Rodal>
     </div>)
