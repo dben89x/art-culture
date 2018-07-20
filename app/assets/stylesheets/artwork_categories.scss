@@ -11,33 +11,41 @@
     .artwork-category-card {
       width: 33%;
       padding: 1em;
+      pointer-events: none;
 
       .img-wrapper {
         height: 100%;
         width: 100%;
         position: relative;
+        cursor: pointer;
+        pointer-events: all;
 
+        .details-container {
+          pointer-events: none;
+        }
         img {
           width: 100%;
-          cursor: pointer;
         }
         .info-wrapper {
-          display: none;
           position: absolute;
           top: 0;
           left: 0;
           height: 100%;
           width: 100%;
-          transition: 0.3s;
+          opacity: 0;
+          transition: visibility 0s, opacity 0.2s linear;
+          visibility: hidden;
 
           &.hovered {
             display: flex;
+            visibility: visible;
+            opacity: 1;
           }
         }
         .info {
           height: 100%;
           width: 100%;
-          background: rgba(255, 255, 255, 0.5);
+          background: rgba(255, 255, 255, 0.7);
           display: flex;
           justify-content: center;
           align-items: center;

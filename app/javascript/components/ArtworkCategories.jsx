@@ -19,26 +19,34 @@ export default class ArtworkCategories extends React.Component {
   //   $(`#info-${infoId}`).animate({height: 'toggle'})
   // }
   toggleInfoIn=(e)=>{
+    var target = e.target
     console.log('got called')
-    var infoId = $(e.target).data('id')
-    this.setState({hoveredId: infoId})
-    // $(`#info-${infoId}`).fadeIn(100)
+    console.log(target)
+    var infoId = $(target).data('id')
+    this.setState({hoveredId: infoId}, ()=>{
+      console.log(this.state.hoveredId)
+    })
   }
   toggleInfoOut=(e)=>{
+    var target = e.target
     console.log('got called again')
-    var infoId = $(e.target).data('id')
-    this.setState({hoveredId: null})
-    // $(`#info-${infoId}`).fadeOut(100)
+    console.log(target)
+    var infoId = $(target).data('id')
+    this.setState({hoveredId: null}, ()=>{
+      console.log(this.state.hoveredId)
+    })
   }
 
   render() {
     const {categories} = this.props
-    const categoryCards = categories.map(cat => (<div data-id={cat.id} className="artwork-category-card" key={cat.id} id={`cat-${cat.id}`}>
-      <div className="img-wrapper">
-        <img src={cat.image} alt={cat.title}/>
-        <div className={`info-wrapper ${this.state.hoveredId === cat.id ? 'hovered' : ''}`} id={`info-${cat.id}`}>
-          <div className="info">
-            <h2>{cat.title}</h2>
+    const categoryCards = categories.map(cat => (<div className="artwork-category-card" key={cat.id} id={`cat-${cat.id}`}>
+      <div className="img-wrapper" data-id={cat.id}>
+        <div className="details-container">
+          <img src={cat.image} alt={cat.title}/>
+          <div className={`info-wrapper ${this.state.hoveredId === cat.id ? 'hovered' : ''}`} id={`info-${cat.id}`}>
+            <div className="info">
+              <h2>{cat.title}</h2>
+            </div>
           </div>
         </div>
       </div>
