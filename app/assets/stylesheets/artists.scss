@@ -364,7 +364,7 @@
       align-items: center;
 
       .artist-card {
-        width: 25%;
+        width: 33%;
         padding: 1em;
 
         img {
@@ -378,6 +378,16 @@
           color: $lighterGrey;
         }
       }
+    }
+  }
+  @media #{$tablet_vertical}, #{$mobile_landscape} {
+    .artists-container .artist-cards-container .artist-card {
+      width: 50%;
+    }
+  }
+  @media #{$mobile_large} {
+    .artists-container .artist-cards-container .artist-card {
+      width: 100%;
     }
   }
 }

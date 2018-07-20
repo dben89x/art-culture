@@ -20,21 +20,11 @@ export default class ArtworkCategories extends React.Component {
   // }
   toggleInfoIn=(e)=>{
     var target = e.target
-    console.log('got called')
-    console.log(target)
     var infoId = $(target).data('id')
-    this.setState({hoveredId: infoId}, ()=>{
-      console.log(this.state.hoveredId)
-    })
+    this.setState({hoveredId: infoId})
   }
   toggleInfoOut=(e)=>{
-    var target = e.target
-    console.log('got called again')
-    console.log(target)
-    var infoId = $(target).data('id')
-    this.setState({hoveredId: null}, ()=>{
-      console.log(this.state.hoveredId)
-    })
+    this.setState({hoveredId: null})
   }
 
   render() {
