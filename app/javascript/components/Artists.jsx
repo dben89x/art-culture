@@ -20,7 +20,7 @@ export default class Artists extends React.Component {
   }
 
   toggleSearchInput=()=>{
-    this.setState({filterBySearch: !this.state.filterBySearch})
+    this.setState({filterBySearch: !this.state.filterBySearch, searchInput: ''})
   }
 
   changeSearchInput=(e)=>{
@@ -60,7 +60,7 @@ export default class Artists extends React.Component {
               <div className="all-btn" onClick={()=>this.filterByLetter(null)}>ALL</div>
             </div>
             <div id="filter-by-search" className={this.state.filterBySearch ? 'shown' : 'hidden'}>
-              <input type="text" placeholder='Search for artwork, artists, or styles' onChange={this.changeSearchInput}/>
+              <input type="text" value={this.state.searchInput} placeholder='Search for artwork, artists, or styles' onChange={this.changeSearchInput}/>
               <div className="close-search" onClick={this.toggleSearchInput}>&times;</div>
             </div>
           </div>
