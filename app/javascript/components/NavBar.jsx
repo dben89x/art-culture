@@ -138,7 +138,7 @@ export default class NavBar extends React.Component {
             {/* <img src="https://s3-us-west-1.amazonaws.com/art-culture/Group+122.png" style={{width: '90%', margin: '0 0 2em'}} alt=""/> */}
             <a href="/">Home</a>
             <a href="/artists">Artists</a>
-            <a href="/categories">Categories</a>
+            <a href="/artwork_categories">Categories</a>
             <a href="/contact">Contact</a>
 
             <div className="sidebar-footer">

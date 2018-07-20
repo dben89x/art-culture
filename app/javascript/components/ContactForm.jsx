@@ -50,8 +50,7 @@ export default class ContactForm extends React.Component {
       <div className="contact-container">
         <form id="contact-form">
           <div className="form-container">
-            <h2>Have a Question?</h2>
-            <p>Fill out the form below and a representative from Art & Culture Exchange will reach out to you within 24 hours.</p>
+            {this.props.children}
             <div className='input-wrapper name'>
               <input type="text" name='name' placeholder='Your Name' value={this.state.name} onChange={this.inputChange}/>
             </div>

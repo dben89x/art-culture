@@ -258,6 +258,7 @@
 
 #artists {
   .artists-container {
+    padding: 0 4em;
     h2 {
       text-align: center;
     }
@@ -265,6 +266,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 2em 0;
 
       .filter-options {
         overflow: hidden;
@@ -359,6 +361,7 @@
       width: 100%;
       flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
 
       .artist-card {
         width: 25%;
@@ -367,6 +370,12 @@
         img {
           height: 100%;
           width: 100%;
+        }
+        .name {
+          font-size: 1.5em;
+        }
+        .categories {
+          color: $lighterGrey;
         }
       }
     }

@@ -1,3 +1,48 @@
-// Place all the styles related to the artwork_categories controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#artwork-categories {
+  h2 {
+    font-family: 'Bauer Bodoni Bold BT';
+    text-align: center;
+  }
+  .artwork-category-cards {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2em;
+
+    .artwork-category-card {
+      width: 33%;
+      padding: 1em;
+
+      .img-wrapper {
+        height: 100%;
+        width: 100%;
+        position: relative;
+
+        img {
+          width: 100%;
+          cursor: pointer;
+        }
+        .info-wrapper {
+          display: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          transition: 0.3s;
+
+          &.hovered {
+            display: flex;
+          }
+        }
+        .info {
+          height: 100%;
+          width: 100%;
+          background: rgba(255, 255, 255, 0.5);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+}

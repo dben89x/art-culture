@@ -15,7 +15,7 @@ export default class Artists extends React.Component {
   filterByLetter=(letter)=>{
     const {artists} = this.props
     this.setState({selectedLetter: letter})
-    var filteredArtists = letter ? artists.filter(artist => artist.name.charAt(0) === letter) : artists
+    var filteredArtists = letter ? artists.filter(artist => artist.name.charAt(0) === letter).sort((a,b)=> b.name.toLowerCase() - a.name.toLowerCase()) : artists
     this.setState({artists: filteredArtists})
   }
 
@@ -35,8 +35,12 @@ export default class Artists extends React.Component {
     </div>))
 
     const artistCards = this.state.artists.map(artist => (<div className="artist-card" key={artist.id}>
-      <img src={artist.featured_artwork} alt=""/>
-    </div>))
+        <a href={`/artists/${artist.id}`}>
+          <img src={artist.featured_artwork} alt=""/>
+        </a>
+        <div className="name">{artist.name}</div>
+        <div className="categories">{artist.categories.join(', ')}</div>
+      </div>))
 
     return (
       <div className="artists-container">
@@ -49,7 +53,7 @@ export default class Artists extends React.Component {
               <div className="all-btn" onClick={()=>this.filterByLetter(null)}>ALL</div>
             </div>
             <div id="filter-by-search" className={this.state.filterBySearch ? 'shown' : 'hidden'}>
-              <input type="text" placeHolder='Search for artwork, artists, or styles' onChange={this.changeSearchInput}/>
+              <input type="text" placeholder='Search for artwork, artists, or styles' onChange={this.changeSearchInput}/>
               <div className="close-search" onClick={this.toggleSearchInput}>&times;</div>
             </div>
           </div>

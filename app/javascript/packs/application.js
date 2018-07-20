@@ -1,4 +1,6 @@
 import ReactOnRails from 'react-on-rails';
+import ArtworkCategories from '../components/ArtworkCategories';
+import Contact from '../components/Contact';
 import Artists from '../components/Artists';
 import ArtistCarousel from '../components/ArtistCarousel';
 import CartItem from '../components/CartItem';
@@ -20,6 +22,8 @@ import Signin from '../components/auth/Signin';
 import ForgotPassword from '../components/auth/ForgotPassword';
 
 ReactOnRails.register({
+  ArtworkCategories,
+  Contact,
   Artists,
   ArtistCarousel,
   CartItem,

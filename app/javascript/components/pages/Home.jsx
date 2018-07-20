@@ -83,7 +83,10 @@ export default class Home extends React.Component {
           </div>
         </section>
         <AuthForms selectedAuth={this.state.selectedAuth}/>
-        <ContactForm />
+        <ContactForm>
+          <h2>Have a Question?</h2>
+          <p>Fill out the form below and a representative from Art & Culture Exchange will reach out to you within 24 hours.</p>
+        </ContactForm>
       </div>
     )
   }

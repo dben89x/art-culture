@@ -120,3 +120,33 @@
     }
   }
 }
+
+#contact {
+  .contact-banner {
+    background: $actionBlue;
+    padding: 2em;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      color: white;
+      margin: 0;
+      font-family: 'Lato';
+      text-transform: none;
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+  h3 {
+    text-align: center;
+  }
+  @media #{$mobile_large} {
+    .contact-banner {
+      h2 {
+        font-size: 2em;
+      }
+    }
+  }
+}

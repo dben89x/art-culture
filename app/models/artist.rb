@@ -35,6 +35,10 @@ class Artist < ApplicationRecord
     featured_artwork_id ? Artwork.find(featured_artwork_id) : self.artworks.last
   end
 
+  def categories
+    ArtworkCategory.find(Artist.last.artworks.pluck(:artwork_category_id)).pluck(:title).map(&:capitalize)
+  end
+
   def as_json(options = {})
     if options[:index]
       {
@@ -42,6 +46,7 @@ class Artist < ApplicationRecord
         name: full_name,
         image: image,
         featured_artwork: featured_artwork.image,
+        categories: categories,
         bio: bio,
         slug: slug,
       }
