@@ -45,7 +45,7 @@ ArtworkCategory.create(
   title: 'realism',
   image: 'https://s3-us-west-1.amazonaws.com/art-culture/images/style9.jpg'
 )
-5.times do
+15.times do
   name = Faker::GameOfThrones.character
   first_name = name.split.first
   name.slice!(first_name)
@@ -63,7 +63,7 @@ ArtworkCategory.create(
       description: Faker::Lorem.paragraph,
       artwork_category: ArtworkCategory.all.sample,
       artist: artist,
-    )fgwdfdf
+    )
     ArtworkImage.create(
       url: 'https://s3-us-west-1.amazonaws.com/art-culture/images/a2.jpg',
       artwork: artwork,
