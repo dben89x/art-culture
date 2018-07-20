@@ -255,3 +255,36 @@
     }
   }
 }
+
+#artists {
+  .artists-container {
+    h2 {
+      text-align: center;
+    }
+    .letter-btns-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .letter-btn {
+        cursor: pointer;
+        margin: 0.5em;
+      }
+    }
+    .artist-cards-container {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+
+      .artist-card {
+        width: 25%;
+        padding: 1em;
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
