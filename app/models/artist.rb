@@ -36,7 +36,7 @@ class Artist < ApplicationRecord
   end
 
   def categories
-    ArtworkCategory.find(Artist.last.artworks.pluck(:artwork_category_id)).pluck(:title).map(&:capitalize)
+    ArtworkCategory.find(self.artworks.pluck(:artwork_category_id)).pluck(:title).map(&:capitalize)
   end
 
   def as_json(options = {})
