@@ -227,9 +227,43 @@
     }
   }
   @media #{$mobile_landscape}, #{$tablet_vertical} {
-    .current-listed-art .current-listings .listing {
-      width: 50%;
+    .current-listed-art {
+      h2 {
+        text-align: center;
+      }
+      .current-listings .listing {
+        width: 50%;
+      }
     }
+  }
+  @media #{$mobile_large} {
+    h2 {
+      font-size: 2em;
+    }
+    .artist-wrapper {
+      flex-direction: column;
+      align-items: center;
+
+      .artist-img {
+        width: 12em;
+      }
+      .artist-details {
+        width: 100%;
+        margin: 0;
+        padding: 2em;
+        align-items: center;
+
+        .artist-bio {
+          max-height: 6em;
+        }
+      }
+    }
+    .current-listed-art {
+      .current-listings .listing {
+        width: 100%;
+      }
+    }
+
   }
 }
 .art-in-circulation {
@@ -297,6 +331,10 @@
   @media #{$mobile_large} {
     .related-artists-wrapper .related-artist-wrapper {
       width: 100%;
+
+      .artist-img {
+        width: 12em;
+      }
     }
   }
 }

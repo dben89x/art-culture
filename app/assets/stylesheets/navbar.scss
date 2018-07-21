@@ -204,7 +204,7 @@ nav {
         bottom: 0;
         padding: 2em 0;
 
-        .signin-signup {
+        .signin-signup, .signout {
           display: flex;
           flex-direction: column;
         }
@@ -228,6 +228,11 @@ nav {
 
     .sidebar-links-container .sidebar-links {
       align-items: center;
+      .sidebar-footer {
+        .signin-signup, .signout {
+          align-items: center;
+        }
+      }
     }
   }
 }
