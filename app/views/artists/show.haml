@@ -8,9 +8,14 @@
     .artist-details
       .artist-name
         %h3=@artist.full_name
-      .artist-location
-        %i.fas.fa-map-marker-alt
-        %p="Los Angeles, California"
+      .artist-info
+        .artist-location
+          %i.fas.fa-map-marker-alt
+          %p="Los Angeles, California"
+        .artist-website
+          %i.far.fa-globe
+          %a{:href => "https://google.com", target: 'blank'}
+            ="https://google.com"
       .artist-bio
         %p=@artist.bio
   .current-listed-art
@@ -42,3 +47,5 @@
               %h3=artist.full_name
             .artist-bio
               %p=artist.bio
+          .btn-container
+            =link_to 'VIEW ARTIST', artist_path(artist), class: 'view-piece'
