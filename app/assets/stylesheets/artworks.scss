@@ -204,13 +204,6 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-
-    .custom-hr {
-      background: $lighterGrey;
-      height: 1.5pt;
-      width: 10em;
-      margin: 0 3em;
-    }
   }
 
   .listings-container {
@@ -243,11 +236,6 @@
   @media #{$tablet_vertical}, #{$tablet_landscape} {
     .listings-container .listing {
       width: 50%;
-    }
-  }
-  @media #{$tablet_vertical} {
-    h2 .custom-hr {
-      display: none;
     }
   }
   @media #{$mobile_large} {

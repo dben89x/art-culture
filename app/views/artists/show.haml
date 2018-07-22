@@ -1,4 +1,6 @@
 #artist-show
+  =react_component 'VideoBanner', props: {src: 'https://s3-us-west-1.amazonaws.com/art-culture/videos/Bob+Ross+Channel+Trailer.mp4', poster: 'https://s3-us-west-1.amazonaws.com/art-culture/images/stock_snap1.jpg'}, prerender: false
+
   .artist-wrapper
     .artist-img
       -# %img{src: @artist.image}
@@ -12,7 +14,10 @@
       .artist-bio
         %p=@artist.bio
   .current-listed-art
-    %h2 CURRENT LISTED ART
+    %h2
+      .custom-hr
+      CURRENT LISTED ART
+      .custom-hr
     .current-listings
       -@current_listings.each do |listing|
         .listing
@@ -22,7 +27,10 @@
   =react_component 'ArtworkCirculationCarousel', props: {artworks: @artworks_in_circulation}, prerender: false
 
   .related-artists
-    %h2 RELATED ARTISTS
+    %h2
+      .custom-hr
+      RELATED ARTISTS
+      .custom-hr
     .related-artists-wrapper
       -@related_artists.each do |artist|
         .related-artist-wrapper

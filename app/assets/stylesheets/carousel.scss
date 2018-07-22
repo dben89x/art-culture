@@ -114,3 +114,19 @@ $chevron_size: 50pt;
     }
   }
 }
+.art-in-circulation {
+  .slick-slider button.slick-arrow {
+    &.slick-prev {
+      left: 0;
+    }
+    &.slick-next {
+      right: 2em;
+    }
+    &.slick-prev, &.slick-next {
+      font-size: 2em;
+      .fal {
+        border: 0;
+      }
+    }
+  }
+}

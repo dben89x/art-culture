@@ -127,6 +127,18 @@ h2 {
   font-weight: 300;
   font-size: 3em;
   text-transform: uppercase;
+
+  .custom-hr {
+    background: $lighterGrey;
+    height: 1.5pt;
+    width: 10em;
+    margin: 0 3em;
+  }
+  @media #{$tablet_vertical} {
+    .custom-hr {
+      display: none;
+    }
+  }
 }
 
 .action-btn {

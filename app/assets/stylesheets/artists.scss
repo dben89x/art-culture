@@ -119,7 +119,7 @@
 }
 .artist-wrapper {
   display: flex;
-  margin: 0 10em;
+  margin: 4em 10em;
 
   .artist-img, .artist-details {
     display: inline-flex;
@@ -203,7 +203,29 @@
 
 }
 #artist-show {
-  padding: 4em 0;
+  h2 {
+    font-size: 2em;
+    font-weight: 500;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  // padding: 4em 0;
+  padding: 0 0 4em;
+
+  .artist-video-banner {
+    position: relative;
+
+    #play-btn {
+      position: absolute;
+      font-size: 5em;
+      top: calc(50% - 0.5em);
+      left: calc(50% - 0.5em);
+      color: white;
+
+    }
+  }
 
   .current-listed-art {
     display: flex;
@@ -222,6 +244,10 @@
 
         img {
           width: 100%;
+        }
+        p {
+          color: grey;
+          font-family: 'Bauer Bodoni BT';
         }
       }
     }
@@ -266,23 +292,71 @@
 
   }
 }
-.art-in-circulation {
-  h2 {
-    text-align: center;
-  }
-  #art-circulation-carousel {
+#artist-show {
 
-    height: calc(90vh - #{$navHeight});
+  .art-in-circulation {
+    h2 {
+      text-align: center;
+    }
+    .art-circulation {
+      height: calc(85vh - #{$navHeight});
+      align-items: center;
 
-    .artwork-image {
-      height: calc(90vh - #{$navHeight});
+      .slick-slide {
+        text-align: center;
+      }
+      .artwork-container {
+        width: 90% !important;
+        height: 100%;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: flex-start;
+        height: 90%;
+        box-shadow: 0 0 20pt 0 grey;
+        margin: 2em;
+
+        .artwork-image {
+          height: 100%;
+          width: 60%;
+          background-size: cover;
+          background-position: center;
+        }
+        .details-container {
+          text-align: left;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          padding: 2em;
+          justify-content: space-evenly;
+
+          h2.title {
+            justify-content: flex-start;
+            margin: 0;
+            padding: 1em 0;
+            border-bottom: 1pt solid grey;
+          }
+          .description {
+            font-family: 'Bauer Bodoni BT';
+            color: grey;
+          }
+          .btn-container {
+            display: flex;
+
+            a.view-piece {
+              background-color: $actionRed;
+              letter-spacing: 0;
+              border-radius: 3em;
+              margin: 0;
+            }
+          }
+        }
+      }
     }
   }
 }
 .related-artists {
   display: flex;
   flex-direction: column;
-  padding: 4em 8em;
 
   h2 {
     text-align: center;
@@ -291,6 +365,7 @@
   .related-artists-wrapper {
     display: flex;
     flex-wrap: wrap;
+    padding: 4em 8em;
 
     .related-artist-wrapper {
       width: 25%;
