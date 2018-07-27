@@ -14,19 +14,22 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  slug                :string
+#  price               :float
 #
 
 class Artwork < ApplicationRecord
   belongs_to :artist
   belongs_to :artwork_category, inverse_of: :artworks
   has_many :artwork_images, inverse_of: :artwork
+  has_many :artwork_logs, inverse_of: :artwork
   has_many :user_artwork_favorites, inverse_of: :artwork
+  has_many :bids
 
   extend FriendlyId
   friendly_id :custom_slug, use: [:slugged, :finders]
 
   def owner
-
+    buyer
   end
 
   def custom_slug
@@ -35,6 +38,18 @@ class Artwork < ApplicationRecord
 
   def image
     self.artwork_images.last.url
+  end
+
+  def image_count
+    self.artwork_images.count
+  end
+
+  def max_images
+    3
+  end
+
+  def has_room
+    image_count < max_images
   end
 
   def as_json(options = {})

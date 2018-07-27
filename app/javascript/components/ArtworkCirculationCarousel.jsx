@@ -10,8 +10,6 @@ export default class ArtworkCirculationCarousel extends React.Component {
   }
 
   render() {
-    console.log(this.props.artworks)
-
     const artworks = this.props.artworks.map((artwork) => {
       return (<div className='artwork-container' key={artwork.id}>
         <img className="artwork-image" src={artwork.images[0]}/>
@@ -21,7 +19,7 @@ export default class ArtworkCirculationCarousel extends React.Component {
             <p>{artwork.description}</p>
           </div>
           <div className="btn-container">
-            <a href={`artworks/${artwork.slug}`} className='view-piece'>MORE INFO</a>
+            <a href={`/artworks/${artwork.slug}`} className='view-piece'>MORE INFO</a>
           </div>
         </div>
       </div>)

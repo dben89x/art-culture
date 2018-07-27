@@ -1,4 +1,5 @@
 import ReactOnRails from 'react-on-rails';
+import MakeOffer from '../components/MakeOffer';
 import VideoBanner from '../components/VideoBanner';
 import ArtworkCategories from '../components/ArtworkCategories';
 import Contact from '../components/Contact';
@@ -23,6 +24,7 @@ import Signin from '../components/auth/Signin';
 import ForgotPassword from '../components/auth/ForgotPassword';
 
 ReactOnRails.register({
+  MakeOffer,
   VideoBanner,
   ArtworkCategories,
   Contact,

@@ -4,7 +4,6 @@
 #
 #  id          :bigint(8)        not null, primary key
 #  type        :string
-#  artist_id   :bigint(8)
 #  artwork_id  :bigint(8)
 #  buyer_id    :bigint(8)
 #  bid_id      :bigint(8)
@@ -16,4 +15,7 @@
 #
 
 class ArtworkLog < ApplicationRecord
+  belongs_to :artwork, inverse_of: :artwork_logs
+  belongs_to :bid, inverse_of: :artwork_logs
+  belongs_to :buyer, inverse_of: :artwork_logs
 end

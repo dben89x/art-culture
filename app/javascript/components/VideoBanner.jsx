@@ -4,14 +4,14 @@ export default class VideoBanner extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      playing: true,
+      playing: false,
     }
   }
 
   componentDidMount() {
     this.$video = $('video').get(0)
     this.$playBtn = $('#play-btn').get(0)
-    $(this.$playBtn).fadeOut(200)
+    this.state.playing ? $(this.$playBtn).fadeOut(200) : null
   }
 
   spaceButtonPressed=(e)=>{
@@ -41,7 +41,7 @@ export default class VideoBanner extends React.Component {
 
     return (
       <div className="artist-video-banner">
-        <video poster={this.props.poster} width='100%' controls={false} autoPlay onClick={this.togglePlay} onKeyPress={this.spaceButtonPressed}>
+        <video poster={this.props.poster} width='100%' controls={false} onClick={this.togglePlay} onKeyPress={this.spaceButtonPressed}>
           <source src={this.props.src} type="video/mp4" />
         </video>
         <div id='play-btn' className="fas fa-play" onClick={this.togglePlay}>

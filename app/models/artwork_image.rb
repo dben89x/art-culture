@@ -12,4 +12,12 @@
 
 class ArtworkImage < ApplicationRecord
   belongs_to :artwork
+
+  validate :is_within_limit
+
+  def is_within_limit
+    unless self.artwork.has_room
+      errors.add(:base, "Artwork has too many images")
+    end
+  end
 end

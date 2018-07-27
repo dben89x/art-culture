@@ -8,9 +8,10 @@
       .artist-name
         %h3=@artist.full_name
         =link_to 'VIEW PAGE', @artist
-      .artist-location
-        %i.fas.fa-map-marker-alt
-        %p="Los Angeles, California"
+      .artist-info
+        .artist-location
+          %i.fas.fa-map-marker-alt
+          %p="Los Angeles, California"
       .artist-bio
         %p=@artist.bio
-  =react_component 'TradingHistory'
+  =react_component 'TradingHistory', props: {artworkLogs: @artwork_logs}, prerender: false

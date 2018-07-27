@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180719195040) do
+ActiveRecord::Schema.define(version: 20180727170648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,7 +86,6 @@ ActiveRecord::Schema.define(version: 20180719195040) do
 
   create_table "artwork_logs", force: :cascade do |t|
     t.string "type"
-    t.bigint "artist_id"
     t.bigint "artwork_id"
     t.bigint "buyer_id"
     t.bigint "bid_id"
@@ -95,7 +94,6 @@ ActiveRecord::Schema.define(version: 20180719195040) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_artwork_logs_on_artist_id"
     t.index ["artwork_id"], name: "index_artwork_logs_on_artwork_id"
     t.index ["bid_id"], name: "index_artwork_logs_on_bid_id"
     t.index ["buyer_id"], name: "index_artwork_logs_on_buyer_id"
@@ -113,6 +111,7 @@ ActiveRecord::Schema.define(version: 20180719195040) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.float "price"
     t.index ["artist_id"], name: "index_artworks_on_artist_id"
     t.index ["artwork_category_id"], name: "index_artworks_on_artwork_category_id"
     t.index ["buyer_id"], name: "index_artworks_on_buyer_id"
@@ -123,6 +122,10 @@ ActiveRecord::Schema.define(version: 20180719195040) do
     t.bigint "buyer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "open"
+    t.boolean "accepted"
+    t.float "price"
+    t.text "notes"
     t.index ["artwork_id"], name: "index_bids_on_artwork_id"
     t.index ["buyer_id"], name: "index_bids_on_buyer_id"
   end
@@ -142,6 +145,8 @@ ActiveRecord::Schema.define(version: 20180719195040) do
     t.string "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_buyers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_buyers_on_reset_password_token", unique: true
   end

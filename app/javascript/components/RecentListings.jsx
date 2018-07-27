@@ -69,7 +69,7 @@ export default class RecentListings extends React.Component {
       <div id="recent-listings">
         <h2>
           <span className="custom-hr"></span>
-          New Listings
+          Original Creations
           <span className="custom-hr"></span>
         </h2>
         <div className="listings-container">

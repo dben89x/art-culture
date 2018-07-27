@@ -143,6 +143,7 @@ export default class NavBar extends React.Component {
             <a href="/">Home</a>
             <a href="/artists">Artists</a>
             <a href="/artwork_categories">Categories</a>
+            <a href="/blog">Blog</a>
             <a href="/contact">Contact</a>
 
             <div className="sidebar-footer">

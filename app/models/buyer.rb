@@ -17,6 +17,8 @@
 #  bio                    :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  first_name             :string
+#  last_name              :string
 #
 
 class Buyer < ApplicationRecord
@@ -24,4 +26,7 @@ class Buyer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :bids, inverse_of: :buyer
+  has_many :artwork_logs, inverse_of: :buyer
 end

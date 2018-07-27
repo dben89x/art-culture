@@ -25,7 +25,13 @@
 #
 
 class Artist < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+         
   has_many :artworks, inverse_of: :artist
+  has_many :artwork_logs, inverse_of: :artist
 
   def full_name
     "#{first_name} #{last_name}"
