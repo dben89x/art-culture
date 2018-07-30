@@ -14,4 +14,6 @@
           %p="Los Angeles, California"
       .artist-bio
         %p=@artist.bio
-  =react_component 'TradingHistory', props: {artworkLogs: @artwork_logs}, prerender: false
+
+  .trading-history-wrapper
+    =react_component 'TradingHistory', props: {artworkLogs: @artwork_logs}, prerender: false

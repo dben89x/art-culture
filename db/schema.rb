@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180727170648) do
+ActiveRecord::Schema.define(version: 20180730033158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,30 +44,6 @@ ActiveRecord::Schema.define(version: 20180727170648) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
-  end
-
-  create_table "artists", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.string "location"
-    t.string "bio"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "slug"
-    t.integer "featured_artwork_id"
-    t.string "image"
-    t.index ["email"], name: "index_artists_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_artists_on_reset_password_token", unique: true
   end
 
   create_table "artwork_categories", force: :cascade do |t|
@@ -130,27 +106,6 @@ ActiveRecord::Schema.define(version: 20180727170648) do
     t.index ["buyer_id"], name: "index_bids_on_buyer_id"
   end
 
-  create_table "buyers", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.string "location"
-    t.string "bio"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.index ["email"], name: "index_buyers_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_buyers_on_reset_password_token", unique: true
-  end
-
   create_table "user_artwork_favorites", force: :cascade do |t|
     t.bigint "artwork_id"
     t.bigint "user_id"
@@ -176,6 +131,12 @@ ActiveRecord::Schema.define(version: 20180727170648) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone_number"
+    t.string "type"
+    t.text "bio"
+    t.string "image"
+    t.string "location"
+    t.string "slug"
+    t.integer "featured_artwork_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

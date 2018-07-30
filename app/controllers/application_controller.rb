@@ -1,8 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  # helper_method :current_user
+
+  # def current_user
+  #   @current_user ||= current_admin_user || current_artist || current_buyer
+  # end
 
   def current_ability
-    @current_ability ||= current_admin_user ? Ability.new(current_admin_user) : Ability.new(current_user)
+    user = current_admin_user || current_user
+    @current_ability ||= Ability.new(user)
   end
 
   rescue_from CanCan::AccessDenied do |exception|

@@ -19,7 +19,6 @@ export default class Signin extends React.Component {
     var formDataJson = this.convertFormData(formData)
     delete formDataJson['utf8']
 
-    console.log(csrfToken)
     $.ajax({
       type: 'POST',
       headers: {
@@ -31,13 +30,12 @@ export default class Signin extends React.Component {
         user: formDataJson
       }
     }).done((response) => {
+      this.props.onComplete(response)
+    }).fail(response => {
+      var errors = response.responseJSON.map(error => error.message || error)
       this.setState({
-        errors: response.full_errors || []
+        errors: errors || []
       })
-      if (response.status === 200) {
-        this.props.onComplete(response)
-        console.log(JSON.stringify(response))
-      }
     })
   }
 
@@ -57,7 +55,7 @@ export default class Signin extends React.Component {
       <div className="content-wrapper">
       <h2>Log-in</h2>
       <div className={`errors ${this.state.errors.length > 0 ? 'with-border' : ''}`}>
-        {this.state.errors.map(error => (<div className='error'>{error}</div>))}
+        {this.state.errors.map(error => (<div className='error' key={Math.floor((1 + Math.random()) * 0x10000)}>{error}</div>))}
       </div>
       <form className="new_user" id="new_user" action="/users/sign_in" acceptCharset="UTF-8" method="post">
         <input name="utf8" type="hidden" value="✓"/>

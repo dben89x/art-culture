@@ -21,7 +21,7 @@
 #  last_name              :string
 #
 
-class Buyer < ApplicationRecord
+class Buyer < User
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
