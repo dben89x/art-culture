@@ -251,8 +251,12 @@
         width: 33%;
         padding: 1em;
 
-        img {
+        a img {
           width: 100%;
+        }
+        a h3 {
+          color: black;
+          display: inline-flex;
         }
         p {
           color: grey;
@@ -568,36 +572,6 @@
   @media #{$mobile_large} {
     .artists-container .artist-cards-container .artist-card {
       width: 100%;
-    }
-  }
-}
-.trading-history-wrapper {
-  padding: 4em 10em;
-
-  .trading-history {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    .logs {
-      width: 100%;
-    }
-    .log-dates {
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      overflow: scroll;
-
-      .log-date {
-        cursor: pointer;
-        padding: 0.5em 1em;
-        border-radius: 2em;
-
-        &.selected {
-          border: 2px solid;
-        }
-      }
     }
   }
 }

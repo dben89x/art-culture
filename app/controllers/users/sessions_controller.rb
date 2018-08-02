@@ -6,9 +6,7 @@ class Users::SessionsController < Devise::SessionsController
   def create
     super do |resource|
       respond_with resource, :location => after_sign_in_path_for(resource) do |format|
-        format.json {
-          format.json {return render :json => {resource: resource, status: 200}}
-        }
+        format.json {return render :json => {resource: resource, status: 200}}
       end
     end
 

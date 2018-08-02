@@ -29,16 +29,20 @@ export default class Home extends React.Component {
     e.preventDefault()
     this.setState({artistSelected: false})
     this.setState({artSelected: true})
-    $('#artist-carousel-wrapper').fadeOut(200, ()=>{
-      $('#art-carousel-wrapper').fadeIn(200)
+    $('#artist-carousel-wrapper').animate({opacity: '0'}, 200, ()=> {
+      $('#artist-carousel-wrapper').css('display', 'none')
+      $('#art-carousel-wrapper').css('display', 'block')
+      setTimeout(()=> $('#art-carousel-wrapper').animate({opacity: '1'}, 200), 100)
     })
   }
   selectArtist=(e)=>{
     e.preventDefault()
     this.setState({artSelected: false})
     this.setState({artistSelected: true})
-    $('#art-carousel-wrapper').fadeOut(200, ()=>{
-      $('#artist-carousel-wrapper').fadeIn(200)
+    $('#art-carousel-wrapper').animate({opacity: '0'}, 200, ()=> {
+      $('#art-carousel-wrapper').css('display', 'none')
+      $('#artist-carousel-wrapper').css('display', 'block')
+      setTimeout(()=> $('#artist-carousel-wrapper').animate({opacity: '1'}, 200), 150)
     })
   }
 

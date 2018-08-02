@@ -18,6 +18,12 @@
 #  first_name             :string
 #  last_name              :string
 #  phone_number           :string
+#  type                   :string
+#  bio                    :text
+#  image                  :string
+#  location               :string
+#  slug                   :string
+#  featured_artwork_id    :integer
 #
 
 class User < ApplicationRecord

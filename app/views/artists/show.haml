@@ -26,8 +26,10 @@
     .current-listings
       -@current_listings.each do |listing|
         .listing
-          %img{src: listing.artwork_images[0].url}
-          %h3=listing.title
+          =link_to artwork_path(listing) do
+            %img{src: listing.artwork_images[0].url}
+          =link_to artwork_path(listing) do
+            %h3=listing.title
           %p=listing.description
   =react_component 'ArtworkCirculationCarousel', props: {artworks: @artworks_in_circulation}, prerender: false
 

@@ -15,6 +15,7 @@ export default class NavBar extends React.Component {
       currentUser: this.props.currentUser,
       authModalOpen: false,
       shoppingCartOpen: false,
+      shoppingCartItems: [],
       sidebarOpen: false,
       signinVisible: false,
       selectedAuth: null,
@@ -59,9 +60,7 @@ export default class NavBar extends React.Component {
   toggleSidebar=e=>{
     e.preventDefault()
     $('#nav-sidebar').animate({width: 'toggle'})
-    this.setState({sidebarOpen: !this.state.sidebarOpen}, ()=>{
-      console.log()
-    })
+    this.setState({sidebarOpen: !this.state.sidebarOpen})
   }
 
   ////////// Nav menu //////////
@@ -70,10 +69,18 @@ export default class NavBar extends React.Component {
 
   toggleShoppingCart = e => {
     e.preventDefault()
-    $('#shopping-cart').animate({width: 'toggle'})
-    this.setState({
-      shoppingCartOpen: !this.state.shoppingCartOpen
-    })
+    var {currentUser} = this.props
+    if (currentUser) {
+      $('#shopping-cart').animate({width: 'toggle'})
+      $.get('/api/artwork_favorites', {user_id: currentUser.id}, (response)=>{
+        this.setState({shoppingCartItems: response})
+      })
+      this.setState({
+        shoppingCartOpen: !this.state.shoppingCartOpen
+      })
+    } else {
+      this.signinClick(e)
+    }
   }
   ////////// Nav menu //////////
 
@@ -131,7 +138,7 @@ export default class NavBar extends React.Component {
     </div>)
 
     return (<div id='nav-container'>
-      <ShoppingCart open={this.state.shoppingCartOpen} onClose={this.toggleShoppingCart}></ShoppingCart>
+      <ShoppingCart open={this.state.shoppingCartOpen} onClose={this.toggleShoppingCart} items={this.state.shoppingCartItems}></ShoppingCart>
       <div id="nav-sidebar" className={this.state.sidebarOpen ? 'open' : 'closed'}>
         <div className="header">
           {/* <img src="https://s3-us-west-1.amazonaws.com/art-culture/Group+122.png" style={{width: '90%', margin: '0 0 2em'}} alt=""/> */}

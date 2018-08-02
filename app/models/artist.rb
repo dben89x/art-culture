@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: artists
+# Table name: users
 #
 #  id                     :bigint(8)        not null, primary key
 #  email                  :string           default(""), not null
@@ -13,15 +13,17 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
-#  location               :string
-#  bio                    :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  first_name             :string
 #  last_name              :string
+#  phone_number           :string
+#  type                   :string
+#  bio                    :text
+#  image                  :string
+#  location               :string
 #  slug                   :string
 #  featured_artwork_id    :integer
-#  image                  :string
 #
 
 class Artist < User

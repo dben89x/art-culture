@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :artwork_tags
+  resources :tags
   resources :artists
   resources :buyers
   resources :artwork_images

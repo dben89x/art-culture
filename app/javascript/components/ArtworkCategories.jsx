@@ -13,11 +13,6 @@ export default class ArtworkCategories extends React.Component {
     this.$cards = $('.artwork-category-card')
     $(this.$cards).mouseenter(this.toggleInfoIn).mouseleave(this.toggleInfoOut)
   }
-
-  // toggleInfo=(e)=>{
-  //   var infoId = $(e.target).data('id')
-  //   $(`#info-${infoId}`).animate({height: 'toggle'})
-  // }
   toggleInfoIn=(e)=>{
     var target = e.target
     var infoId = $(target).data('id')
@@ -26,6 +21,10 @@ export default class ArtworkCategories extends React.Component {
   toggleInfoOut=(e)=>{
     this.setState({hoveredId: null})
   }
+  // toggleInfo=(e)=>{
+  //   var infoId = $(e.target).data('id')
+  //   $(`#info-${infoId}`).animate({height: 'toggle'})
+  // }
 
   render() {
     const {categories} = this.props

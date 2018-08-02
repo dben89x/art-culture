@@ -35,7 +35,7 @@ export default class ArtistCarousel extends React.Component {
             <h3>About the Artist</h3>
             <p className='bio'>{artist.bio}</p>
             <div className="cta-btn-container">
-              <a href={`artists/${artist.slug}`} className='view'>VIEW ARTIST PAGE</a>
+              <a href={`artists/${artist.id}`} className='view'>VIEW ARTIST PAGE</a>
             </div>
             <div className="details">
             </div>

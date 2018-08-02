@@ -15,6 +15,7 @@ export default class TradingHistory extends React.Component {
   render() {
 
     const {artworkLogs} = this.props
+    const {selectedLog} = this.state
     var logs = this.props.artworkLogs.map((log, index) => {
       var date = new Date(log.created_at)
 
@@ -25,18 +26,27 @@ export default class TradingHistory extends React.Component {
 
     return (
       <div className="trading-history">
-        <div className="head">
-          <h2>TRADING HISTORY</h2>
-        </div>
-        <div className="logs">
-          <div className="log-dates">
-            {logs}
+        <div className="trading-history-container">
+          <div className="head">
+            <h2>TRADING HISTORY</h2>
           </div>
-          <div className="log-info-wrapper">
-            <div className="log-description">{this.state.selectedLog.description}</div>
-            <div className="log-details">
-              <div className="current-owner">
 
+          <div className="logs">
+            <div className="log-dates">
+              {logs}
+            </div>
+            <div className="log-info-wrapper">
+              <p className="log-description">{selectedLog.description}</p>
+              <div className="log-details">
+                <h3>Details of Sale:</h3>
+                <p className="owner">
+                  {"OWNER: "}
+                  <span className='text'>{selectedLog.buyer}</span>
+                </p>
+                <p className="purchase-price">
+                  {"PURCHASE PRICE: "}
+                  <span className='text'>${selectedLog.price}</span>
+                </p>
               </div>
             </div>
           </div>

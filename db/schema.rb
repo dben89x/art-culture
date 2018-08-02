@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180730033158) do
+ActiveRecord::Schema.define(version: 20180801180926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,13 @@ ActiveRecord::Schema.define(version: 20180730033158) do
     t.index ["buyer_id"], name: "index_artwork_logs_on_buyer_id"
   end
 
+  create_table "artwork_tags", force: :cascade do |t|
+    t.bigint "artwork_id"
+    t.bigint "tag_id"
+    t.index ["artwork_id"], name: "index_artwork_tags_on_artwork_id"
+    t.index ["tag_id"], name: "index_artwork_tags_on_tag_id"
+  end
+
   create_table "artworks", force: :cascade do |t|
     t.bigint "artist_id"
     t.bigint "artwork_category_id"
@@ -104,6 +111,10 @@ ActiveRecord::Schema.define(version: 20180730033158) do
     t.text "notes"
     t.index ["artwork_id"], name: "index_bids_on_artwork_id"
     t.index ["buyer_id"], name: "index_bids_on_buyer_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "title"
   end
 
   create_table "user_artwork_favorites", force: :cascade do |t|

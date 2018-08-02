@@ -17,3 +17,6 @@
 
   .trading-history-wrapper
     =react_component 'TradingHistory', props: {artworkLogs: @artwork_logs}, prerender: false
+
+  .bid-wrapper
+    =react_component 'ArtworkBid', props: {artwork: @artwork}, prerender: false

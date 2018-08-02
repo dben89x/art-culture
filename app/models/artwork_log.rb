@@ -15,7 +15,14 @@
 #
 
 class ArtworkLog < ApplicationRecord
+  LOG_TYPES = ['Sale']
+
   belongs_to :artwork, inverse_of: :artwork_logs
   belongs_to :bid, inverse_of: :artwork_logs
   belongs_to :buyer, inverse_of: :artwork_logs
+
+  # def sale?
+  #   type == LOG_TYPES[LOG_TYPES.find_index('Sale')]
+  # end
+
 end

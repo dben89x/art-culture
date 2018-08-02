@@ -21,17 +21,18 @@ export default class ShoppingCart extends React.Component {
   }
 
   render() {
+    var {items} = this.props
     return (
       <div id="shopping-cart" className={this.props.open ? 'open' : 'closed'}>
         <div className="header">
-          <h4>Your Cart</h4>
+          <h4>Your Cart ({items.length})</h4>
           <a onClick={this.props.onClose} className='close-btn'>&times;</a>
         </div>
         <div className="shopping-cart-container">
           <div className="cart-items">
-            <CartItem></CartItem>
-            <CartItem></CartItem>
-            <CartItem></CartItem>
+            {items.map(item => (
+              <CartItem key={item.id}></CartItem>
+            ))}
           </div>
         </div>
       </div>

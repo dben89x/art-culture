@@ -4,6 +4,8 @@ def destroy_all_humans
     Artwork.delete_all
     ArtworkImage.delete_all
     ArtworkCategory.delete_all
+    Tag.delete_all
+    ArtworkTag.delete_all
   end
 end
 
@@ -45,6 +47,11 @@ ArtworkCategory.create(
   title: 'realism',
   image: 'https://s3-us-west-1.amazonaws.com/art-culture/images/style9.jpg'
 )
+
+30.times do
+  Tag.create(title: Faker::Hipster.word)
+end
+
 15.times do
 
   name = Faker::GameOfThrones.character
@@ -94,6 +101,14 @@ ArtworkCategory.create(
       url: 'https://s3-us-west-1.amazonaws.com/art-culture/images/a3.jpg',
       artwork: artwork,
     )
+    
+    rand(3..5).times do
+      ArtworkTag.create(
+        tag: Tag.all.sample,
+        artwork: artwork
+      )
+    end
+
     buyers = Buyer.all
     3.times do
       buyer = Buyer.all.sample
@@ -109,6 +124,7 @@ ArtworkCategory.create(
       )
       bid.update_attribute('created_at', time)
       log = ArtworkLog.create(
+        type: 'Sale',
         artwork: artwork,
         buyer: buyer,
         bid: bid,

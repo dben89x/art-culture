@@ -23,6 +23,8 @@ class Artwork < ApplicationRecord
   has_many :artwork_images, inverse_of: :artwork
   has_many :artwork_logs, inverse_of: :artwork
   has_many :user_artwork_favorites, inverse_of: :artwork
+  has_many :artwork_tags, inverse_of: :artwork
+  has_many :tags, through: :artwork_tags
   has_many :bids
 
   extend FriendlyId
@@ -62,7 +64,10 @@ class Artwork < ApplicationRecord
         images: images,
         description: description,
         artist_name: artist.full_name,
+        category: artwork_category.title,
+        tags: tags.pluck(:title).join(', '),
         artist: artist,
+        price: price,
         slug: slug,
         created_at: created_at.strftime('%B %d, %Y'),
       }

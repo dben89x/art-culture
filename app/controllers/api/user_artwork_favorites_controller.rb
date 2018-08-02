@@ -1,4 +1,10 @@
 class API::UserArtworkFavoritesController < ApiController
+  def index
+    @user_artwork_favorites = UserArtworkFavorite.where(user_id: params[:user_id])
+    @artworks = Artwork.where(id: @user_artwork_favorites.pluck(:artwork_id))
+    json_response(@artworks.as_json(index: true))
+  end
+
   def create
     @favorite = UserArtworkFavorite.new(favorite_params)
     if @favorite.save

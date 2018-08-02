@@ -6,8 +6,28 @@ export default class RecentListings extends React.Component {
     super(props)
     this.state = {
       favorites: this.props.favorites,
+      hoveredId: null,
     }
     this.userId = this.props.currentUser ? this.props.currentUser.id : null
+  }
+
+  componentDidMount() {
+    this.$listings = $('.listings-container .listing')
+    $(this.$listings).mouseenter(this.toggleInfoIn).mouseleave(this.toggleInfoOut)
+  }
+
+  toggleInfoIn=(e)=>{
+    var target = e.target
+    var infoId = $(target).data('id')
+    this.setState({hoveredId: infoId})
+  }
+
+  toggleInfoOut=(e)=>{
+    this.setState({hoveredId: null})
+  }
+
+  shareBtnClicked=e=>{
+    e.preventDefault()
   }
 
   toggleFavoriteChange=(e, listingId, isFavorite)=> {
@@ -18,7 +38,6 @@ export default class RecentListings extends React.Component {
         user_id: this.userId,
         artwork_id: listingId
       }
-      console.log(isFavorite)
       isFavorite ? this.favoriteRemoved(currentFavorites, favorite, listingId) : this.favoriteAdded(currentFavorites, favorite, listingId)
     } else {
       this.props.onLoginRequired()
@@ -57,9 +76,23 @@ export default class RecentListings extends React.Component {
       var isFavorite = favorites.includes(listing.id)
       return (
         <div className="listing" key={listing.id}>
-          <img src={listing.images[0]} alt={listing.title}/>
-          <div className="details">
-            <i className={`${isFavorite ? 'fas' : 'fal'} fa-star star`} onClick={(e)=> this.toggleFavoriteChange(e, listing.id, isFavorite)}></i>
+          <div className={`img-wrapper ${isFavorite ? 'favorite' : ''}`} data-id={listing.id}>
+            <img src={listing.images[0]} alt={listing.title}/>
+            <div className={`info-wrapper ${this.state.hoveredId === listing.id ? 'hovered' : ''}`} id={`info-${listing.id}`}>
+              <div className="info">
+                <i className={`${isFavorite ? 'fas' : 'fal'} fa-star star`} onClick={(e)=> this.toggleFavoriteChange(e, listing.id, isFavorite)}></i>
+                <h2>{listing.title}</h2>
+                <div className="category">
+                  {listing.category}
+                </div>
+                <div className="tags">
+                  {listing.tags}
+                </div>
+                <div className="btn-container">
+                  <a href="#" className="share" onClick={this.shareBtnClicked}>SHARE</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )
