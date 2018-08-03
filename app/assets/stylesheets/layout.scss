@@ -207,6 +207,11 @@ h2 {
     padding: 2em;
     transition: 0.2s;
   }
+  @media #{$mobile_large} {
+    .info {
+      padding: 1em !important;
+    }
+  }
 }
 
 .results-pages {

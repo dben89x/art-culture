@@ -225,6 +225,7 @@
       .img-wrapper {
         position: relative;
         pointer-events: all;
+        display: block;
         box-shadow: 0 0 10pt 0 grey;
 
         &.favorite {
@@ -631,10 +632,15 @@
   @media #{$tablet_vertical} {
     padding: 4em;
   }
-  @media #{$tablet_vertical} {
+  @media #{$mobile_large} {
     padding: 0;
-    .bid-container p {
-      width: 100%;
+    .bid-container {
+      .rodal-dialog form {
+        padding: 2em;
+      }
+      p {
+        width: 100%;
+      }
     }
   }
 }

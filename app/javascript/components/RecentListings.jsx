@@ -75,8 +75,8 @@ export default class RecentListings extends React.Component {
     const listings = recentListings.map(listing => {
       var isFavorite = favorites.includes(listing.id)
       return (
-        <div className="listing" key={listing.id}>
-          <div className={`img-wrapper ${isFavorite ? 'favorite' : ''}`} data-id={listing.id}>
+        <div className="listing hoverable-listing" key={listing.id}>
+          <div className={`img-wrapper hoverable-target ${isFavorite ? 'favorite' : ''}`} data-id={listing.id}>
             <img src={listing.images[0]} alt={listing.title}/>
             <div className={`info-wrapper ${this.state.hoveredId === listing.id ? 'hovered' : ''}`} id={`info-${listing.id}`}>
               <div className="info">
