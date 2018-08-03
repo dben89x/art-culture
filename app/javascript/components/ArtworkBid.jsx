@@ -47,7 +47,7 @@ export default class ArtworkBid extends React.Component {
             <div className="input-wrapper price">
               <label htmlFor="price">Your Price:</label>
               <div>
-                $<input type="number" pattern="[0-9]*" inputmode="numeric" name='price' value={this.state.artworkPrice} required onChange={this.changeBid}/>
+                $<input type="number" pattern="[0-9]*" inputMode="numeric" name='price' value={this.state.artworkPrice} required onChange={this.changeBid}/>
               </div>
             </div>
             <div className="input-wrapper notes">

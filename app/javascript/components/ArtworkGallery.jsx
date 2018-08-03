@@ -26,7 +26,7 @@ export default class ArtworkGallery extends React.Component {
               <div className="main-img">
                 <img src={this.state.selectedImage} alt={artwork.title}/>
               </div>
-              <div className="info-container">
+              <div className="info-container desktop">
                 <div className="description">
                   <h3>The Story Behind the Piece</h3>
                   <p>{artwork.description}</p>
@@ -46,6 +46,18 @@ export default class ArtworkGallery extends React.Component {
                 <img src={image} alt={artwork.title} onClick={() => this.setSelectedImage(image)}/>
               </div>
             ))}
+          </div>
+        </div>
+        <div className="info-container mobile">
+          <div className="description">
+            <h3>The Story Behind the Piece</h3>
+            <p>{artwork.description}</p>
+          </div>
+          <div className="details">
+            <h3>Piece Details</h3>
+            <div className="title">{`PIECE NAME: ${artwork.title}`}</div>
+            <div className="author">{`AUTHOR: ${artwork.artist_name}`}</div>
+            <div className="published">{`DATE PUBLISHED: ${artwork.created_at}`}</div>
           </div>
         </div>
       </div>

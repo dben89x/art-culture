@@ -319,6 +319,11 @@
     h1 {
       text-align: center;
       font-size: 3em;
+      font-family: 'BauerBodni BT';
+      text-transform: none;
+    }
+    .info-container.mobile {
+      display: none;
     }
     .gallery {
       display: flex;
@@ -377,6 +382,75 @@
       }
     }
   }
+  @media #{$tablet_landscape}, #{$tablet_vertical} {
+    .artwork-gallery {
+      .info-container.mobile {
+        padding: 0 4em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .gallery {
+        .main-container {
+          .main-img {
+            width: 100%;
+          }
+          .info-container {
+            &.desktop {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media #{$tablet_vertical} {
+    .artwork-gallery {
+      .gallery {
+        flex-direction: column;
+
+        .gallery-main, .gallery-img-list {
+          width: 100%;
+          margin: 1em 0;
+          height: auto;
+          flex-direction: row;
+
+          .gallery-img {
+            width: 30%;
+            height: auto;
+          }
+        }
+      }
+    }
+    .artist-wrapper {
+      padding: 0 4em;
+    }
+  }
+  @media #{$mobile_large} {
+    .artwork-gallery {
+      .gallery {
+        padding: 0;
+
+        .main-container .main-img {
+          height: auto;
+        }
+      }
+      .info-container.mobile {
+        padding: 0;
+      }
+    }
+    .artist-wrapper {
+      padding: 2em;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .artist-name {
+        flex-direction: column;
+      }
+    }
+  }
 }
 
 .trading-history-wrapper {
@@ -422,6 +496,7 @@
             border-radius: 2em;
             font-weight: 800;
             color: grey;
+            white-space: nowrap;
 
             &.selected {
               border: 2px solid;
@@ -444,6 +519,19 @@
         }
       }
     }
+  }
+  @media #{$tablet_vertical} {
+    padding: 4em;
+    .trading-history .trading-history-container .logs {
+      padding: 2em;
+
+      .log-dates {
+        justify-content: space-between;
+      }
+    }
+  }
+  @media #{$mobile_large} {
+    padding: 0;
   }
 }
 .bid-wrapper {
@@ -538,6 +626,15 @@
           }
         }
       }
+    }
+  }
+  @media #{$tablet_vertical} {
+    padding: 4em;
+  }
+  @media #{$tablet_vertical} {
+    padding: 0;
+    .bid-container p {
+      width: 100%;
     }
   }
 }
