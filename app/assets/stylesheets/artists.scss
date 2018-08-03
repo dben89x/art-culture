@@ -207,6 +207,26 @@
   @media #{$tablet_vertical} {
     margin: 0;
   }
+  @media #{$tablet_vertical} {
+    .artist-img {
+      width: 15em;
+    }
+    .artist-details {
+      width: 100%;
+      margin: 0;
+      
+      .artist-info {
+        flex-direction: column;
+
+        .fa-globe {
+          display: none;
+        }
+        & > div {
+          padding: 1em 0;
+        }
+      }
+    }
+  }
 }
 #art-show {
 
@@ -236,7 +256,10 @@
     }
   }
 
-  .current-listed-art {
+  .current-listed-art.mobile {
+    display: none;
+  }
+  .current-listed-art.desktop {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -276,12 +299,16 @@
     }
   }
   @media #{$mobile_large} {
+    .artist-video-banner {
+      display: none;
+    }
     h2 {
       font-size: 2em;
     }
     .artist-wrapper {
       flex-direction: column;
       align-items: center;
+      padding: 2em 0;
 
       .artist-img {
         width: 12em;
@@ -298,8 +325,13 @@
       }
     }
     .current-listed-art {
-      .current-listings .listing {
-        width: 100%;
+      &.desktop {
+        display: none;
+      }
+      &.mobile {
+        display: block;
+        .current-listings {
+        }
       }
     }
 
@@ -307,70 +339,73 @@
 }
 #artist-show {
 
-  .art-in-circulation {
+  .artworks-carousel {
     h2 {
       text-align: center;
     }
-    .art-circulation {
-      height: calc(85vh - #{$navHeight});
+  }
+  .artworks-carousel {
+    height: 100%;
+    align-items: center;
+
+    .slick-track {
+      padding: 1em 0;
+    }
+    .slick-slide {
+      text-align: center;
+    }
+    .artwork-container {
+      width: 90% !important;
+      height: 100%;
+      display: inline-flex !important;
       align-items: center;
+      justify-content: flex-start;
+      height: 90%;
+      box-shadow: 0 0 20pt 0 grey;
+      margin: 2em;
 
-      .slick-slide {
-        text-align: center;
-      }
-      .artwork-container {
-        width: 90% !important;
+      .artwork-image {
         height: 100%;
-        display: inline-flex !important;
-        align-items: center;
-        justify-content: flex-start;
-        height: 90%;
-        box-shadow: 0 0 20pt 0 grey;
-        margin: 2em;
+        width: 60%;
+        background-size: cover;
+        background-position: center;
+      }
+      .details-container {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 2em;
+        justify-content: space-evenly;
+        width: 40%;
 
-        .artwork-image {
-          height: 100%;
-          width: 60%;
-          background-size: cover;
-          background-position: center;
+        h2.title {
+          justify-content: flex-start;
+          margin: 0;
+          padding: 1em 0;
+          border-bottom: 1pt solid grey;
+          font-family: 'BauerBodni BT';
+          text-transform: none;
         }
-        .details-container {
-          text-align: left;
+        .description {
+          font-family: 'BauerBodni BT';
+          color: grey;
+        }
+        .btn-container {
           display: flex;
-          flex-direction: column;
-          height: 100%;
-          padding: 2em;
-          justify-content: space-evenly;
-          width: 40%;
 
-          h2.title {
-            justify-content: flex-start;
+          a.view-piece {
+            background-color: $actionRed;
+            letter-spacing: 0;
+            border-radius: 3em;
             margin: 0;
-            padding: 1em 0;
-            border-bottom: 1pt solid grey;
-            font-family: 'BauerBodni BT';
-            text-transform: none;
-          }
-          .description {
-            font-family: 'BauerBodni BT';
-            color: grey;
-          }
-          .btn-container {
-            display: flex;
-
-            a.view-piece {
-              background-color: $actionRed;
-              letter-spacing: 0;
-              border-radius: 3em;
-              margin: 0;
-            }
           }
         }
       }
     }
   }
   @media #{$mobile_large} {
-    .art-in-circulation {
+    .artworks-carousel {
       .fal {
         color: $grey;
       }
@@ -458,6 +493,7 @@
     }
   }
   @media #{$mobile_landscape}, #{$tablet_vertical} {
+
     padding: 4em 2em;
 
     .related-artists-wrapper .related-artist-wrapper {
@@ -466,8 +502,8 @@
   }
   @media #{$mobile_large} {
     .related-artists-wrapper {
-      padding: 4em 0;
-      
+      padding: 0;
+
       .related-artist-wrapper {
         width: 100%;
 
@@ -623,6 +659,10 @@
       .artist-cards-container .artist-card {
         width: 100%;
         padding: 1em 0;
+
+        .categories {
+          color: $black;
+        }
       }
       .filter-container {
         #filter-by-search {

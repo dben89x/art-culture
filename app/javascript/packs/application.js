@@ -14,7 +14,7 @@ import CartItem from '../components/CartItem';
 import ShoppingCart from '../components/ShoppingCart';
 import ContactForm from '../components/ContactForm';
 import SubscribeForm from '../components/SubscribeForm';
-import ArtworkCirculationCarousel from '../components/ArtworkCirculationCarousel';
+import ArtworksCarousel from '../components/ArtworksCarousel';
 import TradingHistory from '../components/TradingHistory';
 import ArtworkGallery from '../components/ArtworkGallery';
 import RecentListings from '../components/RecentListings';
@@ -44,7 +44,7 @@ ReactOnRails.register({
   ShoppingCart,
   ContactForm,
   SubscribeForm,
-  ArtworkCirculationCarousel,
+  ArtworksCarousel,
   TradingHistory,
   ArtworkGallery,
   RecentListings,

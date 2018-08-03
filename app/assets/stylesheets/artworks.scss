@@ -4,157 +4,6 @@
   height: calc(100vh - #{$navHeight});
   font-family: 'Lato';
 
-  #artist-carousel-wrapper {
-    display: none;
-  }
-  .art-carousel {
-    height: calc(90vh - #{$navHeight});
-
-    .artwork-container {
-      display: flex !important;
-      position: relative;
-      background-size: cover;
-      background-position: center center;
-      flex-direction: column;
-      height: 100%;
-
-      .artwork-image {
-        background-size: cover;
-        background-position: center;
-        width: 100%;
-        height: 100%;
-
-        .overlay {
-          background: rgba(0,0,0,0.1);
-        }
-      }
-      .artwork-details {
-        background: rgba(255, 255, 255, 0.9);
-        opacity: 0;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        transition: 0.4s;
-        z-index: 2;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        &.no-events {
-          pointer-events: none;
-        }
-
-        .details-container {
-          padding: 5vh;
-          color: black;
-          z-index: 4;
-          display: inline-flex;
-          flex-direction: column;
-          height: 100%;
-          width: 60%;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-
-          p {
-            color: $grey;
-          }
-          h2.title {
-            font-family: 'BauerBodni BT';
-            text-transform: none;
-            font-size: 4em;
-            margin: 0;
-          }
-          h3 {
-            font-size: 1.5em;
-          }
-          .description {
-            margin: 1em 0;
-            p {
-              line-height: 1;
-              margin: 0;
-              font-weight: 300;
-            }
-          }
-          .btn-container {
-            display: flex;
-
-            .cta-btn {
-            }
-          }
-          .details {
-            p {
-              font-size: 0.8em;
-            }
-
-          }
-        }
-        @media #{$tablet_landscape}, #{$mobile_landscape} {
-          .details-container {
-            width: 90%;
-            h2.title {
-              font-size: 3em;
-            }
-          }
-        }
-        @media #{$tablet_vertical} {
-          .details-container {
-            width: 100%;
-            padding: 1em 2em;
-
-            h2.title {
-              font-size: 2.5em;
-            }
-            h3 {
-              font-size: 1em;
-            }
-            .description {
-              font-size: 1.2em;
-              p {
-                max-height: 6em;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  .details-btn {
-    position: absolute;
-    bottom: 2em;
-    right: 2em;
-    background: $bannerYellow;
-    border-radius: 3em;
-    width: 3em;
-    height: 3em;
-    z-index: 9;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.4s;
-
-    .times {
-      transition: 0.4s;
-      transform: rotate(45deg);
-      color: white;
-      font-size: 1.5em;
-      line-height: 1;
-    }
-    &:hover {
-      background: lighten($bannerYellow, 5%);
-    }
-    &.selected {
-      background: $black;
-
-      .times {
-        transform: rotate(180deg);
-      }
-      &:hover {
-        background: lighten($black, 5%);
-      }
-    }
-  }
   .btn-container {
     height: 10vh;
     display: flex;
@@ -182,7 +31,173 @@
           color: white;
           border: 2pt solid $actionBlue;
           border-radius: 3pt;
-          box-shadow: 0 0 0pt 2.5pt $actionBlue;
+          box-shadow: 0 0 0 2.5pt $actionBlue;
+        }
+      }
+    }
+  }
+}
+
+#artist-carousel-wrapper {
+  display: none;
+}
+
+.art-carousel {
+  height: calc(90vh - #{$navHeight}) !important;
+
+  .artwork-container {
+    display: flex !important;
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    flex-direction: column;
+    height: 100%;
+
+    .artwork-image {
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      height: 100%;
+
+      .overlay {
+        background: rgba(0,0,0,0.1);
+      }
+    }
+
+    .details-btn {
+      position: absolute;
+      bottom: 2em;
+      right: 2em;
+      background: $bannerYellow;
+      border-radius: 3em;
+      width: 3em;
+      height: 3em;
+      z-index: 9;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.4s;
+
+      .times {
+        transition: 0.4s;
+        transform: rotate(45deg);
+        color: white;
+        font-size: 1.5em;
+        line-height: 1;
+      }
+
+      &:hover {
+        background: lighten($bannerYellow, 5%);
+      }
+
+      &.selected {
+        background: $black;
+
+        .times {
+          transform: rotate(180deg);
+        }
+
+        &:hover {
+          background: lighten($black, 5%);
+        }
+      }
+    }
+
+    .artwork-details {
+      background: rgba(255, 255, 255, 0.9);
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transition: 0.4s;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &.no-events {
+        pointer-events: none;
+      }
+
+      .details-container {
+        padding: 5vh;
+        color: black;
+        z-index: 4;
+        display: inline-flex;
+        flex-direction: column;
+        height: 100%;
+        width: 60%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        p {
+          color: $grey;
+        }
+
+        h2.title {
+          font-family: 'BauerBodni BT';
+          text-transform: none;
+          font-size: 4em;
+          margin: 0;
+        }
+
+        h3 {
+          font-size: 1.5em;
+        }
+
+        .description {
+          margin: 1em 0;
+
+          p {
+            line-height: 1;
+            margin: 0;
+            font-weight: 300;
+          }
+        }
+
+        .btn-container {
+          display: flex;
+
+          .cta-btn {}
+        }
+
+        .details {
+          p {
+            font-size: 0.8em;
+          }
+        }
+      }
+      @media #{$tablet_landscape}, #{$mobile_landscape} {
+        .details-container {
+          width: 90%;
+
+          h2.title {
+            font-size: 3em;
+          }
+        }
+      }
+      @media #{$tablet_vertical} {
+        .details-container {
+          width: 100%;
+          padding: 1em 2em;
+
+          h2.title {
+            font-size: 2.5em;
+          }
+
+          h3 {
+            font-size: 1em;
+          }
+
+          .description {
+            font-size: 1.2em;
+
+            p {
+              max-height: 6em;
+            }
+          }
         }
       }
     }
@@ -233,10 +248,12 @@
           display: grid;
         }
       }
+
       img {
         width: 100%;
         pointer-events: none;
       }
+
       .info-wrapper {
         position: absolute;
         top: 0;
@@ -253,6 +270,7 @@
           opacity: 1;
         }
       }
+
       .info {
         height: 100%;
         width: 100%;
@@ -271,9 +289,11 @@
           color: $favoriteGold;
           align-self: flex-end;
         }
+
         .category {
           text-transform: uppercase;
         }
+
         .btn-container {
           display: flex;
           justify-content: center;
@@ -323,9 +343,11 @@
       font-family: 'BauerBodni BT';
       text-transform: none;
     }
+
     .info-container.mobile {
       display: none;
     }
+
     .gallery {
       display: flex;
       flex-direction: row-reverse;
@@ -337,9 +359,10 @@
         width: 85%;
         margin: 0 1em;
       }
+
       .main-container {
         display: inline-flex;
-        box-shadow: 0 2pt 12pt 0pt grey;
+        box-shadow: 0 2pt 12pt 0 grey;
         width: 100%;
 
         .main-img {
@@ -353,6 +376,7 @@
             object-position: center;
           }
         }
+
         .info-container {
           width: 35%;
           display: flex;
@@ -360,6 +384,7 @@
           padding: 1em 2em;
         }
       }
+
       .gallery-img-list {
         width: 15%;
         display: inline-flex;
@@ -376,7 +401,7 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
-            box-shadow: 0 0 12pt 0pt grey;
+            box-shadow: 0 0 12pt 0 grey;
             cursor: pointer;
           }
         }
@@ -393,11 +418,13 @@
         align-items: center;
         text-align: center;
       }
+
       .gallery {
         .main-container {
           .main-img {
             width: 100%;
           }
+
           .info-container {
             &.desktop {
               display: none;
@@ -412,7 +439,8 @@
       .gallery {
         flex-direction: column;
 
-        .gallery-main, .gallery-img-list {
+        .gallery-img-list,
+        .gallery-main {
           width: 100%;
           margin: 1em 0;
           height: auto;
@@ -425,6 +453,7 @@
         }
       }
     }
+
     .artist-wrapper {
       padding: 0 4em;
     }
@@ -438,15 +467,18 @@
           height: auto;
         }
       }
+
       .info-container.mobile {
         padding: 0;
       }
     }
+
     .artist-wrapper {
       padding: 2em;
       justify-content: center;
       align-items: center;
       flex-direction: column;
+
       .artist-name {
         flex-direction: column;
       }
@@ -471,6 +503,7 @@
       .head {
         background: darken($darkBodyColor, 5%);
         padding: 1em;
+
         h2 {
           margin: 0;
           font-weight: 400;
@@ -479,6 +512,7 @@
           font-size: 2em;
         }
       }
+
       .logs {
         width: 100%;
         background: darken($darkBodyColor, 2%);
@@ -504,16 +538,20 @@
             }
           }
         }
+
         p {
           color: grey;
         }
+
         p.log-description {
           font-family: "BauerBodni BT";
         }
+
         .log-details {
           h3 {
             font-size: 1.5em;
           }
+
           p .text {
             font-weight: 800;
           }
@@ -523,11 +561,19 @@
   }
   @media #{$tablet_vertical} {
     padding: 4em;
+
     .trading-history .trading-history-container .logs {
       padding: 2em;
 
       .log-dates {
-        justify-content: space-between;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+        border-bottom: 1pt solid $grey;
+      }
+      .log-info-wrapper {
+        display: flex;
+        flex-direction: column-reverse;
+        text-align: center;
       }
     }
   }
@@ -535,6 +581,7 @@
     padding: 0;
   }
 }
+
 .bid-wrapper {
   padding: 4em 10em;
 
@@ -552,13 +599,16 @@
       font-family: 'Lato';
       font-size: 2em;
     }
+
     h3 {
       color: grey;
     }
+
     p {
       color: grey;
       width: 50%;
     }
+
     .btn-container {
       display: flex;
       justify-content: center;
@@ -581,6 +631,7 @@
         }
       }
     }
+
     .rodal-dialog {
       background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url("https://s3-us-west-1.amazonaws.com/art-culture/images/login-bg.jpg");
 
@@ -599,10 +650,13 @@
           align-items: center;
           width: 100%;
 
-          & > div {display: inline-flex;}
+          & > div {
+            display: inline-flex;
+          }
         }
 
-        input[type=number], textarea {
+        input[type=number],
+        textarea {
           padding: 0.5em 1em;
           margin: 0 0.5em;
           width: 100%;
@@ -634,10 +688,12 @@
   }
   @media #{$mobile_large} {
     padding: 0;
+
     .bid-container {
       .rodal-dialog form {
         padding: 2em;
       }
+
       p {
         width: 100%;
       }

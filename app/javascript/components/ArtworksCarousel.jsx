@@ -2,7 +2,7 @@ import React from 'react'
 import Slider from 'react-slick'
 import $ from 'jquery'
 
-export default class ArtworkCirculationCarousel extends React.Component {
+export default class ArtworksCarousel extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -43,12 +43,7 @@ export default class ArtworkCirculationCarousel extends React.Component {
     }
 
     return (
-      <div className="art-in-circulation">
-        <h2>
-          <div className="custom-hr"></div>
-          ART IN CIRCULATION
-          <div className="custom-hr"></div>
-        </h2>
+      <div className="artworks-carousel">
         <Slider {...settings} className='art-circulation' id='art-circulation-carousel'>
           {artworks}
         </Slider>

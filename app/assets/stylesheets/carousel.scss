@@ -117,7 +117,7 @@ $chevron_size: 50pt;
     }
   }
 }
-.art-in-circulation {
+.artworks-carousel {
   .slick-slider button.slick-arrow {
     &.slick-prev {
       left: 0;
@@ -130,6 +130,11 @@ $chevron_size: 50pt;
       .fal {
         border: 0;
       }
+    }
+  }
+  @media #{$mobile_large} {
+    .art-circulation {
+      height: 100% !important;
     }
   }
 }

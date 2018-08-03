@@ -18,7 +18,7 @@
             ="https://google.com"
       .artist-bio
         %p=@artist.bio
-  .current-listed-art
+  .current-listed-art.desktop
     %h2
       .custom-hr
       CURRENT LISTED ART
@@ -27,11 +27,24 @@
       -@current_listings.each do |listing|
         .listing
           =link_to artwork_path(listing) do
-            %img{src: listing.artwork_images[0].url}
+            %img{src: listing[:images][0]}
           =link_to artwork_path(listing) do
-            %h3=listing.title
-          %p=listing.description
-  =react_component 'ArtworkCirculationCarousel', props: {artworks: @artworks_in_circulation}, prerender: false
+            %h3=listing[:title]
+          %p=listing[:description]
+
+  .current-listed-art.mobile
+    %h2
+      .custom-hr
+      CURRENT LISTED ART
+      .custom-hr
+    =react_component 'ArtworksCarousel', props: {artworks: @current_listings}, prerender: false
+
+  .artworks-in-circulation
+    %h2
+      .custom-hr
+      ART IN CIRCULATION
+      .custom-hr
+    =react_component 'ArtworksCarousel', props: {artworks: @artworks_in_circulation}, prerender: false
 
   .related-artists
     %h2

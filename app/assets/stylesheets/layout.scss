@@ -207,6 +207,17 @@ h2 {
     padding: 2em;
     transition: 0.2s;
   }
+  @media #{$tablet_landscape}, #{$tablet_vertical} {
+
+    .info-wrapper {
+      visibility: visible;
+      opacity: 1;
+
+      .info {
+        background: rgba(255, 255, 255, 0.6);
+      }
+    }
+  }
   @media #{$mobile_large} {
     .info {
       padding: 1em !important;

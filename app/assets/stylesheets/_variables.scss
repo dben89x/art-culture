@@ -33,7 +33,7 @@ $desktop_large: "only screen and (max-width: #{$desktop_large_width})";
 $desktop_xl: "only screen and (max-width: #{$desktop_xl_width})";
 
 $mobile_landscape: "screen and (min-width: 319px) and (max-width: 812px) and (orientation: landscape)";
-$tablet_landscape: "screen and (min-width: 813px) and (max-width: 1366px) and (orientation: landscape)";
+$tablet_landscape: "screen and (max-width: 1366px) and (orientation: landscape)";
 
 
 $navHeight: 12vh;
