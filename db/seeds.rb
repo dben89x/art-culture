@@ -1,5 +1,5 @@
 def destroy_all_humans
-  if Rails.env.development?
+  if Rails.env.development? || Rails.env.test?
     Artist.delete_all
     Artwork.delete_all
     ArtworkImage.delete_all
