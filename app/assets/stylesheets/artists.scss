@@ -42,7 +42,7 @@
           border-radius: 3em;
         }
         h2.name {
-          font-family: 'Bauer Bodoni BT';
+          font-family: 'BauerBodni BT';
           text-transform: none;
           font-size: 2em;
           margin: 0.5em 0 1em;
@@ -260,7 +260,7 @@
         }
         p {
           color: grey;
-          font-family: 'Bauer Bodoni BT';
+          font-family: 'BauerBodni BT';
         }
       }
     }
@@ -350,7 +350,7 @@
             border-bottom: 1pt solid grey;
           }
           .description {
-            font-family: 'Bauer Bodoni BT';
+            font-family: 'BauerBodni BT';
             color: grey;
           }
           .btn-container {
@@ -408,7 +408,7 @@
             line-height: 1.2;
             max-height: 6em;
             overflow: hidden;
-            font-family: 'Bauer Bodoni BT';
+            font-family: 'BauerBodni BT';
             color: grey;
           }
         }
@@ -445,6 +445,7 @@
     padding: 0 4em;
     h2 {
       text-align: center;
+      font-family: "BauerBodni BT";
     }
     .filter-container {
       display: flex;
