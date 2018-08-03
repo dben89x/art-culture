@@ -1,0 +1,13 @@
+#blog-show
+  .banner{style: "background-image: url('#{@blog_post[:image]}')"}
+    .overlay
+    .title-container
+      %h1=@blog_post[:title]
+      %p=@blog_post[:created_at]
+
+  .post-content-container
+    =react_component 'BlogContent', props: {content: @blog_post[:content]}, prerender: false
+
+  .related-articles-container
+    %h2 Related Articles
+    =react_component 'RelatedArticles', props: {posts: @related_articles}, prerender: false

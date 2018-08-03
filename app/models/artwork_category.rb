@@ -9,4 +9,8 @@
 
 class ArtworkCategory < ApplicationRecord
   has_many :artworks, inverse_of: :artwork_category
+
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :finders]
+
 end

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :blog_tags
+  resources :blog_posts
+  resources :blog_post_tags
+  resources :blog_categories
   resources :artwork_tags
   resources :tags
   resources :artists
@@ -15,6 +19,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   get 'contact' => 'pages#contact'
+  get 'blog' => 'pages#blog'
 
   namespace :api do
     resources :user_artwork_favorites, path: :artwork_favorites

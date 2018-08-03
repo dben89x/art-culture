@@ -1,0 +1,215 @@
+@import 'variables';
+
+#blog {
+  padding: 2em;
+
+  h1 {
+    font-family: "BauerBodni BT";
+    text-align: center;
+  }
+  .content-container {
+    display: flex;
+    padding: 0 0 4em;
+  }
+  #blog-posts-container {
+    .posts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .blog-post-container {
+      width: 50%;
+      flex-direction: column;
+      padding: 2em;
+
+      .blog-post-card {
+        height: 75vh;
+        position: relative;
+        flex-direction: column;
+        background: $lightestGrey;
+      }
+      .img-wrapper {
+        height: 50%;
+        width: 100%;
+        position: relative;
+        display: flex;
+
+        img {
+          object-fit: cover;
+          width: 100%;
+        }
+      }
+      .details {
+        height: 50%;
+        padding: 2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        & > div {
+          display: inline-flex;
+        }
+        h3 {
+          line-height: 1.2;
+          height: 2.4em;
+          overflow: hidden;
+        }
+        p.overview {
+          line-height: 1.2;
+          height: 6em;
+          overflow: hidden;
+        }
+        .btn-container {
+          width: 100%;
+          justify-content: center;
+
+          a {
+            padding: 0;
+            color: $grey;
+            letter-spacing: 2pt;
+            font-size: 1rem;
+            text-decoration: underline;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+  @media #{$tablet_vertical} {
+    #blog-posts-container .blog-post-container {
+      width: 100%;
+
+      .blog-post-card {
+        height: 100%;
+      }
+    }
+  }
+  @media #{$mobile_large} {
+    #blog-posts-container .blog-post-container {
+      padding: 2em 0;
+    }
+  }
+}
+
+#blog-show {
+  .banner {
+    height: 50vh;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 0 15vw;
+
+    .overlay {
+      background: rgba(0,0,0,0.5);
+    }
+    .title-container {
+      z-index: 5;
+      color: white;
+      display: inline-flex;
+      flex-direction: column;
+      padding: 2em;
+
+      h1 {
+        z-index: 5;
+        font-size: 4em;
+        font-family: 'BauerBodni BT';
+      }
+      p {
+        z-index: 5;
+        font-family: 'Lato';
+      }
+    }
+  }
+  .post-content {
+    border-bottom: 1px solid;
+    padding-bottom: 2em;
+  }
+  .post-content-container, .related-articles-container {
+    padding: 4em 15vw;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      font-family: 'Lato';
+      font-size: 2rem;
+      text-transform: none;
+      font-weight: 500;
+    }
+  }
+  .related-articles-container {
+    padding-top: 0;
+
+    .articles-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .related-article {
+      display: inline-flex;
+      flex-direction: column;
+      padding: 2em 1em;
+      background: white;
+      box-shadow: 0 0 20pt 0 grey;
+      width: 30%;
+
+      h3.title {
+        height: 3.6em;
+        overflow: hidden;
+      }
+      hr {
+        width: 100%;
+      }
+      p {
+        height: 6em;
+        overflow: hidden;
+      }
+      .btn-container {
+        text-align: center;
+
+        a.read-more {
+          padding: 0.5em 2em;
+          font-size: 0.7em;
+          background: $actionBlue;
+        }
+      }
+    }
+  }
+  @media #{$tablet_landscape}, #{$tablet_vertical} {
+    .banner .title-container h1 {
+      font-size: 3em;
+    }
+  }
+  @media #{$mobile_landscape} {
+    .banner .title-container h1 {
+      font-size: 2rem;
+    }
+  }
+  @media #{$tablet_vertical} {
+    .related-articles-container .articles-wrapper {
+      flex-direction: column;
+
+      .related-article {
+        margin: 1em 0;
+        width: 100%;
+      }
+    }
+  }
+  @media #{$mobile_large} {
+    .banner {
+      padding: 0 2em;
+      .title-container {
+        padding: 0;
+        h1 {
+          font-size: 2em;
+        }
+      }
+    }
+    .post-content-container, .related-articles-container {
+      padding: 2em;
+    }
+  }
+}

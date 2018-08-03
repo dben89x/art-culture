@@ -8,8 +8,25 @@ export default class Artists extends React.Component {
       artists: this.props.artists,
       filterBySearch: false,
       selectedLetter: null,
+      hoveredId: null,
       searchInput: '',
     }
+  }
+
+  componentDidMount() {
+    this.$listings = $('.artist-card')
+    $(this.$listings).mouseenter(this.toggleInfoIn).mouseleave(this.toggleInfoOut)
+  }
+
+  toggleInfoIn=(e)=>{
+    var target = e.target
+    var infoId = $(target).data('id')
+    console.log(target)
+    this.setState({hoveredId: infoId},()=>{console.log(this.state.hoveredId)})
+  }
+
+  toggleInfoOut=(e)=>{
+    this.setState({hoveredId: null})
   }
 
   filterByLetter=(letter)=>{
@@ -41,12 +58,16 @@ export default class Artists extends React.Component {
       {letter}
     </div>))
 
-    const artistCards = this.state.artists.map(artist => (<div className="artist-card" key={artist.id}>
-        <a href={`/artists/${artist.id}`}>
-          <img src={artist.featured_artwork} alt=""/>
+    const artistCards = this.state.artists.map(artist => (<div className="artist-card hoverable-listing" key={artist.id}>
+        <a href={`/artists/${artist.id}`} className='hoverable-target' data-id={artist.id} onClick={()=> this.setState({hoveredId: null})}>
+          <img src={artist.featured_artwork} alt="" style={{pointerEvents: 'none'}}/>
+          <div className={`info-wrapper ${this.state.hoveredId === artist.id ? 'hovered' : ''}`} id={`info-${artist.id}`} >
+            <div className="info">
+              <div className="name">{artist.name}</div>
+              <div className="categories">{artist.categories.join(', ')}</div>
+            </div>
+          </div>
         </a>
-        <div className="name">{artist.name}</div>
-        <div className="categories">{artist.categories.join(', ')}</div>
       </div>))
 
     return (

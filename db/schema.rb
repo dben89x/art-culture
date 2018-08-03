@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180801180926) do
+ActiveRecord::Schema.define(version: 20180803060742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,6 +111,41 @@ ActiveRecord::Schema.define(version: 20180801180926) do
     t.text "notes"
     t.index ["artwork_id"], name: "index_bids_on_artwork_id"
     t.index ["buyer_id"], name: "index_bids_on_buyer_id"
+  end
+
+  create_table "blog_categories", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "blog_post_tags", force: :cascade do |t|
+    t.bigint "blog_post_id"
+    t.bigint "blog_tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_post_id"], name: "index_blog_post_tags_on_blog_post_id"
+    t.index ["blog_tag_id"], name: "index_blog_post_tags_on_blog_tag_id"
+  end
+
+  create_table "blog_posts", force: :cascade do |t|
+    t.bigint "blog_category_id"
+    t.string "image"
+    t.string "title"
+    t.string "description"
+    t.string "overview"
+    t.text "content"
+    t.string "slug"
+    t.boolean "published"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_category_id"], name: "index_blog_posts_on_blog_category_id"
+  end
+
+  create_table "blog_tags", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tags", force: :cascade do |t|

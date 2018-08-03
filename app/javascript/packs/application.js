@@ -1,4 +1,8 @@
 import ReactOnRails from 'react-on-rails';
+import RelatedArticles from '../components/RelatedArticles';
+import BlogContent from '../components/BlogContent';
+import BlogCard from '../components/BlogCard';
+import Blog from '../components/Blog';
 import ArtworkBid from '../components/ArtworkBid';
 import MakeOffer from '../components/MakeOffer';
 import VideoBanner from '../components/VideoBanner';
@@ -25,6 +29,10 @@ import Signin from '../components/auth/Signin';
 import ForgotPassword from '../components/auth/ForgotPassword';
 
 ReactOnRails.register({
+  RelatedArticles,
+  BlogContent,
+  BlogCard,
+  Blog,
   ArtworkBid,
   MakeOffer,
   VideoBanner,

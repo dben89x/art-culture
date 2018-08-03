@@ -4,12 +4,51 @@ def destroy_all_humans
     Artwork.delete_all
     ArtworkImage.delete_all
     ArtworkCategory.delete_all
+
+    BlogCategory.delete_all
+    BlogTag.delete_all
+    BlogPost.delete_all
+
     Tag.delete_all
     ArtworkTag.delete_all
   end
 end
 
+def create_blog_content
+  content = (1..rand(2..4)).to_a.collect do
+    header = "## #{Faker::Lorem.sentence}"
+    paragraphs = (1..rand(1..3)).to_a.collect { Faker::Lorem.paragraph(rand(10..20))}.join('<br/><br/>')
+
+    result =  %Q(\n#{header}\n#{paragraphs}\n\n)
+    result
+  end
+  content.join('<br/>')
+end
+
 destroy_all_humans
+
+4.times do
+  BlogCategory.create(title: Faker::Lorem.words(rand(2..3)).join(''))
+end
+
+12.times do
+  BlogTag.create(title: Faker::Lorem.words(rand(2..3)).join(' '))
+end
+
+images = ['https://s3-us-west-1.amazonaws.com/art-culture/images/blog1.jpg', 'https://s3-us-west-1.amazonaws.com/art-culture/images/blog2.jpg', 'https://s3-us-west-1.amazonaws.com/art-culture/images/blog3.jpg', 'https://s3-us-west-1.amazonaws.com/art-culture/images/blog4.jpg']
+20.times do
+  blog_post = BlogPost.create(
+    title: Faker::Lorem.words(rand(8..12)).join(' ').titleize,
+    image: images.sample,
+    description: Faker::Lorem.words(20).join(' ').capitalize,
+    overview: Faker::Lorem.words(60).join(' ').capitalize,
+    blog_category: BlogCategory.all.sample,
+    content: create_blog_content
+  )
+  rand(1..4).times do
+    blog_post.blog_post_tags.create(blog_tag: BlogTag.all.sample)
+  end
+end
 
 ArtworkCategory.create(
   title: 'abstract',
@@ -101,7 +140,7 @@ end
       url: 'https://s3-us-west-1.amazonaws.com/art-culture/images/a3.jpg',
       artwork: artwork,
     )
-    
+
     rand(3..5).times do
       ArtworkTag.create(
         tag: Tag.all.sample,
