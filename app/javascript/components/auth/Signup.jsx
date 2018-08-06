@@ -1,4 +1,7 @@
 import React from 'react'
+import Errors from '../Errors'
+import ArtistSignup from './ArtistSignup'
+import BuyerSignup from './BuyerSignup'
 
 const csrfToken = $('meta[name="csrf-token"]').attr('content')
 
@@ -7,12 +10,23 @@ export default class Signup extends React.Component {
     super(props)
     this.state = {
       errors: [],
+      selectedUserType: this.props.selectedUserType
     }
   }
 
   componentDidMount() {
     this.$form = $('form#new_user')
     const _this = this
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.state.selectedUserType !== nextProps.selectedUserType) {
+      this.setState({selectedUserType: nextProps.selectedUserType})
+    }
+  }
+
+  userTypeClicked=(e, userType)=>{
+    this.setState({selectedUserType: userType})
   }
 
   formSubmit = (e) => {
@@ -24,9 +38,7 @@ export default class Signup extends React.Component {
 
     $.ajax({
       type: 'POST',
-      headers: {
-        'X-CSRF-Token': csrfToken
-      },
+      headers: {'X-CSRF-Token': csrfToken},
       url: '/users',
       dataType: 'json',
       data: {
@@ -62,42 +74,26 @@ export default class Signup extends React.Component {
       <div id='signup-container' className={`signup-option ${currentUser ? 'hidden' : 'visible'}`}>
         <div className="content-wrapper">
           <h2>Join the community</h2>
-          <div className={`errors ${this.state.errors.length > 0 ? 'with-border' : ''}`}>
-            {this.state.errors.map(error => (<div className='error'>{error}</div>))}
-          </div>
+          <Errors errors={this.state.errors}/>
           <form className="new_user" id="new_user" action="/users" acceptCharset="UTF-8" method="post">
             <input name="utf8" type="hidden" value="✓"/>
-            <div className="field name-field">
-              <div className="name">
-                <label htmlFor="user_first_name">First name</label>
-                <input autoComplete="given-name" type="text" name="first_name" id="user_first_name"/>
+
+            <div className="user-types">
+              <div className={`user-type artist ${this.state.selectedUserType === 'artist' ? 'selected' : ''}`} onClick={()=> this.setState({selectedUserType: "artist"})}>
+                {/* <input type="radio" id="artist" name="type" defaultChecked={['artist', ''].indexOf(this.props.selectedUserType) !== -1} checked={this.state.artistSelected}/> */}
+                  <input type="radio" id="artist" name="type" checked={this.state.selectedUserType === "artist"}/>
+                  <label htmlFor='artist'>Artist</label>
               </div>
-              <div className="name">
-                <label htmlFor="user_last_name">Last name</label>
-                <input autoComplete="family-name" type="text" name="last_name" id="user_last_name"/>
+
+              <div className={`user-type buyer ${this.state.selectedUserType === 'buyer' ? 'selected' : ''}`} onClick={()=> this.setState({selectedUserType: "buyer"})}>
+                <input type="radio" id="buyer" name="type" checked={this.state.selectedUserType === "buyer"}/>
+                <label htmlFor="buyer">Buyer</label>
               </div>
             </div>
-            <div className="field">
-              <label htmlFor="user_email">Email</label>
-              <input autoComplete="email" type="email" name="email" id="user_email"/>
-            </div>
-            <div className="field">
-              <label htmlFor="user_phone_number">Phone number</label>
-              <input autoComplete="tel" type="tel" name="phone_number" id="user_phone_number"/>
-            </div>
-            <div className="field">
-              <label htmlFor="user_password">{"Password "}</label>
-              <em>
-                (6 characters minimum)
-              </em>
-              <input autoComplete="off" type="password" name="password" id="user_password"/>
-            </div>
-            <div className="field">
-              <label htmlFor="user_password_confirmation">Password confirmation</label>
-              <input autoComplete="off" type="password" name="password_confirmation" id="user_password_confirmation"/>
-            </div>
+
+            {this.state.selectedUserType === 'artist' ? <ArtistSignup/> : <BuyerSignup/>}
             <div className="actions">
-              <input type="submit" name="commit" value="Sign up" data-disable-with="Sign up" onClick={this.formSubmit}/>
+              <input className={this.state.selectedUserType} type="submit" name="commit" value="Sign up" data-disable-with="Sign up" onClick={this.formSubmit}/>
             </div>
           </form>
           <div className="signin-link">

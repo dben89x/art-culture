@@ -16,6 +16,7 @@
 class Bid < ApplicationRecord
   belongs_to :buyer, inverse_of: :bids
   belongs_to :artwork, inverse_of: :bids
-  
+  validates_presence_of :price
+
   has_many :artwork_logs, inverse_of: :bid
 end

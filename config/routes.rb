@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :artists
   resources :buyers
   resources :artwork_images
-  resources :bids
   resources :artwork_logs
   resources :artworks
   resources :artwork_categories
@@ -23,6 +22,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :user_artwork_favorites, path: :artwork_favorites
+    resources :bids
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

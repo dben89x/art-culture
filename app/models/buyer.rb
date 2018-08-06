@@ -24,6 +24,7 @@
 #  location               :string
 #  slug                   :string
 #  featured_artwork_id    :integer
+#  website                :string
 #
 
 class Buyer < User

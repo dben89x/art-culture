@@ -294,3 +294,21 @@ h2 {
     }
   }
 }
+.errors {
+  border-radius: 6pt;
+  background: lighten(red, 45%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 50%;
+  margin-top: 1em;
+
+  &.with-border {
+    border: 1pt solid red;
+  }
+  .error {
+    color: red;
+    margin: 0.5em 2em;
+  }
+}

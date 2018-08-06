@@ -18,7 +18,7 @@
   }
   &.signup {
     .rodal-dialog {
-      width: 600pt !important;
+      width: 700pt !important;
       height: 550pt !important;
     }
     @media #{$tablet_vertical} {
@@ -83,37 +83,21 @@
     align-items: center;
     z-index: 4;
 
-    .errors {
-      border-radius: 6pt;
-      background: lighten(red, 45%);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-width: 50%;
-      margin-top: 1em;
-
-      &.with-border {
-        border: 1pt solid red;
-      }
-      .error {
-        color: red;
-        margin: 0.5em 2em;
-      }
-    }
-
     form {
       width: 100%;
       margin-bottom: 2em;
+      font-size: 0.75em;
 
       .field {
         margin: 1em 0;
       }
-      input {
+      input, textarea {
         width: 100%;
-        height: 4em;
         margin: 0.5em 0;
         text-indent: 1em;
+      }
+      input {
+        height: 4em;
       }
       input[type=submit] {
         background: $actionBlue;
@@ -173,12 +157,26 @@
         justify-content: space-between;
         margin: 0.5em 0;
 
-        .name {
-          display: inline-flex;
-          width: 48%;
-          flex-direction: column;
+      }
+      .half, .name {
+        display: inline-flex;
+        width: 48%;
+        flex-direction: column;
 
-          input {
+      }
+      input[type=submit] {
+        &.artist {
+          background: $actionBlue;
+
+          &:hover {
+            background: darken($actionBlue, 5%);
+          }
+        }
+        &.buyer {
+          background: $actionRed;
+
+          &:hover {
+            background: darken($actionRed, 5%);
           }
         }
       }
@@ -198,15 +196,68 @@
 
   #signup-container {
     z-index: 4;
+
+    form {
+      .user-types {
+        display: inline-flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-evenly;
+
+        .user-type {
+          cursor: pointer;
+          display: inline-flex;
+          width: auto;
+          align-items: center;
+          justify-content: center;
+          border: 1.5pt solid;
+          border-radius: 6pt;
+          padding: 0 4em;
+          pointer-events: all;
+          transition: 0.3s;
+
+          &.artist {
+            border-color: $actionBlue;
+            color: $actionBlue;
+
+            &.selected {
+              color: white;
+              background: $actionBlue;
+            }
+          }
+          &.buyer {
+            border-color: $actionRed;
+            color: $actionRed;
+
+            &.selected {
+              color: white;
+              background: $actionRed;
+            }
+          }
+
+          input[type=radio], label {
+            pointer-events: none;
+          }
+          input[type=radio] {
+            width: auto;
+            margin: 0;
+            // margin: 0 1em 0 0;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+          }
+        }
+      }
+    }
   }
   @media #{$tablet_vertical} {
     .content-wrapper {
 
       form .field.name-field {
-        flex-direction: column;
+        // flex-direction: column;
 
         .name {
-          width: 100%;
+          // width: 100%;
           margin: 0.5em 0;
         }
       }

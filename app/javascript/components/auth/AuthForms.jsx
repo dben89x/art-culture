@@ -18,7 +18,7 @@ export default class AuthForms extends React.Component {
   componentDidMount() {
     this.formActions = {
       signin: ()=> this.setAuthOption('signin', <Signin onComplete={this.onSigninComplete} onSignupClick={this.onSignupClick} onPasswordClick={this.onPasswordClick}/>),
-      signup: ()=> this.setAuthOption('signup', <Signup onComplete={this.onSignupComplete} onSigninClick={this.onSigninClick}/>),
+      signup: ()=> this.setAuthOption('signup', <Signup onComplete={this.onSignupComplete} onSigninClick={this.onSigninClick} selectedUserType={this.props.selectedUserType}/>),
       password: ()=> this.setAuthOption('signin', <ForgotPassword onComplete={this.onPasswordComplete} onSignupClick={this.onSignupClick} onSigninClick={this.onSigninClick}/>)
     }
   }

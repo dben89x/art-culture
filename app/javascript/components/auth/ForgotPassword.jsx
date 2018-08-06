@@ -1,9 +1,12 @@
 import React from 'react'
+import Errors from '../Errors'
 
 export default class ForgotPassword extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      errors: []
+    }
   }
 
   render() {
@@ -12,6 +15,7 @@ export default class ForgotPassword extends React.Component {
       <div className="overlay"></div>
       <div className="content-wrapper">
         <h2>Forgot your password?</h2>
+        <Errors errors={this.state.errors}></Errors>
         <form className="new_user" id="new_user" action="/users/password" acceptCharset="UTF-8" method="post">
           <input name="utf8" type="hidden" value="✓"/>
           <input type="hidden" name="authenticity_token" value="dNb+9A9tjXnQC8q1eQrenIAkH4KHGjRfAuwzCt/EfRu1YLWvUwYoHi/jihmGEDydsjPXCNo/UeebA2LiiQt4VA=="/>

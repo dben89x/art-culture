@@ -1,4 +1,7 @@
 import ReactOnRails from 'react-on-rails';
+import BuyerSignup from '../components/auth/BuyerSignup';
+import ArtistSignup from '../components/auth/ArtistSignup';
+import Errors from '../components/Errors';
 import RelatedArticles from '../components/RelatedArticles';
 import BlogContent from '../components/BlogContent';
 import BlogCard from '../components/BlogCard';
@@ -29,6 +32,9 @@ import Signin from '../components/auth/Signin';
 import ForgotPassword from '../components/auth/ForgotPassword';
 
 ReactOnRails.register({
+  BuyerSignup,
+  ArtistSignup,
+  Errors,
   RelatedArticles,
   BlogContent,
   BlogCard,

@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: blog_posts
+#
+#  id               :bigint(8)        not null, primary key
+#  blog_category_id :bigint(8)
+#  image            :string
+#  title            :string
+#  description      :string
+#  overview         :string
+#  content          :text
+#  slug             :string
+#  published        :boolean
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 class BlogPost < ApplicationRecord
   has_many :blog_post_tags
   has_many :blog_tags, through: :blog_post_tags

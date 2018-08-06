@@ -11,6 +11,7 @@ export default class Home extends React.Component {
     super(props)
     this.state = {
       selectedAuth: null,
+      selectedUserType: null,
       artSelected: true,
       artistSelected: false,
       authModalOpen: false,
@@ -21,8 +22,9 @@ export default class Home extends React.Component {
     this.setState({selectedAuth: 'signin', authModalOpen: true})
   }
 
-  ctaClick=(e)=>{
+  ctaClick=(e, userType)=>{
     e.preventDefault()
+    this.setState({selectedUserType: userType, selectedAuth: 'signup', authModalOpen: true})
   }
 
   selectArt=(e)=>{
@@ -74,20 +76,22 @@ export default class Home extends React.Component {
           </div>
         </section>
         <RecentListings recentListings={this.props.recentListings} favorites={this.props.favorites} currentUser={this.props.currentUser} onLoginRequired={this.openLogin}/>
-        <section className="how-it-works flex center">
+
+        {this.props.currentUser ? null : (<section className="how-it-works flex center">
           <h2>How it works</h2>
           <div className="cta-btn-container">
-            <a href="" className='cta-btn' onClick={this.ctaClick}>
-              I'm a Buyer
-              <span></span>
-            </a>
-            <a href="" className='cta-btn' onClick={this.ctaClick}>
+            <a href="" className='cta-btn' onClick={(e)=> this.ctaClick(e, 'artist')}>
               I'm an Artist
               <span></span>
             </a>
+            <a href="" className='cta-btn' onClick={(e)=> this.ctaClick(e, 'buyer')}>
+              I'm a Buyer
+              <span></span>
+            </a>
           </div>
-        </section>
-        <AuthForms selectedAuth={this.state.selectedAuth} modalIsOpen={this.state.authModalOpen} onClose={()=> this.setState({authModalOpen: false})}/>
+        </section>)}
+
+        <AuthForms selectedAuth={this.state.selectedAuth} modalIsOpen={this.state.authModalOpen} onClose={()=> this.setState({authModalOpen: false})} selectedUserType={this.state.selectedUserType}/>
         <ContactForm>
           <h2>Have a Question?</h2>
           <p>Fill out the form below and a representative from Art & Culture Exchange will reach out to you within 24 hours.</p>

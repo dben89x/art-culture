@@ -1,5 +1,7 @@
 import React from 'react'
+import Errors from '../Errors'
 const csrfToken = $('meta[name="csrf-token"]').attr('content')
+
 export default class Signin extends React.Component {
   constructor(props) {
     super(props)
@@ -54,9 +56,7 @@ export default class Signin extends React.Component {
       <div className="overlay"></div>
       <div className="content-wrapper">
       <h2>Log-in</h2>
-      <div className={`errors ${this.state.errors.length > 0 ? 'with-border' : ''}`}>
-        {this.state.errors.map(error => (<div className='error' key={Math.floor((1 + Math.random()) * 0x10000)}>{error}</div>))}
-      </div>
+      <Errors errors={this.state.errors}/>
       <form className="new_user" id="new_user" action="/users/sign_in" acceptCharset="UTF-8" method="post">
         <input name="utf8" type="hidden" value="✓"/>
         <div className="field">
