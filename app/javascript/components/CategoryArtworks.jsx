@@ -70,6 +70,11 @@ export default class CategoryArtworks extends React.Component {
     })
   }
 
+  artworkClicked=e=>{
+    var {target} = e
+    $(target).closest('.info-wrapper').removeClass('hovered')
+  }
+
   render() {
     const {artworks} = this.props
     var {favorites} = this.state
@@ -94,7 +99,7 @@ export default class CategoryArtworks extends React.Component {
                   {listing.tags}
                 </div>
                 <div className="btn-container">
-                  <a href={`/artworks/${listing.id}`} className="share" >VIEW THIS PIECE</a>
+                  <a href={`/artworks/${listing.id}`} className="share" onClick={this.artworkClicked}>VIEW THIS PIECE</a>
                   {/* <a href="#" className="share" onClick={this.shareBtnClicked}>SHARE</a> */}
                 </div>
               </div>

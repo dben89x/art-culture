@@ -35,6 +35,10 @@ class User < ApplicationRecord
 
   has_many :user_artwork_favorites
 
+  def as_json(options={})
+    super(options.merge({:methods => :type}))
+  end
+
   def admin?
    false
   end

@@ -21,15 +21,16 @@ export default class ArtworkCategories extends React.Component {
   toggleInfoOut=(e)=>{
     this.setState({hoveredId: null})
   }
-  // toggleInfo=(e)=>{
-  //   var infoId = $(e.target).data('id')
-  //   $(`#info-${infoId}`).animate({height: 'toggle'})
-  // }
+
+  categoryClicked=e=>{
+    var {target} = e
+    $(target).closest('.info-wrapper').removeClass('hovered')
+  }
 
   render() {
     const {categories} = this.props
     const categoryCards = categories.map(cat => (<div className="artwork-category-card" key={cat.id} id={`cat-${cat.id}`}>
-      <a className="img-wrapper" data-id={cat.id} href={`/artwork_categories/${cat.id}`}>
+      <a className="img-wrapper" data-id={cat.id} href={`/artwork_categories/${cat.id}`} onClick={this.categoryClicked}>
         <div className="details-container">
           <img src={cat.image} alt={cat.title}/>
           <div className={`info-wrapper ${this.state.hoveredId === cat.id ? 'hovered' : ''}`} id={`info-${cat.id}`}>

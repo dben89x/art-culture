@@ -16,7 +16,7 @@
 
     = javascript_pack_tag 'application'
   %body
-    =react_component 'NavBar', props: {currentUser: current_user}, prerender: false
+    =react_component 'NavBar', props: {currentUser: current_user.as_json}, prerender: false
     #application-container
       = yield
     =render 'layouts/footer'

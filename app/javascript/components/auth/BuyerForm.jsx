@@ -13,12 +13,9 @@ export default class BuyerForm extends React.Component {
     var {target} = e
     var {name, value} = target
     this.setState({[name]: value})
-
   }
 
   render() {
-
-    const {user} = this.props || {}
 
     return (
       <div className="buyer-signup">

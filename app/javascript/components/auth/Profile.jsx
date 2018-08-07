@@ -60,6 +60,7 @@ export default class Profile extends React.Component {
   render() {
 
     const {user} = this.props
+    console.log(user)
 
     return (<div className="users" id="profile-modal">
       <div id='profile-container'>
@@ -69,7 +70,7 @@ export default class Profile extends React.Component {
           <form className="edit_user" id="edit_user" action="/users" acceptCharset="UTF-8" method="post">
             <input name="utf8" type="hidden" value="✓"/>
 
-            {this.props.user.type === 'artist' ? <ArtistForm user={user}/> : <BuyerForm user={user}/>}
+            {this.props.user.type === 'Artist' ? <ArtistForm user={user}/> : <BuyerForm user={user}/>}
             <div className="actions">
               {this.props.user.type === 'artist' ? (
                 <input className='artist' type="submit" name="commit" value="Save Changes" data-disable-with="Sign up" onClick={this.formSubmit}/>

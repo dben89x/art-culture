@@ -81,17 +81,17 @@ export default class Signup extends React.Component {
           <Errors errors={this.state.errors}/>
           <form className="new_user" id="new_user" action="/users" acceptCharset="UTF-8" method="post">
             <input name="utf8" type="hidden" value="✓"/>
-            <input name="user_type" type="hidden" value={this.capitalize(this.state.selectedUserType)}/>
+            <input name="type" type="hidden" value={this.capitalize(this.state.selectedUserType)}/>
 
             <div className="user-types">
               <div className={`user-type artist ${this.state.selectedUserType === 'artist' ? 'selected' : ''}`} onClick={()=> this.setState({selectedUserType: "artist"})}>
                 {/* <input type="radio" id="artist" name="type" defaultChecked={['artist', ''].indexOf(this.props.selectedUserType) !== -1} checked={this.state.artistSelected}/> */}
-                  <input type="radio" id="artist" name="type" checked={this.state.selectedUserType === "artist"}/>
+                  <input type="radio" id="artist" name="user_type" checked={this.state.selectedUserType === "artist"}/>
                   <label htmlFor='artist'>Artist</label>
               </div>
 
               <div className={`user-type buyer ${this.state.selectedUserType === 'buyer' ? 'selected' : ''}`} onClick={()=> this.setState({selectedUserType: "buyer"})}>
-                <input type="radio" id="buyer" name="type" checked={this.state.selectedUserType === "buyer"}/>
+                <input type="radio" id="buyer" name="user_type" checked={this.state.selectedUserType === "buyer"}/>
                 <label htmlFor="buyer">Buyer</label>
               </div>
             </div>
