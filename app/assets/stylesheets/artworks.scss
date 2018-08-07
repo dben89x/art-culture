@@ -207,7 +207,7 @@
   }
 }
 
-#recent-listings {
+#recent-listings, #category-artworks {
   display: inline-flex;
   width: 100%;
   flex-direction: column;
@@ -243,7 +243,7 @@
       .img-wrapper {
         position: relative;
         pointer-events: all;
-        display: block;
+        // display: block;
         box-shadow: 0 0 10pt 0 grey;
 
         &.favorite {
@@ -283,7 +283,6 @@
         justify-content: space-between;
         align-items: center;
         text-align: center;
-        padding: 2em;
         transition: 0.2s;
 
         .star {

@@ -1,13 +1,26 @@
 import React from 'react'
 
-export default class ArtistSignup extends React.Component {
+export default class ArtistForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    var {user} = this.props || {}
+    this.user = user
+    console.log(user)
+  }
+
+  componentDidMount() {
+    var {user} = this.props || {}
+    this.user = user
+    console.log('foobar stuff and things', user)
+  }
+
   render() {
+
 
     return (
       <div className="artist-signup">

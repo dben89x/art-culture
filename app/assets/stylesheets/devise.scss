@@ -10,7 +10,7 @@
   h2 {font-size: 2em;}
 
   .rodal-dialog {
-    background-image: url('https://s3-us-west-1.amazonaws.com/art-culture/images/login-bg.jpg');
+    background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url("https://s3-us-west-1.amazonaws.com/art-culture/images/login-bg.jpg");
     padding: 0;
     background-size: cover;
     border-radius: 5pt;
@@ -94,9 +94,10 @@
       input, textarea {
         width: 100%;
         margin: 0.5em 0;
-        text-indent: 1em;
+        border: 1pt solid $lightestGrey;
       }
       input {
+        text-indent: 1em;
         height: 4em;
       }
       input[type=submit] {
@@ -147,7 +148,7 @@
   }
 
 }
-#sign-up {
+#sign-up, #profile-modal {
   .content-wrapper {
     width: 40em;
 
@@ -194,7 +195,7 @@
     }
   }
 
-  #signup-container {
+  #signup-container, #profile-container {
     z-index: 4;
 
     form {
@@ -239,6 +240,7 @@
             pointer-events: none;
           }
           input[type=radio] {
+            border: 0;
             width: auto;
             margin: 0;
             // margin: 0 1em 0 0;

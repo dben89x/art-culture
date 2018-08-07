@@ -3,6 +3,7 @@ import $ from 'jquery'
 import Rodal from 'rodal'
 import AuthForms from './auth/AuthForms'
 import ShoppingCart from './ShoppingCart'
+import Profile from './auth/Profile'
 
 const csrfToken = $('meta[name="csrf-token"]').attr('content')
 
@@ -34,36 +35,34 @@ export default class NavBar extends React.Component {
 
   ////////// Nav menu //////////
 
-  menuClick = e => {
-    e.preventDefault()
-    this.toggleMenu()
-  }
-
-  toggleMenu = () => {
-    this.setState({
-      opened: !this.state.opened
-    }, () => {
-      this.state.opened ? this.openMenu() : this.closeMenu()
-    })
-  }
-
-  openMenu = () =>{
-    $('html').css('overflow', 'hidden')
-    $('#nav-overlay').fadeToggle(200)
-  }
-
-  closeMenu = () =>{
-    $('html').css('overflow', 'auto')
-    $('#nav-overlay').fadeToggle(200)
-  }
+  // menuClick = e => {
+  //   e.preventDefault()
+  //   this.toggleMenu()
+  // }
+  //
+  // toggleMenu = () => {
+  //   this.setState({
+  //     opened: !this.state.opened
+  //   }, () => {
+  //     this.state.opened ? this.openMenu() : this.closeMenu()
+  //   })
+  // }
+  //
+  // openMenu = () =>{
+  //   $('html').css('overflow', 'hidden')
+  //   $('#nav-overlay').fadeToggle(200)
+  // }
+  //
+  // closeMenu = () =>{
+  //   $('html').css('overflow', 'auto')
+  //   $('#nav-overlay').fadeToggle(200)
+  // }
 
   toggleSidebar=e=>{
     e.preventDefault()
     $('#nav-sidebar').animate({width: 'toggle'})
     this.setState({sidebarOpen: !this.state.sidebarOpen})
   }
-
-  ////////// Nav menu //////////
 
   ////////// Shopping cart //////////
 
@@ -82,7 +81,6 @@ export default class NavBar extends React.Component {
       this.signinClick(e)
     }
   }
-  ////////// Nav menu //////////
 
   ////////// Auth actions //////////
 
@@ -97,9 +95,6 @@ export default class NavBar extends React.Component {
 
   onSignoutComplete=(response)=>{
     window.location.reload()
-    // console.log('done')
-    // this.setState({currentUser: null})
-    // this.forceUpdate()
   }
 
   closeModal=(callback)=>{
@@ -118,7 +113,19 @@ export default class NavBar extends React.Component {
     })
   }
 
-  ////////// Auth actions //////////
+  ////////// Profile modal //////////
+
+  userOptionsClicked=(e)=>{
+    e.preventDefault()
+    this.setState({profileModalIsOpen: true})
+  }
+
+  closeProfileModal=()=>{
+    this.setState({profileModalIsOpen: false})
+  }
+
+
+  ////////// Render //////////
 
   render() {
     const {currentUser} = this.state
@@ -150,7 +157,7 @@ export default class NavBar extends React.Component {
             <a href="/">Home</a>
             <a href="/artists">Artists</a>
             <a href="/artwork_categories">Categories</a>
-            <a href="/blog">Blog</a>
+            <a href="/blog">News</a>
             <a href="/contact">Contact</a>
 
             <div className="sidebar-footer">
@@ -185,13 +192,25 @@ export default class NavBar extends React.Component {
               <a href="#" className='logo'><img src="https://s3-us-west-1.amazonaws.com/art-culture/Group+205.png" alt="Art Culture"/></a>
             </div>
             <div className="right">
+              { currentUser ? (
+                <a href='/#' onClick={this.userOptionsClicked}>
+                  Hello, {currentUser.first_name} <i className="fas fa-user-cog"></i>
+                </a>
+              ) : null }
+              <a href='/#' onClick={this.toggleShoppingCart}><i className="far fa-star mobile-cart"></i></a>
               <AuthOptions/>
-              <a href='#' onClick={this.toggleShoppingCart} className="fas fa-shopping-cart mobile-cart"></a>
             </div>
           </div>
         </div>
       </nav>
+
       <AuthForms selectedAuth={this.state.selectedAuth} modalIsOpen={this.state.authModalOpen} onClose={()=> this.setState({authModalOpen: false})}/>
+
+      {this.state.currentUser ? (
+        <Rodal visible={this.state.profileModalIsOpen} onClose={this.closeProfileModal} closeOnEsc={true} className={`users signup`} animation='door'>
+          <Profile user={this.props.currentUser}/>
+        </Rodal>
+      ) : null }
     </div>)
   }
 }

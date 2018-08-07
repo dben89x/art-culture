@@ -1,8 +1,9 @@
 import React from 'react'
 import $ from 'jquery'
 import ArtworkListing from './ArtworkListing'
+import PaginatedResults from './PaginatedResults'
 
-export default class RecentListings extends React.Component {
+export default class CategoryArtworks extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -70,10 +71,10 @@ export default class RecentListings extends React.Component {
   }
 
   render() {
-    const {recentListings} = this.props
+    const {artworks} = this.props
     var {favorites} = this.state
 
-    const listings = recentListings.map(listing => {
+    const listings = artworks.map(listing => {
       var isFavorite = favorites.includes(listing.id)
       return (
         <div className="listing hoverable-listing" key={listing.id}>
@@ -81,7 +82,10 @@ export default class RecentListings extends React.Component {
             <img src={listing.images[0]} alt={listing.title}/>
             <div className={`info-wrapper ${this.state.hoveredId === listing.id ? 'hovered' : ''}`} id={`info-${listing.id}`}>
               <div className="info">
-                <i className={`${isFavorite ? 'fas' : 'far'} fa-star star`} onClick={(e)=> this.toggleFavoriteChange(e, listing.id, isFavorite)}></i>
+                <div className="fa-btns">
+                  <i className='fas fa-share-alt' onClick={this.shareBtnClicked}></i>
+                  <i className={`${isFavorite ? 'fas' : 'far'} fa-star star`} onClick={(e)=> this.toggleFavoriteChange(e, listing.id, isFavorite)}></i>
+                </div>
                 <h2>{listing.title}</h2>
                 <div className="category">
                   {listing.category}
@@ -90,7 +94,8 @@ export default class RecentListings extends React.Component {
                   {listing.tags}
                 </div>
                 <div className="btn-container">
-                  <a href="#" className="share" onClick={this.shareBtnClicked}>SHARE</a>
+                  <a href={`/artworks/${listing.id}`} className="share" >VIEW THIS PIECE</a>
+                  {/* <a href="#" className="share" onClick={this.shareBtnClicked}>SHARE</a> */}
                 </div>
               </div>
             </div>
@@ -100,10 +105,10 @@ export default class RecentListings extends React.Component {
     })
 
     return (
-      <div id="recent-listings">
+      <div id="category-artworks">
         <h2>
           <span className="custom-hr"></span>
-          Original Creations
+          {this.props.category.title}
           <span className="custom-hr"></span>
         </h2>
         <div className="listings-container">

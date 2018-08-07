@@ -52,7 +52,13 @@ nav {
     }
     .right {
       justify-content: flex-end;
-      a { margin: 0 1em; }
+      a {
+        margin: 0 1em;
+        
+        .fa-user-cog {
+          margin-left: 1em;
+        }
+      }
     }
     .middle, .right {
       font-weight: 900;

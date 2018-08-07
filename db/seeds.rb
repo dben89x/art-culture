@@ -116,6 +116,7 @@ end
     image: 'https://s3-us-west-1.amazonaws.com/art-culture/brooke-cagle-241290-unsplash.jpg',
     # description: Faker::Lorem.sentence(rand(3)),
     password: 'asdfasdf',
+    website: Faker::Internet.domain_name
     password_confirmation: 'asdfasdf',
     bio: Faker::Lorem.sentence(rand(100)),
   )

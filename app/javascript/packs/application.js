@@ -1,6 +1,9 @@
 import ReactOnRails from 'react-on-rails';
-import BuyerSignup from '../components/auth/BuyerSignup';
-import ArtistSignup from '../components/auth/ArtistSignup';
+import Profile from '../components/auth/Profile';
+import ArtworkListing from '../components/ArtworkListing';
+import CategoryArtworks from '../components/CategoryArtworks';
+import BuyerForm from '../components/auth/BuyerForm';
+import ArtistForm from '../components/auth/ArtistForm';
 import Errors from '../components/Errors';
 import RelatedArticles from '../components/RelatedArticles';
 import BlogContent from '../components/BlogContent';
@@ -32,8 +35,11 @@ import Signin from '../components/auth/Signin';
 import ForgotPassword from '../components/auth/ForgotPassword';
 
 ReactOnRails.register({
-  BuyerSignup,
-  ArtistSignup,
+  Profile,
+  ArtworkListing,
+  CategoryArtworks,
+  BuyerForm,
+  ArtistForm,
   Errors,
   RelatedArticles,
   BlogContent,

@@ -53,7 +53,6 @@ export default class Signin extends React.Component {
 
   render() {
     return (<div id='sign-in' className='users'>
-      <div className="overlay"></div>
       <div className="content-wrapper">
       <h2>Log-in</h2>
       <Errors errors={this.state.errors}/>

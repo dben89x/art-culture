@@ -29,7 +29,7 @@ export default class ArtworkCategories extends React.Component {
   render() {
     const {categories} = this.props
     const categoryCards = categories.map(cat => (<div className="artwork-category-card" key={cat.id} id={`cat-${cat.id}`}>
-      <div className="img-wrapper" data-id={cat.id}>
+      <a className="img-wrapper" data-id={cat.id} href={`/artwork_categories/${cat.id}`}>
         <div className="details-container">
           <img src={cat.image} alt={cat.title}/>
           <div className={`info-wrapper ${this.state.hoveredId === cat.id ? 'hovered' : ''}`} id={`info-${cat.id}`}>
@@ -38,7 +38,7 @@ export default class ArtworkCategories extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      </a>
     </div>))
 
     return (

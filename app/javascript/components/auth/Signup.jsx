@@ -1,7 +1,7 @@
 import React from 'react'
 import Errors from '../Errors'
-import ArtistSignup from './ArtistSignup'
-import BuyerSignup from './BuyerSignup'
+import ArtistForm from './ArtistForm'
+import BuyerForm from './BuyerForm'
 
 const csrfToken = $('meta[name="csrf-token"]').attr('content')
 
@@ -10,7 +10,7 @@ export default class Signup extends React.Component {
     super(props)
     this.state = {
       errors: [],
-      selectedUserType: this.props.selectedUserType
+      selectedUserType: this.props.selectedUserType || 'artist'
     }
   }
 
@@ -28,6 +28,11 @@ export default class Signup extends React.Component {
   userTypeClicked=(e, userType)=>{
     this.setState({selectedUserType: userType})
   }
+
+  capitalize=(string)=>{
+    return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
+  }
+
 
   formSubmit = (e) => {
     e.preventDefault()
@@ -61,7 +66,7 @@ export default class Signup extends React.Component {
     var formDataJson = {}
     for (var i = 0; i < formData.length; ++i) {
       var key = formData[i]['name']
-      formDataJson[key] = formData[i]['value'];
+      formDataJson[key] = formData[i]['value']
     }
     return formDataJson
   }
@@ -70,13 +75,13 @@ export default class Signup extends React.Component {
     const {currentUser} = this.props
 
     return (<div className="users" id="sign-up">
-      <div className="overlay"></div>
       <div id='signup-container' className={`signup-option ${currentUser ? 'hidden' : 'visible'}`}>
         <div className="content-wrapper">
           <h2>Join the community</h2>
           <Errors errors={this.state.errors}/>
           <form className="new_user" id="new_user" action="/users" acceptCharset="UTF-8" method="post">
             <input name="utf8" type="hidden" value="✓"/>
+            <input name="user_type" type="hidden" value={this.capitalize(this.state.selectedUserType)}/>
 
             <div className="user-types">
               <div className={`user-type artist ${this.state.selectedUserType === 'artist' ? 'selected' : ''}`} onClick={()=> this.setState({selectedUserType: "artist"})}>
@@ -91,9 +96,13 @@ export default class Signup extends React.Component {
               </div>
             </div>
 
-            {this.state.selectedUserType === 'artist' ? <ArtistSignup/> : <BuyerSignup/>}
+            {this.state.selectedUserType === 'artist' ? <ArtistForm/> : <BuyerForm/>}
             <div className="actions">
-              <input className={this.state.selectedUserType} type="submit" name="commit" value="Sign up" data-disable-with="Sign up" onClick={this.formSubmit}/>
+              {this.state.selectedUserType === 'artist' ? (
+                <input className='artist' type="submit" name="commit" value="Apply to be an Artist" data-disable-with="Sign up" onClick={this.formSubmit}/>
+              ) : (
+                <input className='buyer' type="submit" name="commit" value="Sign up as a Buyer" data-disable-with="Sign up" onClick={this.formSubmit}/>
+              )}
             </div>
           </form>
           <div className="signin-link">

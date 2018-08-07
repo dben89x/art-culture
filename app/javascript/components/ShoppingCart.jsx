@@ -25,7 +25,7 @@ export default class ShoppingCart extends React.Component {
     return (
       <div id="shopping-cart" className={this.props.open ? 'open' : 'closed'}>
         <div className="header">
-          <h4>Your Cart ({items.length})</h4>
+          <h4>Your Favorites ({items.length})</h4>
           <a onClick={this.props.onClose} className='close-btn'>&times;</a>
         </div>
         <div className="shopping-cart-container">

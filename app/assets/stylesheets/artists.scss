@@ -214,7 +214,7 @@
     .artist-details {
       width: 100%;
       margin: 0;
-      
+
       .artist-info {
         flex-direction: column;
 
@@ -269,6 +269,7 @@
       display: flex;
       flex-wrap: wrap;
       padding: 1em;
+      justify-content: center;
 
       .listing {
         width: 33%;
@@ -630,6 +631,7 @@
 
         a {
           color: $black;
+          display: flex;
         }
         img {
           height: 100%;
