@@ -21,6 +21,7 @@ export default class Signin extends React.Component {
     var formDataJson = this.convertFormData(formData)
     delete formDataJson['utf8']
 
+    this.setState({isLoading: true})
     $.ajax({
       type: 'POST',
       headers: {
@@ -34,10 +35,13 @@ export default class Signin extends React.Component {
     }).done((response) => {
       this.props.onComplete(response)
     }).fail(response => {
+      console.log(response.responseJSON)
       var errors = response.responseJSON.map(error => error.message || error)
       this.setState({
         errors: errors || []
       })
+    }).always(()=> {
+      this.setState({isLoading: false})
     })
   }
 
@@ -67,7 +71,7 @@ export default class Signin extends React.Component {
           <input autoComplete="off" type="password" name="password" id="user_password"/>
         </div>
         <div className="actions">
-          <input type="submit" name="commit" value="Log in" data-disable-with="Log in" onClick={this.submitForm}/>
+          <button type="submit" name="commit" data-disable-with="Log in" onClick={this.submitForm}>{this.state.isLoading ? (<i className='far fa-spinner-third fa-spin'></i>) : "Log in"}</button>
         </div>
       </form>
       <div className="signup-link">

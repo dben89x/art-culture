@@ -124,7 +124,6 @@ export default class NavBar extends React.Component {
     this.setState({profileModalIsOpen: false})
   }
 
-
   ////////// Render //////////
 
   render() {
@@ -193,8 +192,8 @@ export default class NavBar extends React.Component {
             </div>
             <div className="right">
               { currentUser ? (
-                <a href='/#' onClick={this.userOptionsClicked}>
-                  Hello, {currentUser.first_name} <i className="fas fa-user-cog"></i>
+                <a href='/#' className='profile-link' onClick={this.userOptionsClicked}>
+                  Hello, {currentUser.first_name} <i className="fas fa-user"></i>
                 </a>
               ) : null }
               <a href='/#' onClick={this.toggleShoppingCart}><i className="far fa-star mobile-cart"></i></a>
@@ -208,7 +207,7 @@ export default class NavBar extends React.Component {
 
       {this.state.currentUser ? (
         <Rodal visible={this.state.profileModalIsOpen} onClose={this.closeProfileModal} closeOnEsc={true} className={`users signup`} animation='door'>
-          <Profile user={this.props.currentUser}/>
+          <Profile user={this.props.currentUser} onComplete={this.closeProfileModal}/>
         </Rodal>
       ) : null }
     </div>)

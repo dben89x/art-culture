@@ -69,6 +69,11 @@ export default class RecentListings extends React.Component {
     })
   }
 
+  artworkClicked=e=>{
+    var {target} = e
+    $(target).closest('.info-wrapper').removeClass('hovered')
+  }
+
   render() {
     const {recentListings} = this.props
     var {favorites} = this.state
@@ -81,7 +86,10 @@ export default class RecentListings extends React.Component {
             <img src={listing.images[0]} alt={listing.title}/>
             <div className={`info-wrapper ${this.state.hoveredId === listing.id ? 'hovered' : ''}`} id={`info-${listing.id}`}>
               <div className="info">
-                <i className={`${isFavorite ? 'fas' : 'far'} fa-star star`} onClick={(e)=> this.toggleFavoriteChange(e, listing.id, isFavorite)}></i>
+                <div className="fa-btns">
+                  <i className='fas fa-share-alt' onClick={this.shareBtnClicked}></i>
+                  <i className={`${isFavorite ? 'fas' : 'far'} fa-star star`} onClick={(e)=> this.toggleFavoriteChange(e, listing.id, isFavorite)}></i>
+                </div>
                 <h2>{listing.title}</h2>
                 <div className="category">
                   {listing.category}
@@ -90,7 +98,7 @@ export default class RecentListings extends React.Component {
                   {listing.tags}
                 </div>
                 <div className="btn-container">
-                  <a href="#" className="share" onClick={this.shareBtnClicked}>SHARE</a>
+                  <a href={`/artworks/${listing.id}`} className="share" onClick={this.artworkClicked}>VIEW THIS PIECE</a>
                 </div>
               </div>
             </div>

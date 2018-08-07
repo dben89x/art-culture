@@ -22,24 +22,28 @@ export default class Profile extends React.Component {
     var formData = $(this.$form).serializeArray()
     var formDataJson = this.convertFormData(formData)
     delete formDataJson['utf8']
+    const {user} = this.props
 
+    this.setState({isLoading: true})
     $.ajax({
-      type: 'POST',
+      type: 'PATCH',
       headers: {'X-CSRF-Token': csrfToken},
-      url: '/users',
+      url: `/users`,
       dataType: 'json',
       data: {
         user: formDataJson
       }
     }).done((response) => {
-      this.setState({
-        errors: response.full_errors || []
-      })
+      this.setState({isLoading: false})
+      console.log(JSON.stringify(response))
       if (response.status === 200) {
-        this.props.onComplete(response)
-        // $('#signup-container').fadeOut(200, () => {
-        //   $('#subscription-container').fadeIn(200)
-        // })
+        console.log('got here...')
+        this.props.onComplete()
+      } else if (response.status === 400) {
+        var errors = response.responseJSON.map(error => error.message || error)
+        this.setState({
+          errors: errors || []
+        })
       }
     })
   }
@@ -60,7 +64,6 @@ export default class Profile extends React.Component {
   render() {
 
     const {user} = this.props
-    console.log(user)
 
     return (<div className="users" id="profile-modal">
       <div id='profile-container'>
@@ -72,10 +75,10 @@ export default class Profile extends React.Component {
 
             {this.props.user.type === 'Artist' ? <ArtistForm user={user}/> : <BuyerForm user={user}/>}
             <div className="actions">
-              {this.props.user.type === 'artist' ? (
-                <input className='artist' type="submit" name="commit" value="Save Changes" data-disable-with="Sign up" onClick={this.formSubmit}/>
+              {this.props.user.type === 'Artist' ? (
+                <button className='artist' type="submit" name="commit" data-disable-with="Sign up" onClick={this.formSubmit}>{this.state.isLoading ? (<i className='fas fa-spinner fa-spin'></i>) : "Save Changes"}</button>
               ) : (
-                <input className='buyer' type="submit" name="commit" value="Save Changes" data-disable-with="Sign up" onClick={this.formSubmit}/>
+                <button className='buyer' type="submit" name="commit" data-disable-with="Sign up" onClick={this.formSubmit}>{this.state.isLoading ? (<i className='fas fa-spinner fa-spin'></i>) : "Save Changes"}</button>
               )}
             </div>
           </form>

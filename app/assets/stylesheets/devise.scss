@@ -91,16 +91,19 @@
       .field {
         margin: 1em 0;
       }
-      input, textarea {
+      input, textarea, button {
         width: 100%;
         margin: 0.5em 0;
         border: 1pt solid $lightestGrey;
       }
-      input {
+      textarea {
+        padding: 1em;
+      }
+      input, button {
         text-indent: 1em;
         height: 4em;
       }
-      input[type=submit] {
+      input[type=submit], button[type=submit] {
         background: $actionBlue;
         color: white;
         text-indent: 0;
@@ -128,7 +131,7 @@
       width: 100% !important;
       font-size: 0.6em;
 
-      form input {
+      form input, form button {
         height: 3em;
       }
     }
@@ -165,7 +168,7 @@
         flex-direction: column;
 
       }
-      input[type=submit] {
+      input[type=submit], button[type=submit] {
         &.artist {
           background: $actionBlue;
 

@@ -54,8 +54,11 @@ nav {
       justify-content: flex-end;
       a {
         margin: 0 1em;
-        
-        .fa-user-cog {
+
+        &.profile-link {
+          text-transform: none;
+        }
+        .fa-user {
           margin-left: 1em;
         }
       }

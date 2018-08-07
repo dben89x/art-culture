@@ -50,6 +50,16 @@ class Artist < User
 
   def as_json(options = {})
     if options[:index]
+      # super(options.merge( methods: [
+      #   id: id,
+      #   name: full_name,
+      #   image: image,
+      #   featured_artwork: featured_artwork.image,
+      #   artworks: artworks,
+      #   categories: categories,
+      #   bio: bio,
+      #   slug: slug,
+      # ]))
       {
         id: id,
         name: full_name,

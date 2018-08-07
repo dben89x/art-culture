@@ -33,6 +33,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates_length_of :bio, minimum: 15, maximum: 300, allow_blank: true
   has_many :user_artwork_favorites
 
   def as_json(options={})

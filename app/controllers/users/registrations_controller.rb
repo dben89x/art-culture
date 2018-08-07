@@ -1,6 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # prepend_before_action :require_no_authentication, only: [:new, :create]
   before_action :configure_permitted_parameters
+  # prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy]
+
   skip_before_action :verify_authenticity_token
   respond_to :json
 
@@ -19,11 +21,38 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def update
+    puts 'got here...?'
+    # super do
+    #   puts 'got here too'
+    # end
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+
+    resource_updated = update_resource(resource, account_update_params)
+
+    respond_with resource, location: after_update_path_for(resource) do |format|
+      format.json {
+        if resource_updated
+          bypass_sign_in resource, scope: resource_name
+          puts 'succeeded'
+          return render :json => {resource: resource, status: 200}
+        else
+          puts 'failed'
+          puts resource.errors.full_messages
+          clean_up_passwords resource
+          set_minimum_password_length
+          # respond_with resource
+          return render :json => { responseJSON: resource.errors.full_messages.map {|e| {message: e}}, status: 400}
+        end
+      }
+    end
+  end
 
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email, :phone_number, :location, :website, :bio, :type])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :email, :phone_number, :location, :website, :bio])
   end
 
 end

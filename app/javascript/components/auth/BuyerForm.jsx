@@ -1,11 +1,10 @@
 import React from 'react'
+import $ from 'jquery'
 
 export default class BuyerForm extends React.Component {
   constructor(props) {
     super(props)
-
     var {user} = this.props || {}
-
     this.state = { ...user }
   }
 
@@ -37,17 +36,22 @@ export default class BuyerForm extends React.Component {
           <label htmlFor="user_phone_number">Phone number</label>
           <input autoComplete="tel" type="tel" name="phone_number" id="user_phone_number" value={this.state.phone_number} onChange={this.changeInput}/>
         </div>
-        <div className="field">
-          <label htmlFor="user_password">{"Password "}</label>
-          <em>
-            (6 characters minimum)
-          </em>
-          <input autoComplete="off" type="password" name="password" id="user_password"/>
-        </div>
-        <div className="field">
-          <label htmlFor="user_password_confirmation">Password confirmation</label>
-          <input autoComplete="off" type="password" name="password_confirmation" id="user_password_confirmation"/>
-        </div>
+
+        {$.isEmptyObject(this.props.user) ? (
+          <div>
+            <div className="field">
+              <label htmlFor="user_password">{"Password "}</label>
+              <em>
+                (6 characters minimum)
+              </em>
+              <input autoComplete="off" type="password" name="password" id="user_password"/>
+            </div>
+            <div className="field">
+              <label htmlFor="user_password_confirmation">Password confirmation</label>
+              <input autoComplete="off" type="password" name="password_confirmation" id="user_password_confirmation"/>
+            </div>
+          </div>
+        ) : null }
       </div>
     )
   }
