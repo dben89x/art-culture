@@ -41,7 +41,7 @@ end
 images = ['https://s3-us-west-1.amazonaws.com/art-culture/images/blog1.jpg', 'https://s3-us-west-1.amazonaws.com/art-culture/images/blog2.jpg', 'https://s3-us-west-1.amazonaws.com/art-culture/images/blog3.jpg', 'https://s3-us-west-1.amazonaws.com/art-culture/images/blog4.jpg']
 20.times do
   blog_post = BlogPost.create(
-    title: Faker::Lorem.words(rand(8..12)).join(' ').titleize,
+    title: Faker::Lorem.words(rand(4..8)).join(' ').titleize,
     image: images.sample,
     description: Faker::Lorem.words(20).join(' ').capitalize,
     overview: Faker::Lorem.words(60).join(' ').capitalize,
@@ -126,13 +126,14 @@ end
     bio: Faker::Lorem.sentence(rand(50)),
   )
 
-  rand(1..5).times do
+  rand(2..5).times do
     artwork = Artwork.create(
       title: Faker::Lorem.words.join(' ').titleize,
       description: Faker::Lorem.paragraph,
       artwork_category: ArtworkCategory.all.sample,
-      artist: Artist.all.sample,
+      artist: artist,
       price: rand(500..2000),
+      user: User.all.sample,
       bio: Faker::Lorem.sentence(rand(50))
     )
     ArtworkImage.create(
@@ -155,7 +156,6 @@ end
       )
     end
 
-    users = User.all
     3.times do
       user = User.all.sample
       price = rand(500..2000)
