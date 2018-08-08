@@ -7,9 +7,12 @@ deploy:
   provider: heroku
   api_key:
     secure: YPkCyYWVSRlL9ZcVyD4JrUw7yQiwCVBRKo86Ngk7u6TfZApfUvhPG1U4EOlqIlFSRVeIgkfLKCEl/IcN5kwQm/5cQFh6QN8MNwyOVs71MChleEmsDlQy2Rm+rhAFLQDgxw0yKOd8iTbz2cXhjxyBUPOg6Vh0YE4OcfGNzQhovU8DFLIRu+ZRK1RO0fKAoKB1WWR2sxmVABV6nojGAdikvR0hKyF9SBxLpTyXc1DpBKrtrfSc+s/TkDHqQVdruzVl4XNpMPcLt73TiVEKpwZZjz+fszbvQ3d2GRjsGfUTgslrSHZvUBWyUGqlNFB0l4y0Xhyfl9rdra2FUAbnB9q1QjRU37cOVN7sITwNe8RYp1GjzMFw4YKJBWm9iBmUB/Xzd3pe/RZqcH5jUzupicVC+MCP2gcNVWEypg1/y5AZEPNaRCSKphCKG05COlQUWbQqqBQa+fw8ZCVZuCcrzaRwsQfjC7Qm4V1jxV9SIoXhg7ZjTexbyd8sk/L50GQEqy+XwZi3/PZgte5JJYn0LFWAdqQI320CPQgJNgpubmdNxTNDchx9XDvl9CDSQkxjXmLYsMDjhEQtrlhxq/1IM71BhVkv82ousJ0j6om+V1j6+rxwzr25a9QAJAFoHrh7mG6lP22YZhr+WWQcyOGPJIfk5w0bLcYQz/bUQuVnrnN/dRg=
-  app: art-culture
+  app:
+    master: art-culture-staging
+    prod: art-culture
   on:
     repo: dben89x/art-culture
   skip_cleanup: true
+after_deploy: rails db:migrate
 notifications:
   email: false
