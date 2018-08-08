@@ -26,7 +26,7 @@ class API::BidsController < ApiController
           @artwork.user = @user
           @artwork.save
           log_description = "This piece was purchased by #{@user.full_name} on #{Date.today.strftime('%B %d, %Y')}"
-          @artwork_log = ArtworkLog.create(artwork: @artwork, bid: @bid, user: @user, price: @bid.price, notes: @bid.notes, description: log_description, stripe_charge_id: charge.id)
+          @artwork_log = ArtworkLog.create(type: 'Sale', artwork: @artwork, bid: @bid, user: @user, price: @bid.price, notes: @bid.notes, description: log_description, stripe_charge_id: charge.id)
           @bid.open = false
           @bid.save
 

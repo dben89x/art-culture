@@ -46,6 +46,9 @@ class User < ApplicationRecord
   has_many :artworks
   has_many :user_artwork_favorites
 
+  attr_accessor :image, :image_cache
+  mount_uploader :image, UserAvatarUploader
+
   def as_json(options={})
     super(options.merge({:methods => :type}))
   end

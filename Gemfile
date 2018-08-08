@@ -43,7 +43,9 @@ gem "cancancan", "~> 2.2"
 
 gem "gibbon", "~> 3.2"
 
-gem "carrierwave", "~> 1.2"
+gem "carrierwave", "~> 0.10.0"
+gem "carrierwave-crop", "~> 0.1.2"
+gem 'fog', require: 'fog/aws'
 
 gem "faker", "~> 1.8"
 
@@ -63,3 +65,15 @@ gem "devise", "~> 4.4"
 
 # Added at 2018-08-07 20:55:03 -0600 by doug:
 gem "stripe", "~> 3.21"
+
+# Added at 2018-08-08 12:43:49 -0600 by doug:
+gem "arctic_admin", "~> 1.5"
+
+# Added at 2018-08-08 15:19:33 -0600 by doug:
+gem "inherited_resources", "~> 1.8"
+
+# Added at 2018-08-08 15:19:54 -0600 by doug:
+gem "has_scope", "~> 0.7.2"
+
+# Added at 2018-08-08 15:20:06 -0600 by doug:
+gem "responders", "~> 2.4"
