@@ -20,12 +20,15 @@
 class Artwork < ApplicationRecord
   belongs_to :artist
   belongs_to :artwork_category, inverse_of: :artworks
+  belongs_to :user
   has_many :artwork_images, inverse_of: :artwork
   has_many :artwork_logs, inverse_of: :artwork
   has_many :user_artwork_favorites, inverse_of: :artwork
   has_many :artwork_tags, inverse_of: :artwork
   has_many :tags, through: :artwork_tags
   has_many :bids
+
+  before_save :update_cents
 
   validates_length_of :bio, minimum: 15, maximum: 300, allow_blank: false
   # validates_length_of :overview, minimum: 15, maximum: 300, allow_blank: false
@@ -35,6 +38,10 @@ class Artwork < ApplicationRecord
 
   def owner
     user
+  end
+
+  def update_cents
+    self.price_in_cents = price * 100
   end
 
   def custom_slug

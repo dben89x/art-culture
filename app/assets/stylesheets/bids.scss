@@ -1,3 +1,27 @@
-// Place all the styles related to the bids controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'variables';
+
+#purchase-bid {
+  button.purchase-bid-btn {
+    background-color: $actionRed;
+    letter-spacing: 0;
+    border-radius: 3em;
+    margin: 0;
+    color: white;
+    padding: 1em 4em;
+    font-weight: 100;
+    font-family: 'Lato';
+    font-size: 0.7em;
+    transition: 0.3s;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    &.disabled {
+      cursor: not-allowed;
+      background: lighten($actionRed, 10%);
+    }
+
+    &.enabled:hover {
+      background-color: darken($actionRed, 5%);
+    }
+  }
+}

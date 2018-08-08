@@ -26,9 +26,9 @@
     .current-listings
       -@current_listings.each do |listing|
         .listing
-          =link_to artwork_path(listing) do
+          =link_to artwork_path(listing[:id]) do
             %img{src: listing[:images][0]}
-          =link_to artwork_path(listing) do
+          =link_to artwork_path(listing[:id]) do
             %h3=listing[:title]
           %p=listing[:description]
 

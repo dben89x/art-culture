@@ -24,12 +24,15 @@
         pointer-events: all;
         display: flex;
         color: inherit;
+        height: 15em;
 
         .details-container {
           pointer-events: none;
         }
         img {
           width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
         .info-wrapper {
           position: absolute;

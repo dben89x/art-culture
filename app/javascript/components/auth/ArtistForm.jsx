@@ -23,7 +23,6 @@ export default class ArtistForm extends React.Component {
   componentDidMount() {
     var {user} = this.props || {}
     this.user = user
-    console.log('foobar stuff and things', user)
   }
 
   render() {

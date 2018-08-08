@@ -60,3 +60,6 @@ ruby '2.4.0'
 
 gem 'mini_racer', platforms: :ruby
 gem "devise", "~> 4.4"
+
+# Added at 2018-08-07 20:55:03 -0600 by doug:
+gem "stripe", "~> 3.21"

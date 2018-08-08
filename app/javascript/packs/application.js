@@ -1,4 +1,5 @@
 import ReactOnRails from 'react-on-rails';
+import BidPurchase from '../components/BidPurchase';
 import Profile from '../components/auth/Profile';
 import ArtworkListing from '../components/ArtworkListing';
 import CategoryArtworks from '../components/CategoryArtworks';
@@ -35,6 +36,7 @@ import Signin from '../components/auth/Signin';
 import ForgotPassword from '../components/auth/ForgotPassword';
 
 ReactOnRails.register({
+  BidPurchase,
   Profile,
   ArtworkListing,
   CategoryArtworks,

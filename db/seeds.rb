@@ -9,6 +9,8 @@ def destroy_all_humans
     BlogCategory.delete_all
     BlogTag.delete_all
     BlogPost.delete_all
+    Bid.delete_all
+    User.delete_all
 
     Tag.delete_all
     ArtworkTag.delete_all

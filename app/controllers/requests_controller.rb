@@ -3,7 +3,6 @@ class RequestsController < ApplicationController
   skip_load_and_authorize_resource
 
   def create
-    puts request_params
     @request = Request.new(request_params)
 
     respond_to do |format|

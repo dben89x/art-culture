@@ -5,5 +5,7 @@ class ArtworksController < ApplicationController
 
     @artwork = Artwork.find(params[:id]).as_json(index: true)
     @artist = @artwork[:artist]
+    @stripe_key = ENV['STRIPE_PUBLISHABLE']
+    @current_bid = Bid.where(artwork: artwork, user: current_user).last
   end
 end

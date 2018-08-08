@@ -43,6 +43,7 @@ class User < ApplicationRecord
   # validates_format_of :website, :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
   has_many :bids, inverse_of: :user
   has_many :artwork_logs, inverse_of: :user
+  has_many :artworks
   has_many :user_artwork_favorites
 
   def as_json(options={})

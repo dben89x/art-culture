@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180807221615) do
+ActiveRecord::Schema.define(version: 20180808070706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 20180807221615) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.string "stripe_charge_id"
+    t.integer "price_in_cents"
     t.index ["artwork_id"], name: "index_artwork_logs_on_artwork_id"
     t.index ["bid_id"], name: "index_artwork_logs_on_bid_id"
     t.index ["user_id"], name: "index_artwork_logs_on_user_id"
@@ -86,7 +88,6 @@ ActiveRecord::Schema.define(version: 20180807221615) do
   create_table "artworks", force: :cascade do |t|
     t.bigint "artist_id"
     t.bigint "artwork_category_id"
-    t.bigint "buyer_id"
     t.string "title"
     t.boolean "published"
     t.string "description"
@@ -96,9 +97,11 @@ ActiveRecord::Schema.define(version: 20180807221615) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.float "price"
+    t.integer "price_in_cents"
+    t.bigint "user_id"
     t.index ["artist_id"], name: "index_artworks_on_artist_id"
     t.index ["artwork_category_id"], name: "index_artworks_on_artwork_category_id"
-    t.index ["buyer_id"], name: "index_artworks_on_buyer_id"
+    t.index ["user_id"], name: "index_artworks_on_user_id"
   end
 
   create_table "bids", force: :cascade do |t|
@@ -110,6 +113,7 @@ ActiveRecord::Schema.define(version: 20180807221615) do
     t.float "price"
     t.text "notes"
     t.bigint "user_id"
+    t.integer "price_in_cents"
     t.index ["artwork_id"], name: "index_bids_on_artwork_id"
     t.index ["user_id"], name: "index_bids_on_user_id"
   end

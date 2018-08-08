@@ -1,3 +1,5 @@
+%script{src: "https://checkout.stripe.com/checkout.js"}
+
 #art-show
   =react_component 'ArtworkGallery', props: {artwork: @artwork}, prerender: false
   .artist-wrapper
@@ -20,4 +22,4 @@
 
   -# -if current_user.is_a? Buyer
   .bid-wrapper
-    =react_component 'ArtworkBid', props: {artwork: @artwork, currentUser: current_user}, prerender: false
+    =react_component 'ArtworkBid', props: {artwork: @artwork, currentUser: current_user, stripeKey: @stripe_key, currentBid: @current_bid}, prerender: false

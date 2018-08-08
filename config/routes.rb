@@ -23,7 +23,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :user_artwork_favorites, path: :artwork_favorites
-    resources :bids
+    resources :bids do
+      put 'purchase', on: :member
+      put 'accept', on: :member
+    end
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

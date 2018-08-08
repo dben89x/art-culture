@@ -244,6 +244,7 @@
         position: relative;
         pointer-events: all;
         // display: block;
+        height: 15em;
         box-shadow: 0 0 10pt 0 grey;
 
         &.favorite {
@@ -255,6 +256,8 @@
       img {
         width: 100%;
         pointer-events: none;
+        height: 100%;
+        object-fit: cover;
       }
 
       .info-wrapper {
@@ -595,7 +598,7 @@
     flex-direction: column;
     align-items: center;
 
-    h2 {
+    h2.title {
       margin: 0;
       font-weight: 600;
       font-family: 'Lato';
@@ -609,6 +612,7 @@
     p {
       color: grey;
       width: 50%;
+      display: inline-flex;
     }
 
     .btn-container {
@@ -637,7 +641,7 @@
     .rodal-dialog {
       background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url("https://s3-us-west-1.amazonaws.com/art-culture/images/login-bg.jpg");
 
-      form {
+      form.bid-form {
         height: 100%;
         display: flex;
         flex-direction: column;
