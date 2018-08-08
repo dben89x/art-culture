@@ -140,6 +140,15 @@ nav {
         width: 4em;
       }
     }
+    .nav-links .right a.profile-link {
+      .text {
+        display: none;
+      }
+      .fa-user {
+        margin-left: 0;
+        margin-right: 2em;
+      }
+    }
   }
   @media #{$mobile_common} {
     .navbar-header a {

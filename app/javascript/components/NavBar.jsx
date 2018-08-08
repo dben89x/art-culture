@@ -193,7 +193,8 @@ export default class NavBar extends React.Component {
             <div className="right">
               { currentUser ? (
                 <a href='/#' className='profile-link' onClick={this.userOptionsClicked}>
-                  Hello, {currentUser.first_name} <i className="fas fa-user"></i>
+                  <span className="text">Hello, {currentUser.first_name} </span>
+                  <i className="fas fa-user"></i>
                 </a>
               ) : null }
               <a href='/#' onClick={this.toggleShoppingCart}><i className="far fa-star mobile-cart"></i></a>
