@@ -28,13 +28,13 @@ class Artwork < ApplicationRecord
   has_many :bids
 
   validates_length_of :bio, minimum: 15, maximum: 300, allow_blank: false
-  validates_length_of :overview, minimum: 15, maximum: 300, allow_blank: false
+  # validates_length_of :overview, minimum: 15, maximum: 300, allow_blank: false
 
   extend FriendlyId
   friendly_id :custom_slug, use: [:slugged, :finders]
 
   def owner
-    buyer
+    user
   end
 
   def custom_slug

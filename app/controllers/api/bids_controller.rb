@@ -1,9 +1,6 @@
 class API::BidsController < ApiController
   def create
     @bid = Bid.new(bid_params)
-    puts @bid.buyer_id
-    puts @bid.buyer
-    puts @bid.artwork
     @bid.open = true
     @bid.accepted = false
 
@@ -15,6 +12,6 @@ class API::BidsController < ApiController
   end
 
   def bid_params
-    params.require(:bid).permit(:artwork_id, :buyer_id, :price, :notes)
+    params.require(:bid).permit(:artwork_id, :user_id, :price, :notes)
   end
 end

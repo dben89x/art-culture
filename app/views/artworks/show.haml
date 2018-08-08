@@ -18,6 +18,6 @@
   .trading-history-wrapper
     =react_component 'TradingHistory', props: {artworkLogs: @artwork_logs}, prerender: false
 
-  -if current_user.is_a? Buyer
-    .bid-wrapper
-      =react_component 'ArtworkBid', props: {artwork: @artwork, currentUser: current_user}, prerender: false
+  -# -if current_user.is_a? Buyer
+  .bid-wrapper
+    =react_component 'ArtworkBid', props: {artwork: @artwork, currentUser: current_user}, prerender: false

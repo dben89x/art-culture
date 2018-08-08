@@ -1,0 +1,39 @@
+New <%= @request.model_name.human.titleize %> from Art & Culture
+===============================================
+
+<b>
+Name:
+</b>
+<p>
+  <%= @request.name %>
+</p>
+<br/>
+
+<b>
+Email:
+</b>
+<p>
+  <%= @request.email %>
+</p>
+<br/>
+
+<b>
+Phone:
+</b>
+<p>
+  <%= @request.phone %>
+</p>
+<br/>
+
+<b>
+Message:
+</b>
+<p>
+  <%= @request.message %>
+</p>
+<br/>
+
+<p>
+  <%= "Reply to it " %>
+  <%= link_to "here", "mailto:#{@request.email}" %>
+</p>

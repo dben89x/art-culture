@@ -1,0 +1,3 @@
+class ContactRequest < Request
+
+end

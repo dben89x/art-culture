@@ -33,7 +33,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_length_of :bio, minimum: 15, maximum: 300, allow_blank: true
+  validates_format_of :email,:with => Devise::email_regexp
+  validates_length_of :bio, minimum: 15, maximum: 500, allow_blank: true
+  validates_length_of :phone_number, minimum: 10, allow_blank: true
+  # validates_numericality_of :phone_number
+  # validates_format_of :website, :with => URI::regexp(%w(http https))
+  # validates_format_of :website, :with => URI::regexp
+
+  # validates_format_of :website, :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
+  has_many :bids, inverse_of: :user
+  has_many :artwork_logs, inverse_of: :user
   has_many :user_artwork_favorites
 
   def as_json(options={})

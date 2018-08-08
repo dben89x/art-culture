@@ -41,7 +41,7 @@ export default class TradingHistory extends React.Component {
                 <h3>Details of Sale:</h3>
                 <p className="owner">
                   {"OWNER: "}
-                  <span className='text'>{selectedLog.buyer}</span>
+                  <span className='text'>{selectedLog.user}</span>
                 </p>
                 <p className="purchase-price">
                   {"PURCHASE PRICE: "}

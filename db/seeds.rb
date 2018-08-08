@@ -1,6 +1,7 @@
 def destroy_all_humans
   if Rails.env.development? || Rails.env.test?
     Artist.delete_all
+    Artist.delete_all
     Artwork.delete_all
     ArtworkImage.delete_all
     ArtworkCategory.delete_all
@@ -101,9 +102,10 @@ end
     email: Faker::Internet.email(name),
     first_name: first_name,
     last_name: name.strip,
+    phone_number: Faker::PhoneNumber.cell_phone,
     password: 'asdfasdf',
     password_confirmation: 'asdfasdf',
-    bio: Faker::Lorem.sentence(rand(100)),
+    bio: Faker::Lorem.sentence(rand(50)),
   )
 
   name = Faker::GameOfThrones.character
@@ -113,12 +115,13 @@ end
     email: Faker::Internet.email(name),
     first_name: first_name,
     last_name: name.strip,
+    phone_number: Faker::PhoneNumber.cell_phone,
     image: 'https://s3-us-west-1.amazonaws.com/art-culture/brooke-cagle-241290-unsplash.jpg',
     # description: Faker::Lorem.sentence(rand(3)),
     password: 'asdfasdf',
-    website: Faker::Internet.domain_name
+    website: Faker::Internet.domain_name,
     password_confirmation: 'asdfasdf',
-    bio: Faker::Lorem.sentence(rand(100)),
+    bio: Faker::Lorem.sentence(rand(50)),
   )
 
   rand(1..5).times do
@@ -126,8 +129,9 @@ end
       title: Faker::Lorem.words.join(' ').titleize,
       description: Faker::Lorem.paragraph,
       artwork_category: ArtworkCategory.all.sample,
-      artist: artist,
-      price: rand(500..2000)
+      artist: Artist.all.sample,
+      price: rand(500..2000),
+      bio: Faker::Lorem.sentence(rand(50))
     )
     ArtworkImage.create(
       url: 'https://s3-us-west-1.amazonaws.com/art-culture/images/a2.jpg',
@@ -149,13 +153,13 @@ end
       )
     end
 
-    buyers = Buyer.all
+    users = User.all
     3.times do
-      buyer = Buyer.all.sample
+      user = User.all.sample
       price = rand(500..2000)
       time = rand(1.years).seconds.ago
       bid = Bid.create(
-        buyer: buyer,
+        user: user,
         artwork: artwork,
         price: price,
         notes: Faker::Lorem.paragraph,
@@ -166,7 +170,7 @@ end
       log = ArtworkLog.create(
         type: 'Sale',
         artwork: artwork,
-        buyer: buyer,
+        user: user,
         bid: bid,
         price: price,
         description: Faker::Lorem.paragraph,

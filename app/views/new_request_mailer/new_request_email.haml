@@ -1,0 +1,23 @@
+%h2
+  ="New #{@request.model_name.human.titleize} from Art & Culture"
+%hr
+
+%b="Name:"
+%p=@request.name
+%br
+
+%b="Email:"
+%p=@request.email
+%br
+
+%b="Phone:"
+%p=@request.phone
+%br
+
+%b="Message:"
+%p=@request.message
+%br
+
+%p
+  ="Reply to it "
+  =link_to "here", "mailto:#{@request.email}"

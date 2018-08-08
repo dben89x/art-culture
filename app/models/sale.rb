@@ -5,13 +5,13 @@
 #  id          :bigint(8)        not null, primary key
 #  type        :string
 #  artwork_id  :bigint(8)
-#  buyer_id    :bigint(8)
 #  bid_id      :bigint(8)
 #  price       :integer
 #  notes       :text
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  user_id     :bigint(8)
 #
 
 class Sale < ArtworkLog
@@ -25,7 +25,7 @@ class Sale < ArtworkLog
         id: id,
         artwork: artwork,
         type: type,
-        buyer: buyer.full_name,
+        user: user.full_name,
         bid: bid,
         price: price,
         notes: notes,

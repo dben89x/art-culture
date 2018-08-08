@@ -35,7 +35,6 @@ export default class Signin extends React.Component {
     }).done((response) => {
       this.props.onComplete(response)
     }).fail(response => {
-      console.log(response.responseJSON)
       var errors = response.responseJSON.map(error => error.message || error)
       this.setState({
         errors: errors || []

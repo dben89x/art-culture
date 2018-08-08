@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :requests
   resources :blog_tags
   resources :blog_posts
   resources :blog_post_tags

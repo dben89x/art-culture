@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180806204234) do
+ActiveRecord::Schema.define(version: 20180807221615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,16 +64,16 @@ ActiveRecord::Schema.define(version: 20180806204234) do
   create_table "artwork_logs", force: :cascade do |t|
     t.string "type"
     t.bigint "artwork_id"
-    t.bigint "buyer_id"
     t.bigint "bid_id"
     t.integer "price"
     t.text "notes"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["artwork_id"], name: "index_artwork_logs_on_artwork_id"
     t.index ["bid_id"], name: "index_artwork_logs_on_bid_id"
-    t.index ["buyer_id"], name: "index_artwork_logs_on_buyer_id"
+    t.index ["user_id"], name: "index_artwork_logs_on_user_id"
   end
 
   create_table "artwork_tags", force: :cascade do |t|
@@ -103,15 +103,15 @@ ActiveRecord::Schema.define(version: 20180806204234) do
 
   create_table "bids", force: :cascade do |t|
     t.bigint "artwork_id"
-    t.bigint "buyer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "open"
     t.boolean "accepted"
     t.float "price"
     t.text "notes"
+    t.bigint "user_id"
     t.index ["artwork_id"], name: "index_bids_on_artwork_id"
-    t.index ["buyer_id"], name: "index_bids_on_buyer_id"
+    t.index ["user_id"], name: "index_bids_on_user_id"
   end
 
   create_table "blog_categories", force: :cascade do |t|
@@ -145,6 +145,16 @@ ActiveRecord::Schema.define(version: 20180806204234) do
 
   create_table "blog_tags", force: :cascade do |t|
     t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.text "message"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

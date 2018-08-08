@@ -24,7 +24,7 @@ export default class Profile extends React.Component {
     delete formDataJson['utf8']
     const {user} = this.props
 
-    this.setState({isLoading: true})
+    this.setState({isLoading: true, faClass: 'fa-spinner fa-spin'})
     $.ajax({
       type: 'PATCH',
       headers: {'X-CSRF-Token': csrfToken},
@@ -34,15 +34,20 @@ export default class Profile extends React.Component {
         user: formDataJson
       }
     }).done((response) => {
-      this.setState({isLoading: false})
-      console.log(JSON.stringify(response))
       if (response.status === 200) {
-        console.log('got here...')
-        this.props.onComplete()
+        this.setState({faClass: 'fa-check'}, ()=>{
+          window.setTimeout(()=>{
+            this.setState({isLoading: false})
+            this.props.onComplete()
+          }, 1000)
+        })
       } else if (response.status === 400) {
         var errors = response.responseJSON.map(error => error.message || error)
-        this.setState({
-          errors: errors || []
+        this.setState({errors: errors || []})
+        this.setState({faClass: 'fa-exclamation-triangle'}, ()=>{
+          window.setTimeout(()=>{
+            this.setState({isLoading: false})
+          }, 1000)
         })
       }
     })
@@ -76,9 +81,9 @@ export default class Profile extends React.Component {
             {this.props.user.type === 'Artist' ? <ArtistForm user={user}/> : <BuyerForm user={user}/>}
             <div className="actions">
               {this.props.user.type === 'Artist' ? (
-                <button className='artist' type="submit" name="commit" data-disable-with="Sign up" onClick={this.formSubmit}>{this.state.isLoading ? (<i className='fas fa-spinner fa-spin'></i>) : "Save Changes"}</button>
+                <button className='artist' type="submit" name="commit" data-disable-with="Sign up" onClick={this.formSubmit}>{this.state.isLoading ? (<i className={`far ${this.state.faClass}`}></i>) : "Save Changes"}</button>
               ) : (
-                <button className='buyer' type="submit" name="commit" data-disable-with="Sign up" onClick={this.formSubmit}>{this.state.isLoading ? (<i className='fas fa-spinner fa-spin'></i>) : "Save Changes"}</button>
+                <button className='buyer' type="submit" name="commit" data-disable-with="Sign up" onClick={this.formSubmit}>{this.state.isLoading ? (<i className={`far ${this.state.faClass}`}></i>) : "Save Changes"}</button>
               )}
             </div>
           </form>

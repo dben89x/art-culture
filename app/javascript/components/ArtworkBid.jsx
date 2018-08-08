@@ -8,7 +8,7 @@ export default class ArtworkBid extends React.Component {
     super(props)
     this.state = {
       modalIsOpen: false,
-      artworkPrice: this.props.artwork.price,
+      price: this.props.artwork.price,
       errors: []
     }
   }
@@ -22,16 +22,15 @@ export default class ArtworkBid extends React.Component {
     e.preventDefault()
     var target = e.target
     const {artwork, currentUser} = this.props
-    console.log(target.price)
-    console.log(target.notes)
 
     var bid = {
       artwork_id: artwork.id,
-      buyer_id: currentUser.id,
-      price: target.price,
-      notes: target.notes,
+      user_id: currentUser.id,
+      price: this.state.price,
+      notes: this.state.notes,
     }
 
+    this.setState({isLoading: true, faClass: 'fa-spinner fa-spin'})
     $.ajax({
       type: 'POST',
       headers: {'X-CSRF-Token': csrfToken},
@@ -39,23 +38,31 @@ export default class ArtworkBid extends React.Component {
       dataType: 'json',
       data: {bid: bid}
     }).done((response) => {
-      this.onComplete(response)
+      this.setState({faClass: 'fa-check'}, ()=>{
+        window.setTimeout(()=>{
+          this.setState({isLoading: false})
+          this.onComplete(response)
+        }, 1000)
+      })
     }).fail(response => {
-      console.log((response.responseText))
       var errors = JSON.parse(response.responseText).map((error) => error.message || error)
-      this.setState({
-        errors: errors || []
+      this.setState({faClass: 'fa-exclamation-triangle'}, ()=>{
+        window.setTimeout(()=>{
+          this.setState({isLoading: false})
+        }, 1000)
       })
     })
   }
 
   onComplete=()=>{
-
+    this.setState({modalIsOpen: false})
   }
 
-  changeBid=e=>{
+  changeInput=e=>{
     e.preventDefault()
-    this.setState({artworkPrice: e.value})
+    var {name, value} = e.target
+    this.setState({[name]: value}, ()=> console.log(this.state[name]))
+
   }
 
   closeModal=()=>{
@@ -82,14 +89,14 @@ export default class ArtworkBid extends React.Component {
             <div className="input-wrapper price">
               <label htmlFor="price">Your Price:</label>
               <div>
-                $<input type="number" pattern="[0-9]*" inputMode="numeric" name='price' value={this.state.artworkPrice} required onChange={this.changeBid}/>
+                $<input type="number" pattern="[0-9]*" inputMode="numeric" name='price' value={this.state.price} required onChange={this.changeInput}/>
               </div>
             </div>
             <div className="input-wrapper notes">
               <label htmlFor="notes">Notes:</label>
-              <textarea rows='10' name='notes' value={this.state.notes} onChange={this.changeNotes}/>
+              <textarea rows='10' name='notes' value={this.state.notes} onChange={this.changeInput}/>
             </div>
-            <input type="submit" onClick={this.submitBid}/>
+            <button type="submit" onClick={this.submitBid}>{this.state.isLoading ? (<i className={`far ${this.state.faClass}`}></i>) : "Submit Bid"}</button>
           </form>
           {this.state.authContent}
         </Rodal>
