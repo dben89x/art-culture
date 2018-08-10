@@ -8,9 +8,9 @@ class RequestsController < ApplicationController
     respond_to do |format|
       if @request.save
         if Rails.env.development? || Rails.env.test?
-          NewRequestMailer.new_request_email(@request, 'doug@maxshermarketing.com', 'doug@maxshermarketing.com').deliver_now
+          RequestMailer.new_request_email(@request, 'doug@maxshermarketing.com', 'doug@maxshermarketing.com').deliver_now
         else
-          NewRequestMailer.new_request_email(@request, 'max@maxshermarketing.com', 'max@maxshermarketing.com').deliver_now
+          RequestMailer.new_request_email(@request, 'max@maxshermarketing.com', 'max@maxshermarketing.com').deliver_now
         end
         format.json { render json: @request }
       else

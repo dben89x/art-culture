@@ -1,5 +1,6 @@
 def destroy_all_humans
   if Rails.env.development? || Rails.env.test?
+    AdminUser.delete_all
     Artist.delete_all
     Artist.delete_all
     Artwork.delete_all
@@ -119,7 +120,7 @@ end
     last_name: name.strip,
     phone_number: Faker::PhoneNumber.cell_phone,
     image: 'https://s3-us-west-1.amazonaws.com/art-culture/brooke-cagle-241290-unsplash.jpg',
-    # description: Faker::Lorem.sentence(rand(3)),
+    verified: true,
     password: 'asdfasdf',
     website: Faker::Internet.domain_name,
     password_confirmation: 'asdfasdf',
@@ -182,4 +183,5 @@ end
   end
 end
 
+Buyer.create(email: 'dben89x@gmail.com', password: 'asdfasdf')
 AdminUser.create!(email: 'doug@maxshermarketing.com', password: 'password', password_confirmation: 'password') if Rails.env.development? || Rails.env.test?

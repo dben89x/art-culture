@@ -268,7 +268,7 @@
     .current-listings {
       display: flex;
       flex-wrap: wrap;
-      padding: 1em;
+      padding: 1em 7em;
       justify-content: center;
 
       .listing {
@@ -294,17 +294,31 @@
       h2 {
         text-align: center;
       }
-      .current-listings .listing {
-        width: 50%;
+      .current-listings {
+        padding: 1em;
+        .listing {
+          width: 50%;
+        }
+      }
+      &.desktop {
+        display: none;
+      }
+      &.mobile {
+        display: block;
+        .current-listings {
+        }
       }
     }
   }
-  @media #{$mobile_large} {
+  @media #{$tablet_vertical} {
     .artist-video-banner {
       display: none;
     }
     h2 {
       font-size: 2em;
+    }
+    .related-artists .related-artists-wrapper {
+      padding: 2em;
     }
     .artist-wrapper {
       flex-direction: column;
@@ -325,17 +339,6 @@
         }
       }
     }
-    .current-listed-art {
-      &.desktop {
-        display: none;
-      }
-      &.mobile {
-        display: block;
-        .current-listings {
-        }
-      }
-    }
-
   }
 }
 #artist-show {

@@ -534,16 +534,23 @@
             cursor: pointer;
             padding: 0.5em 1em;
             border-radius: 2em;
-            font-weight: 800;
-            color: grey;
+            font-weight: 400;
+            color: black;
+            font-size: 0.8em;
             white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 1pt;
 
             &.selected {
               border: 2px solid;
             }
           }
         }
-
+        .no-trade {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
         p {
           color: grey;
         }
@@ -557,8 +564,18 @@
             font-size: 1.5em;
           }
 
-          p .text {
-            font-weight: 800;
+          p {
+            font-size: 0.85em;
+
+            .head-text {
+              letter-spacing: 0.5pt;
+              font-weight: 400;
+              text-transform: uppercase;
+            }
+            .text {
+              color: black;
+              font-weight: 800;
+            }
           }
         }
       }

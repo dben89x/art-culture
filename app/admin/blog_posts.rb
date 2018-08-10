@@ -15,6 +15,9 @@ ActiveAdmin.register BlogPost do
 
   index do
     selectable_column
+    column "Image" do |post|
+      image_tag post.image, class: 'admin-img'
+    end
     # column :image
     column :title
     column :description

@@ -2,7 +2,7 @@ class ArtistsController < ApplicationController
   def index
     # @letters = %w(a b c d e f g h i j k l m n o p q r s t u v w x y z)
     @letters = Artist.all.pluck(:first_name).map(&:first).uniq.sort.map(&:upcase)
-    @artists = Artist.all.as_json(index: true)
+    @artists = Artist.all.where(verified: true).as_json(index: true)
     @categories = ArtworkCategory.all
   end
 

@@ -35,6 +35,9 @@ class Artist < User
 
   has_many :artworks, inverse_of: :artist
   has_many :artwork_logs, inverse_of: :artist
+  belongs_to :featured_artwork, class_name: 'Artwork', optional: true
+
+  after_create :notify_admin
 
   def full_name
     "#{first_name} #{last_name}"
@@ -46,6 +49,10 @@ class Artist < User
 
   def categories
     ArtworkCategory.find(self.artworks.pluck(:artwork_category_id)).pluck(:title).map(&:capitalize)
+  end
+
+  def notify_admin
+    UserMailer.new_artist(ENV['SELLER_EMAIL'], self)
   end
 
   def as_json(options = {})

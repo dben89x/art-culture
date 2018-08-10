@@ -32,23 +32,31 @@ export default class TradingHistory extends React.Component {
           </div>
 
           <div className="logs">
-            <div className="log-dates">
-              {logs}
-            </div>
-            <div className="log-info-wrapper">
-              <p className="log-description">{selectedLog.description}</p>
-              <div className="log-details">
-                <h3>Details of Sale:</h3>
-                <p className="owner">
-                  {"OWNER: "}
-                  <span className='text'>{selectedLog.user}</span>
-                </p>
-                <p className="purchase-price">
-                  {"PURCHASE PRICE: "}
-                  <span className='text'>${selectedLog.price}</span>
-                </p>
+            {this.props.artworkLogs.length > 0 ? (
+              <div>
+                <div className="log-dates">
+                  {logs}
+                </div>
+                <div className="log-info-wrapper">
+                  <p className="log-description">{selectedLog.description}</p>
+                  <div className="log-details">
+                    <h3>Details of Sale:</h3>
+                    <p className="owner">
+                      <span className='head-text'>{"CURRENT OWNER: "}</span>
+                      <span className='text'>{selectedLog.user}</span>
+                    </p>
+                    <p className="purchase-price">
+                      <span className='head-text'>{"PURCHASE PRICE: "}</span>
+                      <span className='text'>${selectedLog.price}</span>
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="no-trade">
+                <p>This piece has no trading history</p>
+              </div>
+            )}
           </div>
         </div>
       </div>

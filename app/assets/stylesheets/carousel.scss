@@ -138,3 +138,19 @@ $chevron_size: 50pt;
     }
   }
 }
+#artist-show {
+  .slick-slider button.slick-arrow {
+    &.slick-prev, &.slick-next {
+      .fal.dark {
+        @media #{$tablet_vertical} {
+          color: $black;
+        }
+      }
+    }
+    @media #{$tablet_vertical} {
+      &.slick-next {
+        right: 3em;
+      }
+    }
+  }
+}

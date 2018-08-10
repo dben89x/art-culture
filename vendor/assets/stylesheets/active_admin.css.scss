@@ -20,3 +20,11 @@
 body.index .table_actions .member_link {
   margin: 1pt;
 }
+
+tbody tr td {
+  img.admin-img {
+    border-radius: 50%;
+    width: 50pt;
+    height: 50pt;
+  }
+}
