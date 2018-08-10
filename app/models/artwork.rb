@@ -27,10 +27,14 @@ class Artwork < ApplicationRecord
   has_many :artwork_tags, inverse_of: :artwork
   has_many :tags, through: :artwork_tags
   has_many :bids
+  belongs_to :featured_image, class_name: 'ArtworkImage', optional: true
 
   before_save :update_cents
+  before_save :update_featured_image
 
   validates_length_of :bio, minimum: 15, maximum: 300, allow_blank: false
+  accepts_nested_attributes_for :artwork_images, allow_destroy: true
+
   # validates_length_of :overview, minimum: 15, maximum: 300, allow_blank: false
 
   extend FriendlyId
@@ -38,6 +42,12 @@ class Artwork < ApplicationRecord
 
   def owner
     user
+  end
+
+  def update_featured_image
+    if featured_image.blank?
+      featured_image_id = artwork_images[0].id
+    end
   end
 
   def update_cents
@@ -50,6 +60,10 @@ class Artwork < ApplicationRecord
 
   def image
     self.artwork_images.last.url
+  end
+
+  def images
+    artwork_images.pluck(:url)
   end
 
   def image_count
@@ -67,7 +81,6 @@ class Artwork < ApplicationRecord
   def as_json(options = {})
     if options[:index]
       # images = artwork_images.to_a.unshift(image)
-      images = artwork_images.pluck(:url)
       {
         id: id,
         title: title,

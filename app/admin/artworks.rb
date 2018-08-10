@@ -3,7 +3,7 @@ ActiveAdmin.register Artwork do
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
   menu parent: 'Art'
-  permit_params :artwork_category_id, :user_id, :title, :published, :description, :bio, :price
+  permit_params :artwork_category_id, :user_id, :title, :published, :description, :bio, :price, :featured_image_id, artwork_images_attributes: [:url, :_destroy, :id]
 
   index do
     selectable_column
@@ -23,14 +23,23 @@ ActiveAdmin.register Artwork do
 
   form do |f|
     # @artist = Artist.find(params[:id])
-    f.semantic_errors # shows errors on :base
+    # f.semantic_errors # shows errors on :base
+    f.semantic_errors *f.object.errors.keys
+
+    @artwork = Artwork.find(params[:id])
     inputs "Admin Actions" do
       input :published
       input :price
       input :artwork_category
+      f.input :featured_image, as: :select, collection: ArtworkImage.where(artwork: @artwork)
       input :user, label: 'Owner'
     end
     inputs 'Artwork Details' do
+      f.inputs do
+        f.has_many :artwork_images, heading: 'Images', allow_destroy: true do |a|
+          a.input :url
+        end
+      end
       input :title
       input :description
       input :bio

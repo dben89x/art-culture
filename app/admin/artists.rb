@@ -6,7 +6,7 @@ ActiveAdmin.register Artist do
     @artist = Artist.find(params[:id])
     f.semantic_errors # shows errors on :base
     inputs "Admin Actions" do
-      f.input :featured_artwork, as: :select, collection: Artwork.all.where(artist: @artist)
+      f.input :featured_artwork, as: :select, collection: Artwork.where(artist: @artist)
       # f.input :featured_artwork
       input :verified
     end

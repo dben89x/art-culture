@@ -43,9 +43,9 @@ class Artist < User
     "#{first_name} #{last_name}"
   end
 
-  def featured_artwork
-    featured_artwork_id ? Artwork.find(featured_artwork_id) : self.artworks.last
-  end
+  # def featured_artwork
+  #   featured_artwork_id ? Artwork.find(featured_artwork_id) : self.artworks.last
+  # end
 
   def categories
     ArtworkCategory.find(self.artworks.pluck(:artwork_category_id)).pluck(:title).map(&:capitalize)
