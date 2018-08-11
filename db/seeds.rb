@@ -134,7 +134,8 @@ end
       artist: artist,
       price: rand(500..2000),
       user: User.all.sample,
-      bio: Faker::Lorem.sentence(rand(50))
+      bio: Faker::Lorem.sentence(rand(50)),
+      published: true
     )
     ArtworkImage.create(
       url: 'https://s3-us-west-1.amazonaws.com/art-culture/images/a2.jpg',
