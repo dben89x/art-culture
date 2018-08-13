@@ -14,6 +14,6 @@ class ArtworkCategory < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
 
-  attr_accessor :image, :image_cache
-  mount_uploader :image, ArtworkCategoryImageUploader
+  # attr_accessor :image, :image_cache
+  # mount_uploader :image, ArtworkCategoryImageUploader
 end

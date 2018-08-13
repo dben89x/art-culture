@@ -24,8 +24,8 @@ class BlogPost < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
 
-  attr_accessor :image, :image_cache
-  mount_uploader :image, BlogImageUploader
+  # attr_accessor :image, :image_cache
+  # mount_uploader :image, BlogImageUploader
 
   def related_posts
   end

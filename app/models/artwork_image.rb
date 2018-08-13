@@ -15,8 +15,8 @@ class ArtworkImage < ApplicationRecord
 
   validate :is_within_limit
 
-  attr_accessor :url, :url_cache
-  mount_uploader :url, ArtworkImageUploader
+  # attr_accessor :url, :url_cache
+  # mount_uploader :url, ArtworkImageUploader
 
 
   def is_within_limit
