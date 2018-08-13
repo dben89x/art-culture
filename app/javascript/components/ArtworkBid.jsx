@@ -12,6 +12,7 @@ export default class ArtworkBid extends React.Component {
       modalIsOpen: false,
       price: this.props.artwork.price,
       currentBid: this.props.currentBid,
+      currentUser: this.props.currentUser,
       errors: [],
       authModalOpen: false,
       selectedAuth: null,
@@ -69,8 +70,8 @@ export default class ArtworkBid extends React.Component {
   }
 
   onComplete = (response) => {
-    console.log(response)
     this.setState({modalIsOpen: false, currentBid: response})
+    })
   }
 
   openLogin=()=>{
@@ -80,7 +81,7 @@ export default class ArtworkBid extends React.Component {
   changeInput = e => {
     e.preventDefault()
     var {name, value } = e.target
-    this.setState({ [name]: value }, () => console.log(this.state[name]))
+    this.setState({ [name]: value })
   }
 
   closeModal = () => {
@@ -88,7 +89,7 @@ export default class ArtworkBid extends React.Component {
   }
 
   acceptBid=()=>{
-    const {currentBid} = this.props
+    const {currentBid} = this.state
     $.ajax({
       type: 'PUT',
       headers: { 'X-CSRF-Token': csrfToken },
@@ -104,7 +105,6 @@ export default class ArtworkBid extends React.Component {
 
   render() {
     const CurrentBidText =({currentBid})=>{
-      console.log('foobar', currentBid)
       return currentBid.accepted ? (
         <div className='accepted-bid'>
           <h3>Your bid on this piece has been accepted.</h3>

@@ -60,16 +60,13 @@ export default class AuthForms extends React.Component {
   }
 
   onSigninComplete = (response) => {
-    // this.props.onSigninComplete(response)
-    window.location.reload()
+    this.props.onSigninComplete ? this.props.onSigninComplete(response) : window.location.reload()
   }
   onSignupComplete = (response) => {
-    // this.props.onSignupComplete(response)
-    window.location.reload()
+    this.props.onSignupComplete ? this.props.onSignupComplete(response) : window.location.reload()
   }
   onPasswordComplete = (response) => {
-    // this.props.onPasswordComplete(response)
-    window.location.reload()
+    this.props.onPasswordComplete ? this.props.onPasswordComplete(response) : window.location.reload()
   }
 
   closeModal=()=>{
