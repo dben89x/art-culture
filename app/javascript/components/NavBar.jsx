@@ -14,11 +14,10 @@ export default class NavBar extends React.Component {
       year: new Date().getFullYear(),
       opened: false,
       currentUser: this.props.currentUser,
-      authModalOpen: false,
       shoppingCartOpen: false,
       shoppingCartItems: [],
       sidebarOpen: false,
-      signinVisible: false,
+      authModalOpen: false,
       selectedAuth: null,
     }
   }
@@ -69,16 +68,15 @@ export default class NavBar extends React.Component {
   toggleShoppingCart = e => {
     e.preventDefault()
     var {currentUser} = this.props
+    $('#shopping-cart').animate({width: 'toggle'})
+    this.setState({
+      shoppingCartOpen: !this.state.shoppingCartOpen
+    })
+
     if (currentUser) {
-      $('#shopping-cart').animate({width: 'toggle'})
       $.get('/api/artwork_favorites', {user_id: currentUser.id}, (response)=>{
         this.setState({shoppingCartItems: response})
       })
-      this.setState({
-        shoppingCartOpen: !this.state.shoppingCartOpen
-      })
-    } else {
-      this.signinClick(e)
     }
   }
 
@@ -144,7 +142,7 @@ export default class NavBar extends React.Component {
     </div>)
 
     return (<div id='nav-container'>
-      <ShoppingCart open={this.state.shoppingCartOpen} onClose={this.toggleShoppingCart} items={this.state.shoppingCartItems}></ShoppingCart>
+      <ShoppingCart open={this.state.shoppingCartOpen} onClose={this.toggleShoppingCart} items={this.state.shoppingCartItems} currentUser={currentUser}></ShoppingCart>
       <div id="nav-sidebar" className={this.state.sidebarOpen ? 'open' : 'closed'}>
         <div className="header">
           {/* <img src="https://s3-us-west-1.amazonaws.com/art-culture/Group+122.png" style={{width: '90%', margin: '0 0 2em'}} alt=""/> */}

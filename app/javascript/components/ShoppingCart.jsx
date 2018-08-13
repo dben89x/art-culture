@@ -1,5 +1,6 @@
 import React from 'react'
 import CartItem from './CartItem'
+import AuthForms from './auth/AuthForms'
 
 const localStorage = window.localStorage
 
@@ -7,6 +8,8 @@ export default class ShoppingCart extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      authModalOpen: false,
+      selectedAuth: null,
     }
   }
 
@@ -16,12 +19,31 @@ export default class ShoppingCart extends React.Component {
     // console.log(browser)
   }
 
+  ////////// Auth actions //////////
+
+  signinClick=(e)=>{
+    e.preventDefault()
+    this.setState({selectedAuth: 'signin', authModalOpen: true})
+  }
+  signupClick=(e)=>{
+    e.preventDefault()
+    this.setState({selectedAuth: 'signup', authModalOpen: true})
+  }
+
+  onSignoutComplete=(response)=>{
+    window.location.reload()
+  }
+
+  closeModal=(callback)=>{
+    this.setState({modalIsOpen: false}, ()=> callback())
+  }
+
   localStorageUpdated=()=>{
     console.log(localStorage)
   }
 
   render() {
-    var {items} = this.props
+    var {items, currentUser} = this.props
     return (
       <div id="shopping-cart" className={this.props.open ? 'open' : 'closed'}>
         <div className="header">
@@ -29,12 +51,20 @@ export default class ShoppingCart extends React.Component {
           <a onClick={this.props.onClose} className='close-btn'>&times;</a>
         </div>
         <div className="shopping-cart-container">
-          <div className="cart-items">
-            {items.map(item => (
-              <CartItem item={item} key={item.id}></CartItem>
-            ))}
-          </div>
+          {currentUser ? (
+            <div className="cart-items">
+              {items.map(item => (
+                <CartItem item={item} key={item.id}></CartItem>
+              ))}
+            </div>
+          ) : (
+            <div className="signin-prompt">
+              <p>You must be signed in to manage favorites.</p>
+              <p><a href="#" onClick={this.signinClick}>Sign in</a> or <a href="#" onClick={this.signupClick}>Sign up</a></p>
+            </div>
+          )}
         </div>
+        <AuthForms selectedAuth={this.state.selectedAuth} modalIsOpen={this.state.authModalOpen} onClose={()=> this.setState({authModalOpen: false})}/>
       </div>
     )
   }
