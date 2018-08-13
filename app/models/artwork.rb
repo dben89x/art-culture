@@ -30,7 +30,7 @@ class Artwork < ApplicationRecord
   belongs_to :featured_image, class_name: 'ArtworkImage', optional: true
 
   before_save :update_cents
-  before_save :update_featured_image
+  # before_save :update_featured_image
 
   validates_length_of :bio, minimum: 15, maximum: 300, allow_blank: false
   accepts_nested_attributes_for :artwork_images, allow_destroy: true
