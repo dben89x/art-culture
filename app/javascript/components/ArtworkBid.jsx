@@ -80,7 +80,7 @@ export default class ArtworkBid extends React.Component {
   changeInput = e => {
     e.preventDefault()
     var {name, value } = e.target
-    this.setState({ [name]: value }w)
+    this.setState({ [name]: value })
   }
 
   closeModal = () => {
