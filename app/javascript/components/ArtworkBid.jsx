@@ -71,7 +71,6 @@ export default class ArtworkBid extends React.Component {
 
   onComplete = (response) => {
     this.setState({modalIsOpen: false, currentBid: response})
-    })
   }
 
   openLogin=()=>{
@@ -81,7 +80,7 @@ export default class ArtworkBid extends React.Component {
   changeInput = e => {
     e.preventDefault()
     var {name, value } = e.target
-    this.setState({ [name]: value })
+    this.setState({ [name]: value }w)
   }
 
   closeModal = () => {
